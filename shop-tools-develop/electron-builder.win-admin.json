@@ -1,0 +1,31 @@
+{
+  "appId": "com.tiktoktools.aiflow",
+  "productName": "TikTok AI Flow",
+  "directories": {
+    "output": "release"
+  },
+  "files": [
+    "dist/**/*",
+    "package.json"
+  ],
+  "asar": true,
+  "electronDist": "node_modules/electron/dist",
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": ["x64"]
+      }
+    ],
+    "artifactName": "TikTok-AI-Flow-0.1.0-win-x64-admin.${ext}"
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": true,
+    "allowElevation": true,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "TikTok AI Flow"
+  }
+}

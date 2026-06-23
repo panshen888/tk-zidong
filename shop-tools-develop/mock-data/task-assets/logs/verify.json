@@ -1,0 +1,4924 @@
+{
+  "result": {
+    "totalCount": 5,
+    "successCount": 5,
+    "failedCount": 0,
+    "items": [
+      {
+        "rowIndex": 2,
+        "productId": "MOCK-URL-001",
+        "sourceUrl": "",
+        "imageUrl": "/Users/qzhi/Documents/demo/2026/work/tiktok-tools/tiktok-ai-flow/mock-data/task-assets/images/2-MOCK-URL-001.png",
+        "title": "URL 主图测试商品",
+        "country": "US",
+        "category": "Kitchen",
+        "status": "success",
+        "localImagePath": "/Users/qzhi/Documents/demo/2026/work/tiktok-tools/tiktok-ai-flow/mock-data/task-assets/images/2-MOCK-URL-001.png",
+        "candidates": [
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/79723fc5b070.html",
+            "offerId": "79723fc5b070",
+            "title": "URL 主图测试商品 - Mock 候选 1",
+            "supplier": "Mock 供应商 1",
+            "supplierType": "工厂",
+            "member": true,
+            "coverImageUrl": "local://mock-rank-1/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0.94,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.94，使用列表候选分数作为相似度占位"
+            ],
+            "score": 92,
+            "suggestion": "待详情验证"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/367576dfb08f.html",
+            "offerId": "367576dfb08f",
+            "title": "URL 主图测试商品 - Mock 候选 2",
+            "supplier": "Mock 供应商 2",
+            "supplierType": "供应商",
+            "member": true,
+            "coverImageUrl": "local://mock-rank-2/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0.9,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.9，使用列表候选分数作为相似度占位"
+            ],
+            "score": 83,
+            "suggestion": "待详情验证"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/e426b0cf7331.html",
+            "offerId": "e426b0cf7331",
+            "title": "URL 主图测试商品 - Mock 候选 3",
+            "supplier": "Mock 供应商 3",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-3/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0.88,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.88，使用列表候选分数作为相似度占位"
+            ],
+            "score": 74,
+            "suggestion": "待详情验证"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/8edab0cfd59f.html",
+            "offerId": "8edab0cfd59f",
+            "title": "URL 主图测试商品 - Mock 候选 4",
+            "supplier": "Mock 供应商 4",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-4/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0.82,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.82，使用列表候选分数作为相似度占位"
+            ],
+            "score": 65,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/ed3f9f7f0faa.html",
+            "offerId": "ed3f9f7f0faa",
+            "title": "URL 主图测试商品 - Mock 候选 5",
+            "supplier": "Mock 供应商 5",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-5/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0.77,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.77，使用列表候选分数作为相似度占位"
+            ],
+            "score": 56,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/cece48c745ae.html",
+            "offerId": "cece48c745ae",
+            "title": "URL 主图测试商品 - Mock 候选 6",
+            "supplier": "Mock 供应商 6",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-6/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0.72,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.72，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/c71c1cd9d710.html",
+            "offerId": "c71c1cd9d710",
+            "title": "URL 主图测试商品 - Mock 候选 7",
+            "supplier": "Mock 供应商 7",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-7/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0.67,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.67，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/a8dc443a38aa.html",
+            "offerId": "a8dc443a38aa",
+            "title": "URL 主图测试商品 - Mock 候选 8",
+            "supplier": "Mock 供应商 8",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-8/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0.62,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.62，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/dea1d63308c1.html",
+            "offerId": "dea1d63308c1",
+            "title": "URL 主图测试商品 - Mock 候选 9",
+            "supplier": "Mock 供应商 9",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-9/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0.57,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.57，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/bd8db252cbb9.html",
+            "offerId": "bd8db252cbb9",
+            "title": "URL 主图测试商品 - Mock 候选 10",
+            "supplier": "Mock 供应商 10",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-10/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0.52,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.52，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/974dba03ad44.html",
+            "offerId": "974dba03ad44",
+            "title": "URL 主图测试商品 - Mock 候选 11",
+            "supplier": "Mock 供应商 11",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-11/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0.47,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.47，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/de6e1c1614d5.html",
+            "offerId": "de6e1c1614d5",
+            "title": "URL 主图测试商品 - Mock 候选 12",
+            "supplier": "Mock 供应商 12",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-12/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0.42,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.42，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/ec20e1b5922e.html",
+            "offerId": "ec20e1b5922e",
+            "title": "URL 主图测试商品 - Mock 候选 13",
+            "supplier": "Mock 供应商 13",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-13/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0.37,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.37，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/693278eee107.html",
+            "offerId": "693278eee107",
+            "title": "URL 主图测试商品 - Mock 候选 14",
+            "supplier": "Mock 供应商 14",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-14/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0.32,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.32，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/029926b28c57.html",
+            "offerId": "029926b28c57",
+            "title": "URL 主图测试商品 - Mock 候选 15",
+            "supplier": "Mock 供应商 15",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-15/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0.27,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.27，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/7195cc51c9c6.html",
+            "offerId": "7195cc51c9c6",
+            "title": "URL 主图测试商品 - Mock 候选 16",
+            "supplier": "Mock 供应商 16",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-16/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0.22,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.22，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/08f621b98b3e.html",
+            "offerId": "08f621b98b3e",
+            "title": "URL 主图测试商品 - Mock 候选 17",
+            "supplier": "Mock 供应商 17",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-17/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0.17,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.17，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/000a9646a45d.html",
+            "offerId": "000a9646a45d",
+            "title": "URL 主图测试商品 - Mock 候选 18",
+            "supplier": "Mock 供应商 18",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-18/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0.12,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.12，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/131fb8d3f0d5.html",
+            "offerId": "131fb8d3f0d5",
+            "title": "URL 主图测试商品 - Mock 候选 19",
+            "supplier": "Mock 供应商 19",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-19/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0.07,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.07，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/4ece0c3ffdc1.html",
+            "offerId": "4ece0c3ffdc1",
+            "title": "URL 主图测试商品 - Mock 候选 20",
+            "supplier": "Mock 供应商 20",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-20/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0.02,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.02，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/362845c1fbab.html",
+            "offerId": "362845c1fbab",
+            "title": "URL 主图测试商品 - Mock 候选 21",
+            "supplier": "Mock 供应商 21",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-21/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/ea4181f0793b.html",
+            "offerId": "ea4181f0793b",
+            "title": "URL 主图测试商品 - Mock 候选 22",
+            "supplier": "Mock 供应商 22",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-22/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/1431d7e869e9.html",
+            "offerId": "1431d7e869e9",
+            "title": "URL 主图测试商品 - Mock 候选 23",
+            "supplier": "Mock 供应商 23",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-23/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/36728e953b0d.html",
+            "offerId": "36728e953b0d",
+            "title": "URL 主图测试商品 - Mock 候选 24",
+            "supplier": "Mock 供应商 24",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-24/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/90605a97f9d7.html",
+            "offerId": "90605a97f9d7",
+            "title": "URL 主图测试商品 - Mock 候选 25",
+            "supplier": "Mock 供应商 25",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-25/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/94014d0eaddb.html",
+            "offerId": "94014d0eaddb",
+            "title": "URL 主图测试商品 - Mock 候选 26",
+            "supplier": "Mock 供应商 26",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-26/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/bc200bce97f1.html",
+            "offerId": "bc200bce97f1",
+            "title": "URL 主图测试商品 - Mock 候选 27",
+            "supplier": "Mock 供应商 27",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-27/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/d9be6bb538c3.html",
+            "offerId": "d9be6bb538c3",
+            "title": "URL 主图测试商品 - Mock 候选 28",
+            "supplier": "Mock 供应商 28",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-28/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/0ba644e43b8b.html",
+            "offerId": "0ba644e43b8b",
+            "title": "URL 主图测试商品 - Mock 候选 29",
+            "supplier": "Mock 供应商 29",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-29/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/64a3fa7f5bef.html",
+            "offerId": "64a3fa7f5bef",
+            "title": "URL 主图测试商品 - Mock 候选 30",
+            "supplier": "Mock 供应商 30",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-30/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/aedf490b0f4f.html",
+            "offerId": "aedf490b0f4f",
+            "title": "URL 主图测试商品 - Mock 候选 31",
+            "supplier": "Mock 供应商 31",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-31/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/d01aefbbb498.html",
+            "offerId": "d01aefbbb498",
+            "title": "URL 主图测试商品 - Mock 候选 32",
+            "supplier": "Mock 供应商 32",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-32/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/e1c0e3817c02.html",
+            "offerId": "e1c0e3817c02",
+            "title": "URL 主图测试商品 - Mock 候选 33",
+            "supplier": "Mock 供应商 33",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-33/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/90e9cc811117.html",
+            "offerId": "90e9cc811117",
+            "title": "URL 主图测试商品 - Mock 候选 34",
+            "supplier": "Mock 供应商 34",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-34/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/906aceae930b.html",
+            "offerId": "906aceae930b",
+            "title": "URL 主图测试商品 - Mock 候选 35",
+            "supplier": "Mock 供应商 35",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-35/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/a82466f21df7.html",
+            "offerId": "a82466f21df7",
+            "title": "URL 主图测试商品 - Mock 候选 36",
+            "supplier": "Mock 供应商 36",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-36/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/8f6dd23e3c24.html",
+            "offerId": "8f6dd23e3c24",
+            "title": "URL 主图测试商品 - Mock 候选 37",
+            "supplier": "Mock 供应商 37",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-37/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/7431070605db.html",
+            "offerId": "7431070605db",
+            "title": "URL 主图测试商品 - Mock 候选 38",
+            "supplier": "Mock 供应商 38",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-38/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/559b707d87c7.html",
+            "offerId": "559b707d87c7",
+            "title": "URL 主图测试商品 - Mock 候选 39",
+            "supplier": "Mock 供应商 39",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-39/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/fe47bb93b07e.html",
+            "offerId": "fe47bb93b07e",
+            "title": "URL 主图测试商品 - Mock 候选 40",
+            "supplier": "Mock 供应商 40",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-40/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/f2852a73c472.html",
+            "offerId": "f2852a73c472",
+            "title": "URL 主图测试商品 - Mock 候选 41",
+            "supplier": "Mock 供应商 41",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-41/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/d185ceb9b1be.html",
+            "offerId": "d185ceb9b1be",
+            "title": "URL 主图测试商品 - Mock 候选 42",
+            "supplier": "Mock 供应商 42",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-42/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/9c3b7ae5e14a.html",
+            "offerId": "9c3b7ae5e14a",
+            "title": "URL 主图测试商品 - Mock 候选 43",
+            "supplier": "Mock 供应商 43",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-43/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/18a08f930c8c.html",
+            "offerId": "18a08f930c8c",
+            "title": "URL 主图测试商品 - Mock 候选 44",
+            "supplier": "Mock 供应商 44",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-44/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/57815ee53034.html",
+            "offerId": "57815ee53034",
+            "title": "URL 主图测试商品 - Mock 候选 45",
+            "supplier": "Mock 供应商 45",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-45/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/d08ab951ab64.html",
+            "offerId": "d08ab951ab64",
+            "title": "URL 主图测试商品 - Mock 候选 46",
+            "supplier": "Mock 供应商 46",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-46/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/89705a6473d9.html",
+            "offerId": "89705a6473d9",
+            "title": "URL 主图测试商品 - Mock 候选 47",
+            "supplier": "Mock 供应商 47",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-47/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/7ff8e08905fc.html",
+            "offerId": "7ff8e08905fc",
+            "title": "URL 主图测试商品 - Mock 候选 48",
+            "supplier": "Mock 供应商 48",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-48/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/c6ea55a492a6.html",
+            "offerId": "c6ea55a492a6",
+            "title": "URL 主图测试商品 - Mock 候选 49",
+            "supplier": "Mock 供应商 49",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-49/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerUrl": "https://detail.1688.com/offer/f75aa3bf0bdc.html",
+            "offerId": "f75aa3bf0bdc",
+            "title": "URL 主图测试商品 - Mock 候选 50",
+            "supplier": "Mock 供应商 50",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-50/2-MOCK-URL-001.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          }
+        ],
+        "skuMatches": [
+          {
+            "productId": "MOCK-URL-001",
+            "offerId": "79723fc5b070",
+            "offerUrl": "https://detail.1688.com/offer/79723fc5b070.html",
+            "skuId": "mock-sku-b5fb108a",
+            "skuName": "URL 主图测试商品 - Mock 候选 1 / Mock 匹配 SKU",
+            "skuImageUrl": "local://mock-rank-1/2-MOCK-URL-001.png",
+            "skuImageSimilarity": 0.92,
+            "isSameProduct": true,
+            "itemPrice": 26.97,
+            "shippingFee": 6.2,
+            "purchaseCost": 33.17,
+            "currency": "CNY",
+            "quantity": 1,
+            "dimensions": "20×15×8cm",
+            "weightGram": 180,
+            "weightSource": "详情页",
+            "weightConfidence": "中",
+            "extractionSource": "mock",
+            "riskFlags": [
+              "mock 详情页数据，待真实 SKU 切换与加购流程替换",
+              "相似度来源：mock，mock 相似度结果，待中转站视觉模型替换"
+            ]
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerId": "367576dfb08f",
+            "offerUrl": "https://detail.1688.com/offer/367576dfb08f.html",
+            "skuId": "mock-sku-c99d6810",
+            "skuName": "URL 主图测试商品 - Mock 候选 2 / Mock 匹配 SKU",
+            "skuImageUrl": "local://mock-rank-2/2-MOCK-URL-001.png",
+            "skuImageSimilarity": 0.821,
+            "isSameProduct": false,
+            "itemPrice": 23.83,
+            "shippingFee": 7.3,
+            "purchaseCost": 31.13,
+            "currency": "CNY",
+            "quantity": 1,
+            "dimensions": "20×15×8cm",
+            "weightGram": 180,
+            "weightSource": "详情页",
+            "weightConfidence": "中",
+            "extractionSource": "mock",
+            "riskFlags": [
+              "mock 详情页数据，待真实 SKU 切换与加购流程替换",
+              "相似度来源：mock，mock 相似度结果，待中转站视觉模型替换"
+            ]
+          },
+          {
+            "productId": "MOCK-URL-001",
+            "offerId": "e426b0cf7331",
+            "offerUrl": "https://detail.1688.com/offer/e426b0cf7331.html",
+            "skuId": "mock-sku-3eed50c4",
+            "skuName": "URL 主图测试商品 - Mock 候选 3 / Mock 匹配 SKU",
+            "skuImageUrl": "local://mock-rank-3/2-MOCK-URL-001.png",
+            "skuImageSimilarity": 0.876,
+            "isSameProduct": true,
+            "itemPrice": 26.5,
+            "shippingFee": 7,
+            "purchaseCost": 33.5,
+            "currency": "CNY",
+            "quantity": 1,
+            "dimensions": "20×15×8cm",
+            "weightGram": 180,
+            "weightSource": "详情页",
+            "weightConfidence": "中",
+            "extractionSource": "mock",
+            "riskFlags": [
+              "mock 详情页数据，待真实 SKU 切换与加购流程替换",
+              "相似度来源：mock，mock 相似度结果，待中转站视觉模型替换"
+            ]
+          }
+        ]
+      },
+      {
+        "rowIndex": 3,
+        "productId": "MOCK-EMBED-002",
+        "sourceUrl": "",
+        "imageUrl": "/Users/qzhi/Documents/demo/2026/work/tiktok-tools/tiktok-ai-flow/mock-data/task-assets/images/3-MOCK-EMBED-002.png",
+        "title": "内嵌图片测试商品",
+        "country": "TH",
+        "category": "Beauty",
+        "status": "success",
+        "localImagePath": "/Users/qzhi/Documents/demo/2026/work/tiktok-tools/tiktok-ai-flow/mock-data/task-assets/images/3-MOCK-EMBED-002.png",
+        "candidates": [
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/721c66e15a40.html",
+            "offerId": "721c66e15a40",
+            "title": "内嵌图片测试商品 - Mock 候选 1",
+            "supplier": "Mock 供应商 1",
+            "supplierType": "工厂",
+            "member": true,
+            "coverImageUrl": "local://mock-rank-1/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0.94,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.94，使用列表候选分数作为相似度占位"
+            ],
+            "score": 92,
+            "suggestion": "待详情验证"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/d16c33f23789.html",
+            "offerId": "d16c33f23789",
+            "title": "内嵌图片测试商品 - Mock 候选 2",
+            "supplier": "Mock 供应商 2",
+            "supplierType": "供应商",
+            "member": true,
+            "coverImageUrl": "local://mock-rank-2/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0.9,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.9，使用列表候选分数作为相似度占位"
+            ],
+            "score": 83,
+            "suggestion": "待详情验证"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/f9aff0cf3e8e.html",
+            "offerId": "f9aff0cf3e8e",
+            "title": "内嵌图片测试商品 - Mock 候选 3",
+            "supplier": "Mock 供应商 3",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-3/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0.88,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.88，使用列表候选分数作为相似度占位"
+            ],
+            "score": 74,
+            "suggestion": "待详情验证"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/56fa7012ea0a.html",
+            "offerId": "56fa7012ea0a",
+            "title": "内嵌图片测试商品 - Mock 候选 4",
+            "supplier": "Mock 供应商 4",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-4/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0.82,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.82，使用列表候选分数作为相似度占位"
+            ],
+            "score": 65,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/28fdf5649d0a.html",
+            "offerId": "28fdf5649d0a",
+            "title": "内嵌图片测试商品 - Mock 候选 5",
+            "supplier": "Mock 供应商 5",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-5/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0.77,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.77，使用列表候选分数作为相似度占位"
+            ],
+            "score": 56,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/f8ff9980b1da.html",
+            "offerId": "f8ff9980b1da",
+            "title": "内嵌图片测试商品 - Mock 候选 6",
+            "supplier": "Mock 供应商 6",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-6/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0.72,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.72，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/04e62e488cb5.html",
+            "offerId": "04e62e488cb5",
+            "title": "内嵌图片测试商品 - Mock 候选 7",
+            "supplier": "Mock 供应商 7",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-7/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0.67,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.67，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/581542b51c8b.html",
+            "offerId": "581542b51c8b",
+            "title": "内嵌图片测试商品 - Mock 候选 8",
+            "supplier": "Mock 供应商 8",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-8/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0.62,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.62，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/e3160d5b1031.html",
+            "offerId": "e3160d5b1031",
+            "title": "内嵌图片测试商品 - Mock 候选 9",
+            "supplier": "Mock 供应商 9",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-9/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0.57,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.57，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/4a9ecd30fda1.html",
+            "offerId": "4a9ecd30fda1",
+            "title": "内嵌图片测试商品 - Mock 候选 10",
+            "supplier": "Mock 供应商 10",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-10/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0.52,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.52，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/30d38f971f74.html",
+            "offerId": "30d38f971f74",
+            "title": "内嵌图片测试商品 - Mock 候选 11",
+            "supplier": "Mock 供应商 11",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-11/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0.47,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.47，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/3ca2816b40f3.html",
+            "offerId": "3ca2816b40f3",
+            "title": "内嵌图片测试商品 - Mock 候选 12",
+            "supplier": "Mock 供应商 12",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-12/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0.42,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.42，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/4c0e0808fa7f.html",
+            "offerId": "4c0e0808fa7f",
+            "title": "内嵌图片测试商品 - Mock 候选 13",
+            "supplier": "Mock 供应商 13",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-13/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0.37,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.37，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/c90cd573c3f9.html",
+            "offerId": "c90cd573c3f9",
+            "title": "内嵌图片测试商品 - Mock 候选 14",
+            "supplier": "Mock 供应商 14",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-14/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0.32,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.32，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/c5007f976418.html",
+            "offerId": "c5007f976418",
+            "title": "内嵌图片测试商品 - Mock 候选 15",
+            "supplier": "Mock 供应商 15",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-15/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0.27,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.27，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/8ecfdbbf8f2c.html",
+            "offerId": "8ecfdbbf8f2c",
+            "title": "内嵌图片测试商品 - Mock 候选 16",
+            "supplier": "Mock 供应商 16",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-16/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0.22,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.22，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/9531d50d12fe.html",
+            "offerId": "9531d50d12fe",
+            "title": "内嵌图片测试商品 - Mock 候选 17",
+            "supplier": "Mock 供应商 17",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-17/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0.17,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.17，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/ce2ae5ed3a05.html",
+            "offerId": "ce2ae5ed3a05",
+            "title": "内嵌图片测试商品 - Mock 候选 18",
+            "supplier": "Mock 供应商 18",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-18/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0.12,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.12，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/1855a7436228.html",
+            "offerId": "1855a7436228",
+            "title": "内嵌图片测试商品 - Mock 候选 19",
+            "supplier": "Mock 供应商 19",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-19/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0.07,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.07，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/0478f1fc418f.html",
+            "offerId": "0478f1fc418f",
+            "title": "内嵌图片测试商品 - Mock 候选 20",
+            "supplier": "Mock 供应商 20",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-20/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0.02,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.02，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/9337faf9cf78.html",
+            "offerId": "9337faf9cf78",
+            "title": "内嵌图片测试商品 - Mock 候选 21",
+            "supplier": "Mock 供应商 21",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-21/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/12705dc7bd3c.html",
+            "offerId": "12705dc7bd3c",
+            "title": "内嵌图片测试商品 - Mock 候选 22",
+            "supplier": "Mock 供应商 22",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-22/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/7e48089d9a0f.html",
+            "offerId": "7e48089d9a0f",
+            "title": "内嵌图片测试商品 - Mock 候选 23",
+            "supplier": "Mock 供应商 23",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-23/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/ee582d0fa823.html",
+            "offerId": "ee582d0fa823",
+            "title": "内嵌图片测试商品 - Mock 候选 24",
+            "supplier": "Mock 供应商 24",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-24/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/1634158b3802.html",
+            "offerId": "1634158b3802",
+            "title": "内嵌图片测试商品 - Mock 候选 25",
+            "supplier": "Mock 供应商 25",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-25/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/342296a7d237.html",
+            "offerId": "342296a7d237",
+            "title": "内嵌图片测试商品 - Mock 候选 26",
+            "supplier": "Mock 供应商 26",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-26/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/7ca6dd087e3b.html",
+            "offerId": "7ca6dd087e3b",
+            "title": "内嵌图片测试商品 - Mock 候选 27",
+            "supplier": "Mock 供应商 27",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-27/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/a6d127161394.html",
+            "offerId": "a6d127161394",
+            "title": "内嵌图片测试商品 - Mock 候选 28",
+            "supplier": "Mock 供应商 28",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-28/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/4993439dca47.html",
+            "offerId": "4993439dca47",
+            "title": "内嵌图片测试商品 - Mock 候选 29",
+            "supplier": "Mock 供应商 29",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-29/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/3d7583d7d789.html",
+            "offerId": "3d7583d7d789",
+            "title": "内嵌图片测试商品 - Mock 候选 30",
+            "supplier": "Mock 供应商 30",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-30/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/888a2a2c0ffb.html",
+            "offerId": "888a2a2c0ffb",
+            "title": "内嵌图片测试商品 - Mock 候选 31",
+            "supplier": "Mock 供应商 31",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-31/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/5dd4ef6d48eb.html",
+            "offerId": "5dd4ef6d48eb",
+            "title": "内嵌图片测试商品 - Mock 候选 32",
+            "supplier": "Mock 供应商 32",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-32/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/d11cf925929c.html",
+            "offerId": "d11cf925929c",
+            "title": "内嵌图片测试商品 - Mock 候选 33",
+            "supplier": "Mock 供应商 33",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-33/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/ab678a1999f0.html",
+            "offerId": "ab678a1999f0",
+            "title": "内嵌图片测试商品 - Mock 候选 34",
+            "supplier": "Mock 供应商 34",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-34/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/f616f58263d7.html",
+            "offerId": "f616f58263d7",
+            "title": "内嵌图片测试商品 - Mock 候选 35",
+            "supplier": "Mock 供应商 35",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-35/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/b899ce5b0ec4.html",
+            "offerId": "b899ce5b0ec4",
+            "title": "内嵌图片测试商品 - Mock 候选 36",
+            "supplier": "Mock 供应商 36",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-36/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/085940bbfcbf.html",
+            "offerId": "085940bbfcbf",
+            "title": "内嵌图片测试商品 - Mock 候选 37",
+            "supplier": "Mock 供应商 37",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-37/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/fbf100ff2ac2.html",
+            "offerId": "fbf100ff2ac2",
+            "title": "内嵌图片测试商品 - Mock 候选 38",
+            "supplier": "Mock 供应商 38",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-38/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/62c0bc3d0bfe.html",
+            "offerId": "62c0bc3d0bfe",
+            "title": "内嵌图片测试商品 - Mock 候选 39",
+            "supplier": "Mock 供应商 39",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-39/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/6c65223d4dc9.html",
+            "offerId": "6c65223d4dc9",
+            "title": "内嵌图片测试商品 - Mock 候选 40",
+            "supplier": "Mock 供应商 40",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-40/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/f62d2276e860.html",
+            "offerId": "f62d2276e860",
+            "title": "内嵌图片测试商品 - Mock 候选 41",
+            "supplier": "Mock 供应商 41",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-41/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/28cb8f4ee53e.html",
+            "offerId": "28cb8f4ee53e",
+            "title": "内嵌图片测试商品 - Mock 候选 42",
+            "supplier": "Mock 供应商 42",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-42/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/5d2ca14a3898.html",
+            "offerId": "5d2ca14a3898",
+            "title": "内嵌图片测试商品 - Mock 候选 43",
+            "supplier": "Mock 供应商 43",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-43/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/5f837aac0736.html",
+            "offerId": "5f837aac0736",
+            "title": "内嵌图片测试商品 - Mock 候选 44",
+            "supplier": "Mock 供应商 44",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-44/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/25047dd8d44c.html",
+            "offerId": "25047dd8d44c",
+            "title": "内嵌图片测试商品 - Mock 候选 45",
+            "supplier": "Mock 供应商 45",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-45/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/195a14b1a552.html",
+            "offerId": "195a14b1a552",
+            "title": "内嵌图片测试商品 - Mock 候选 46",
+            "supplier": "Mock 供应商 46",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-46/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/0df8b37b4413.html",
+            "offerId": "0df8b37b4413",
+            "title": "内嵌图片测试商品 - Mock 候选 47",
+            "supplier": "Mock 供应商 47",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-47/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/2d0f13a796bc.html",
+            "offerId": "2d0f13a796bc",
+            "title": "内嵌图片测试商品 - Mock 候选 48",
+            "supplier": "Mock 供应商 48",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-48/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/f00375f72d01.html",
+            "offerId": "f00375f72d01",
+            "title": "内嵌图片测试商品 - Mock 候选 49",
+            "supplier": "Mock 供应商 49",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-49/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerUrl": "https://detail.1688.com/offer/cf6cef48dc07.html",
+            "offerId": "cf6cef48dc07",
+            "title": "内嵌图片测试商品 - Mock 候选 50",
+            "supplier": "Mock 供应商 50",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-50/3-MOCK-EMBED-002.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          }
+        ],
+        "skuMatches": [
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerId": "721c66e15a40",
+            "offerUrl": "https://detail.1688.com/offer/721c66e15a40.html",
+            "skuId": "mock-sku-d8027798",
+            "skuName": "内嵌图片测试商品 - Mock 候选 1 / Mock 匹配 SKU",
+            "skuImageUrl": "local://mock-rank-1/3-MOCK-EMBED-002.png",
+            "skuImageSimilarity": 0.92,
+            "isSameProduct": true,
+            "itemPrice": 18.67,
+            "shippingFee": 7.49,
+            "purchaseCost": 26.16,
+            "currency": "CNY",
+            "quantity": 1,
+            "dimensions": "20×15×8cm",
+            "weightGram": 180,
+            "weightSource": "详情页",
+            "weightConfidence": "中",
+            "extractionSource": "mock",
+            "riskFlags": [
+              "mock 详情页数据，待真实 SKU 切换与加购流程替换",
+              "相似度来源：mock，mock 相似度结果，待中转站视觉模型替换"
+            ]
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerId": "d16c33f23789",
+            "offerUrl": "https://detail.1688.com/offer/d16c33f23789.html",
+            "skuId": "mock-sku-a31aa17c",
+            "skuName": "内嵌图片测试商品 - Mock 候选 2 / Mock 匹配 SKU",
+            "skuImageUrl": "local://mock-rank-2/3-MOCK-EMBED-002.png",
+            "skuImageSimilarity": 0.836,
+            "isSameProduct": false,
+            "itemPrice": 19.47,
+            "shippingFee": 8.01,
+            "purchaseCost": 27.48,
+            "currency": "CNY",
+            "quantity": 1,
+            "dimensions": "20×15×8cm",
+            "weightGram": 180,
+            "weightSource": "详情页",
+            "weightConfidence": "中",
+            "extractionSource": "mock",
+            "riskFlags": [
+              "mock 详情页数据，待真实 SKU 切换与加购流程替换",
+              "相似度来源：mock，mock 相似度结果，待中转站视觉模型替换"
+            ]
+          },
+          {
+            "productId": "MOCK-EMBED-002",
+            "offerId": "f9aff0cf3e8e",
+            "offerUrl": "https://detail.1688.com/offer/f9aff0cf3e8e.html",
+            "skuId": "mock-sku-9766cb21",
+            "skuName": "内嵌图片测试商品 - Mock 候选 3 / Mock 匹配 SKU",
+            "skuImageUrl": "local://mock-rank-3/3-MOCK-EMBED-002.png",
+            "skuImageSimilarity": 0.841,
+            "isSameProduct": false,
+            "itemPrice": 22,
+            "shippingFee": 8.54,
+            "purchaseCost": 30.54,
+            "currency": "CNY",
+            "quantity": 1,
+            "dimensions": "20×15×8cm",
+            "weightGram": 180,
+            "weightSource": "详情页",
+            "weightConfidence": "中",
+            "extractionSource": "mock",
+            "riskFlags": [
+              "mock 详情页数据，待真实 SKU 切换与加购流程替换",
+              "相似度来源：mock，mock 相似度结果，待中转站视觉模型替换"
+            ]
+          }
+        ]
+      },
+      {
+        "rowIndex": 4,
+        "productId": "MOCK-MISSING-003",
+        "sourceUrl": "",
+        "imageUrl": "/Users/qzhi/Documents/demo/2026/work/tiktok-tools/tiktok-ai-flow/mock-data/task-assets/images/4-MOCK-MISSING-003.png",
+        "title": "缺少图片测试商品",
+        "country": "MY",
+        "category": "Home",
+        "status": "success",
+        "localImagePath": "/Users/qzhi/Documents/demo/2026/work/tiktok-tools/tiktok-ai-flow/mock-data/task-assets/images/4-MOCK-MISSING-003.png",
+        "candidates": [
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/1c5c33603936.html",
+            "offerId": "1c5c33603936",
+            "title": "缺少图片测试商品 - Mock 候选 1",
+            "supplier": "Mock 供应商 1",
+            "supplierType": "工厂",
+            "member": true,
+            "coverImageUrl": "local://mock-rank-1/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0.94,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.94，使用列表候选分数作为相似度占位"
+            ],
+            "score": 92,
+            "suggestion": "待详情验证"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/b45a53a0756f.html",
+            "offerId": "b45a53a0756f",
+            "title": "缺少图片测试商品 - Mock 候选 2",
+            "supplier": "Mock 供应商 2",
+            "supplierType": "供应商",
+            "member": true,
+            "coverImageUrl": "local://mock-rank-2/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0.9,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.9，使用列表候选分数作为相似度占位"
+            ],
+            "score": 83,
+            "suggestion": "待详情验证"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/6ae0b9455d40.html",
+            "offerId": "6ae0b9455d40",
+            "title": "缺少图片测试商品 - Mock 候选 3",
+            "supplier": "Mock 供应商 3",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-3/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0.88,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.88，使用列表候选分数作为相似度占位"
+            ],
+            "score": 74,
+            "suggestion": "待详情验证"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/11c20256220f.html",
+            "offerId": "11c20256220f",
+            "title": "缺少图片测试商品 - Mock 候选 4",
+            "supplier": "Mock 供应商 4",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-4/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0.82,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.82，使用列表候选分数作为相似度占位"
+            ],
+            "score": 65,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/79130b35b930.html",
+            "offerId": "79130b35b930",
+            "title": "缺少图片测试商品 - Mock 候选 5",
+            "supplier": "Mock 供应商 5",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-5/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0.77,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.77，使用列表候选分数作为相似度占位"
+            ],
+            "score": 56,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/9bb1e2d7afa1.html",
+            "offerId": "9bb1e2d7afa1",
+            "title": "缺少图片测试商品 - Mock 候选 6",
+            "supplier": "Mock 供应商 6",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-6/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0.72,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.72，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/a4b136f25f08.html",
+            "offerId": "a4b136f25f08",
+            "title": "缺少图片测试商品 - Mock 候选 7",
+            "supplier": "Mock 供应商 7",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-7/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0.67,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.67，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/cecfb6abcf73.html",
+            "offerId": "cecfb6abcf73",
+            "title": "缺少图片测试商品 - Mock 候选 8",
+            "supplier": "Mock 供应商 8",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-8/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0.62,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.62，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/80085b5cd271.html",
+            "offerId": "80085b5cd271",
+            "title": "缺少图片测试商品 - Mock 候选 9",
+            "supplier": "Mock 供应商 9",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-9/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0.57,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.57，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/61f4686df6a0.html",
+            "offerId": "61f4686df6a0",
+            "title": "缺少图片测试商品 - Mock 候选 10",
+            "supplier": "Mock 供应商 10",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-10/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0.52,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.52，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/4e708c91217a.html",
+            "offerId": "4e708c91217a",
+            "title": "缺少图片测试商品 - Mock 候选 11",
+            "supplier": "Mock 供应商 11",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-11/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0.47,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.47，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/471f930f26e1.html",
+            "offerId": "471f930f26e1",
+            "title": "缺少图片测试商品 - Mock 候选 12",
+            "supplier": "Mock 供应商 12",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-12/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0.42,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.42，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/b6fd2a1845eb.html",
+            "offerId": "b6fd2a1845eb",
+            "title": "缺少图片测试商品 - Mock 候选 13",
+            "supplier": "Mock 供应商 13",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-13/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0.37,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.37，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/23ece9e2adbf.html",
+            "offerId": "23ece9e2adbf",
+            "title": "缺少图片测试商品 - Mock 候选 14",
+            "supplier": "Mock 供应商 14",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-14/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0.32,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.32，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/a5f2691311ae.html",
+            "offerId": "a5f2691311ae",
+            "title": "缺少图片测试商品 - Mock 候选 15",
+            "supplier": "Mock 供应商 15",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-15/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0.27,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.27，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/949747b914da.html",
+            "offerId": "949747b914da",
+            "title": "缺少图片测试商品 - Mock 候选 16",
+            "supplier": "Mock 供应商 16",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-16/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0.22,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.22，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/820abb0e8c7b.html",
+            "offerId": "820abb0e8c7b",
+            "title": "缺少图片测试商品 - Mock 候选 17",
+            "supplier": "Mock 供应商 17",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-17/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0.17,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.17，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/df05efb75ee3.html",
+            "offerId": "df05efb75ee3",
+            "title": "缺少图片测试商品 - Mock 候选 18",
+            "supplier": "Mock 供应商 18",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-18/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0.12,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.12，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/aa68d4f58c50.html",
+            "offerId": "aa68d4f58c50",
+            "title": "缺少图片测试商品 - Mock 候选 19",
+            "supplier": "Mock 供应商 19",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-19/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0.07,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.07，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/2b2857c850b2.html",
+            "offerId": "2b2857c850b2",
+            "title": "缺少图片测试商品 - Mock 候选 20",
+            "supplier": "Mock 供应商 20",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-20/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0.02,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.02，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/609406badee7.html",
+            "offerId": "609406badee7",
+            "title": "缺少图片测试商品 - Mock 候选 21",
+            "supplier": "Mock 供应商 21",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-21/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/52ed7d212514.html",
+            "offerId": "52ed7d212514",
+            "title": "缺少图片测试商品 - Mock 候选 22",
+            "supplier": "Mock 供应商 22",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-22/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/34c8f5b449a3.html",
+            "offerId": "34c8f5b449a3",
+            "title": "缺少图片测试商品 - Mock 候选 23",
+            "supplier": "Mock 供应商 23",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-23/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/561e7bd35a69.html",
+            "offerId": "561e7bd35a69",
+            "title": "缺少图片测试商品 - Mock 候选 24",
+            "supplier": "Mock 供应商 24",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-24/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/41457054a321.html",
+            "offerId": "41457054a321",
+            "title": "缺少图片测试商品 - Mock 候选 25",
+            "supplier": "Mock 供应商 25",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-25/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/eb06b24ca377.html",
+            "offerId": "eb06b24ca377",
+            "title": "缺少图片测试商品 - Mock 候选 26",
+            "supplier": "Mock 供应商 26",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-26/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/924042cbe755.html",
+            "offerId": "924042cbe755",
+            "title": "缺少图片测试商品 - Mock 候选 27",
+            "supplier": "Mock 供应商 27",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-27/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/af432dd99cb3.html",
+            "offerId": "af432dd99cb3",
+            "title": "缺少图片测试商品 - Mock 候选 28",
+            "supplier": "Mock 供应商 28",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-28/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/0c52f9767bdc.html",
+            "offerId": "0c52f9767bdc",
+            "title": "缺少图片测试商品 - Mock 候选 29",
+            "supplier": "Mock 供应商 29",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-29/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/97aee00aa498.html",
+            "offerId": "97aee00aa498",
+            "title": "缺少图片测试商品 - Mock 候选 30",
+            "supplier": "Mock 供应商 30",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-30/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/011e337594ce.html",
+            "offerId": "011e337594ce",
+            "title": "缺少图片测试商品 - Mock 候选 31",
+            "supplier": "Mock 供应商 31",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-31/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/e7a2f6744254.html",
+            "offerId": "e7a2f6744254",
+            "title": "缺少图片测试商品 - Mock 候选 32",
+            "supplier": "Mock 供应商 32",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-32/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/20e44ad39187.html",
+            "offerId": "20e44ad39187",
+            "title": "缺少图片测试商品 - Mock 候选 33",
+            "supplier": "Mock 供应商 33",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-33/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/08f9cf4fd618.html",
+            "offerId": "08f9cf4fd618",
+            "title": "缺少图片测试商品 - Mock 候选 34",
+            "supplier": "Mock 供应商 34",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-34/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/0e081fd7db82.html",
+            "offerId": "0e081fd7db82",
+            "title": "缺少图片测试商品 - Mock 候选 35",
+            "supplier": "Mock 供应商 35",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-35/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/3233e241c4ce.html",
+            "offerId": "3233e241c4ce",
+            "title": "缺少图片测试商品 - Mock 候选 36",
+            "supplier": "Mock 供应商 36",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-36/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/04b351bc4de5.html",
+            "offerId": "04b351bc4de5",
+            "title": "缺少图片测试商品 - Mock 候选 37",
+            "supplier": "Mock 供应商 37",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-37/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/848776e8aa8d.html",
+            "offerId": "848776e8aa8d",
+            "title": "缺少图片测试商品 - Mock 候选 38",
+            "supplier": "Mock 供应商 38",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-38/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/159b291febc8.html",
+            "offerId": "159b291febc8",
+            "title": "缺少图片测试商品 - Mock 候选 39",
+            "supplier": "Mock 供应商 39",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-39/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/df667b43910d.html",
+            "offerId": "df667b43910d",
+            "title": "缺少图片测试商品 - Mock 候选 40",
+            "supplier": "Mock 供应商 40",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-40/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/643796828a79.html",
+            "offerId": "643796828a79",
+            "title": "缺少图片测试商品 - Mock 候选 41",
+            "supplier": "Mock 供应商 41",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-41/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/5d820cbfd596.html",
+            "offerId": "5d820cbfd596",
+            "title": "缺少图片测试商品 - Mock 候选 42",
+            "supplier": "Mock 供应商 42",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-42/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/5c43caf48fe0.html",
+            "offerId": "5c43caf48fe0",
+            "title": "缺少图片测试商品 - Mock 候选 43",
+            "supplier": "Mock 供应商 43",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-43/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/4ddf4f28ed31.html",
+            "offerId": "4ddf4f28ed31",
+            "title": "缺少图片测试商品 - Mock 候选 44",
+            "supplier": "Mock 供应商 44",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-44/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/53d95e4da42a.html",
+            "offerId": "53d95e4da42a",
+            "title": "缺少图片测试商品 - Mock 候选 45",
+            "supplier": "Mock 供应商 45",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-45/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/e45ddd74c66e.html",
+            "offerId": "e45ddd74c66e",
+            "title": "缺少图片测试商品 - Mock 候选 46",
+            "supplier": "Mock 供应商 46",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-46/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/1ed170291b1f.html",
+            "offerId": "1ed170291b1f",
+            "title": "缺少图片测试商品 - Mock 候选 47",
+            "supplier": "Mock 供应商 47",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-47/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/3ba1f051ac51.html",
+            "offerId": "3ba1f051ac51",
+            "title": "缺少图片测试商品 - Mock 候选 48",
+            "supplier": "Mock 供应商 48",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-48/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/13bb5cce2cc9.html",
+            "offerId": "13bb5cce2cc9",
+            "title": "缺少图片测试商品 - Mock 候选 49",
+            "supplier": "Mock 供应商 49",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-49/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerUrl": "https://detail.1688.com/offer/e3525c889a75.html",
+            "offerId": "e3525c889a75",
+            "title": "缺少图片测试商品 - Mock 候选 50",
+            "supplier": "Mock 供应商 50",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-50/4-MOCK-MISSING-003.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          }
+        ],
+        "skuMatches": [
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerId": "1c5c33603936",
+            "offerUrl": "https://detail.1688.com/offer/1c5c33603936.html",
+            "skuId": "mock-sku-55904670",
+            "skuName": "缺少图片测试商品 - Mock 候选 1 / Mock 匹配 SKU",
+            "skuImageUrl": "local://mock-rank-1/4-MOCK-MISSING-003.png",
+            "skuImageSimilarity": 0.92,
+            "isSameProduct": true,
+            "itemPrice": 23.4,
+            "shippingFee": 6.88,
+            "purchaseCost": 30.28,
+            "currency": "CNY",
+            "quantity": 1,
+            "dimensions": "20×15×8cm",
+            "weightGram": 180,
+            "weightSource": "详情页",
+            "weightConfidence": "中",
+            "extractionSource": "mock",
+            "riskFlags": [
+              "mock 详情页数据，待真实 SKU 切换与加购流程替换",
+              "相似度来源：mock，mock 相似度结果，待中转站视觉模型替换"
+            ]
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerId": "b45a53a0756f",
+            "offerUrl": "https://detail.1688.com/offer/b45a53a0756f.html",
+            "skuId": "mock-sku-b3a0dfe2",
+            "skuName": "缺少图片测试商品 - Mock 候选 2 / Mock 匹配 SKU",
+            "skuImageUrl": "local://mock-rank-2/4-MOCK-MISSING-003.png",
+            "skuImageSimilarity": 0.83,
+            "isSameProduct": false,
+            "itemPrice": 23.93,
+            "shippingFee": 8.79,
+            "purchaseCost": 32.72,
+            "currency": "CNY",
+            "quantity": 1,
+            "dimensions": "20×15×8cm",
+            "weightGram": 180,
+            "weightSource": "详情页",
+            "weightConfidence": "中",
+            "extractionSource": "mock",
+            "riskFlags": [
+              "mock 详情页数据，待真实 SKU 切换与加购流程替换",
+              "相似度来源：mock，mock 相似度结果，待中转站视觉模型替换"
+            ]
+          },
+          {
+            "productId": "MOCK-MISSING-003",
+            "offerId": "6ae0b9455d40",
+            "offerUrl": "https://detail.1688.com/offer/6ae0b9455d40.html",
+            "skuId": "mock-sku-2ea99cb4",
+            "skuName": "缺少图片测试商品 - Mock 候选 3 / Mock 匹配 SKU",
+            "skuImageUrl": "local://mock-rank-3/4-MOCK-MISSING-003.png",
+            "skuImageSimilarity": 0.882,
+            "isSameProduct": true,
+            "itemPrice": 24.23,
+            "shippingFee": 7.95,
+            "purchaseCost": 32.18,
+            "currency": "CNY",
+            "quantity": 1,
+            "dimensions": "20×15×8cm",
+            "weightGram": 180,
+            "weightSource": "详情页",
+            "weightConfidence": "中",
+            "extractionSource": "mock",
+            "riskFlags": [
+              "mock 详情页数据，待真实 SKU 切换与加购流程替换",
+              "相似度来源：mock，mock 相似度结果，待中转站视觉模型替换"
+            ]
+          }
+        ]
+      },
+      {
+        "rowIndex": 5,
+        "productId": "MOCK-HYPERLINK-004",
+        "sourceUrl": "",
+        "imageUrl": "/Users/qzhi/Documents/demo/2026/work/tiktok-tools/tiktok-ai-flow/mock-data/task-assets/images/5-MOCK-HYPERLINK-004.png",
+        "title": "超链接对象主图测试商品",
+        "country": "VN",
+        "category": "Pets",
+        "status": "success",
+        "localImagePath": "/Users/qzhi/Documents/demo/2026/work/tiktok-tools/tiktok-ai-flow/mock-data/task-assets/images/5-MOCK-HYPERLINK-004.png",
+        "candidates": [
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/bb2609a899ab.html",
+            "offerId": "bb2609a899ab",
+            "title": "超链接对象主图测试商品 - Mock 候选 1",
+            "supplier": "Mock 供应商 1",
+            "supplierType": "工厂",
+            "member": true,
+            "coverImageUrl": "local://mock-rank-1/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0.94,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.94，使用列表候选分数作为相似度占位"
+            ],
+            "score": 92,
+            "suggestion": "待详情验证"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/66b0cac6196b.html",
+            "offerId": "66b0cac6196b",
+            "title": "超链接对象主图测试商品 - Mock 候选 2",
+            "supplier": "Mock 供应商 2",
+            "supplierType": "供应商",
+            "member": true,
+            "coverImageUrl": "local://mock-rank-2/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0.9,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.9，使用列表候选分数作为相似度占位"
+            ],
+            "score": 83,
+            "suggestion": "待详情验证"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/70a04574387b.html",
+            "offerId": "70a04574387b",
+            "title": "超链接对象主图测试商品 - Mock 候选 3",
+            "supplier": "Mock 供应商 3",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-3/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0.88,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.88，使用列表候选分数作为相似度占位"
+            ],
+            "score": 74,
+            "suggestion": "待详情验证"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/d85cefa1e166.html",
+            "offerId": "d85cefa1e166",
+            "title": "超链接对象主图测试商品 - Mock 候选 4",
+            "supplier": "Mock 供应商 4",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-4/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0.82,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.82，使用列表候选分数作为相似度占位"
+            ],
+            "score": 65,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/476b2d601144.html",
+            "offerId": "476b2d601144",
+            "title": "超链接对象主图测试商品 - Mock 候选 5",
+            "supplier": "Mock 供应商 5",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-5/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0.77,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.77，使用列表候选分数作为相似度占位"
+            ],
+            "score": 56,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/a8df2d260180.html",
+            "offerId": "a8df2d260180",
+            "title": "超链接对象主图测试商品 - Mock 候选 6",
+            "supplier": "Mock 供应商 6",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-6/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0.72,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.72，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/4dd2573d3fcd.html",
+            "offerId": "4dd2573d3fcd",
+            "title": "超链接对象主图测试商品 - Mock 候选 7",
+            "supplier": "Mock 供应商 7",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-7/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0.67,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.67，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/ff6eae7d3f2a.html",
+            "offerId": "ff6eae7d3f2a",
+            "title": "超链接对象主图测试商品 - Mock 候选 8",
+            "supplier": "Mock 供应商 8",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-8/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0.62,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.62，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/87f2d6532a77.html",
+            "offerId": "87f2d6532a77",
+            "title": "超链接对象主图测试商品 - Mock 候选 9",
+            "supplier": "Mock 供应商 9",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-9/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0.57,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.57，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/e28a5b183cd4.html",
+            "offerId": "e28a5b183cd4",
+            "title": "超链接对象主图测试商品 - Mock 候选 10",
+            "supplier": "Mock 供应商 10",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-10/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0.52,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.52，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/9657d42e4ee6.html",
+            "offerId": "9657d42e4ee6",
+            "title": "超链接对象主图测试商品 - Mock 候选 11",
+            "supplier": "Mock 供应商 11",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-11/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0.47,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.47，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/5e73e95a64dc.html",
+            "offerId": "5e73e95a64dc",
+            "title": "超链接对象主图测试商品 - Mock 候选 12",
+            "supplier": "Mock 供应商 12",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-12/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0.42,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.42，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/8c612194c8e5.html",
+            "offerId": "8c612194c8e5",
+            "title": "超链接对象主图测试商品 - Mock 候选 13",
+            "supplier": "Mock 供应商 13",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-13/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0.37,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.37，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/876445b3320d.html",
+            "offerId": "876445b3320d",
+            "title": "超链接对象主图测试商品 - Mock 候选 14",
+            "supplier": "Mock 供应商 14",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-14/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0.32,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.32，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/a3cdeafd86fb.html",
+            "offerId": "a3cdeafd86fb",
+            "title": "超链接对象主图测试商品 - Mock 候选 15",
+            "supplier": "Mock 供应商 15",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-15/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0.27,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.27，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/7ca79e355e71.html",
+            "offerId": "7ca79e355e71",
+            "title": "超链接对象主图测试商品 - Mock 候选 16",
+            "supplier": "Mock 供应商 16",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-16/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0.22,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.22，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/352da69fc4c4.html",
+            "offerId": "352da69fc4c4",
+            "title": "超链接对象主图测试商品 - Mock 候选 17",
+            "supplier": "Mock 供应商 17",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-17/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0.17,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.17，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/38c758a915af.html",
+            "offerId": "38c758a915af",
+            "title": "超链接对象主图测试商品 - Mock 候选 18",
+            "supplier": "Mock 供应商 18",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-18/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0.12,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.12，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/bcc13497cf65.html",
+            "offerId": "bcc13497cf65",
+            "title": "超链接对象主图测试商品 - Mock 候选 19",
+            "supplier": "Mock 供应商 19",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-19/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0.07,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.07，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/fa2f9a8ee045.html",
+            "offerId": "fa2f9a8ee045",
+            "title": "超链接对象主图测试商品 - Mock 候选 20",
+            "supplier": "Mock 供应商 20",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-20/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0.02,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.02，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/a57c455c44e7.html",
+            "offerId": "a57c455c44e7",
+            "title": "超链接对象主图测试商品 - Mock 候选 21",
+            "supplier": "Mock 供应商 21",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-21/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/2f703442997b.html",
+            "offerId": "2f703442997b",
+            "title": "超链接对象主图测试商品 - Mock 候选 22",
+            "supplier": "Mock 供应商 22",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-22/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/df85a510ce26.html",
+            "offerId": "df85a510ce26",
+            "title": "超链接对象主图测试商品 - Mock 候选 23",
+            "supplier": "Mock 供应商 23",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-23/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/c8471c34e38d.html",
+            "offerId": "c8471c34e38d",
+            "title": "超链接对象主图测试商品 - Mock 候选 24",
+            "supplier": "Mock 供应商 24",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-24/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/ca76772184c5.html",
+            "offerId": "ca76772184c5",
+            "title": "超链接对象主图测试商品 - Mock 候选 25",
+            "supplier": "Mock 供应商 25",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-25/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/04835ba73f6c.html",
+            "offerId": "04835ba73f6c",
+            "title": "超链接对象主图测试商品 - Mock 候选 26",
+            "supplier": "Mock 供应商 26",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-26/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/bbe6c1d75399.html",
+            "offerId": "bbe6c1d75399",
+            "title": "超链接对象主图测试商品 - Mock 候选 27",
+            "supplier": "Mock 供应商 27",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-27/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/c8a047b3e886.html",
+            "offerId": "c8a047b3e886",
+            "title": "超链接对象主图测试商品 - Mock 候选 28",
+            "supplier": "Mock 供应商 28",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-28/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/14f599866f17.html",
+            "offerId": "14f599866f17",
+            "title": "超链接对象主图测试商品 - Mock 候选 29",
+            "supplier": "Mock 供应商 29",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-29/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/abc443e3c674.html",
+            "offerId": "abc443e3c674",
+            "title": "超链接对象主图测试商品 - Mock 候选 30",
+            "supplier": "Mock 供应商 30",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-30/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/b6636b2df679.html",
+            "offerId": "b6636b2df679",
+            "title": "超链接对象主图测试商品 - Mock 候选 31",
+            "supplier": "Mock 供应商 31",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-31/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/b599efb76a15.html",
+            "offerId": "b599efb76a15",
+            "title": "超链接对象主图测试商品 - Mock 候选 32",
+            "supplier": "Mock 供应商 32",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-32/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/3e72b887d3a2.html",
+            "offerId": "3e72b887d3a2",
+            "title": "超链接对象主图测试商品 - Mock 候选 33",
+            "supplier": "Mock 供应商 33",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-33/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/ee10eb423d41.html",
+            "offerId": "ee10eb423d41",
+            "title": "超链接对象主图测试商品 - Mock 候选 34",
+            "supplier": "Mock 供应商 34",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-34/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/db408167f2c9.html",
+            "offerId": "db408167f2c9",
+            "title": "超链接对象主图测试商品 - Mock 候选 35",
+            "supplier": "Mock 供应商 35",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-35/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/74843833930c.html",
+            "offerId": "74843833930c",
+            "title": "超链接对象主图测试商品 - Mock 候选 36",
+            "supplier": "Mock 供应商 36",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-36/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/7f2a74ca47bb.html",
+            "offerId": "7f2a74ca47bb",
+            "title": "超链接对象主图测试商品 - Mock 候选 37",
+            "supplier": "Mock 供应商 37",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-37/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/29632b0c04d1.html",
+            "offerId": "29632b0c04d1",
+            "title": "超链接对象主图测试商品 - Mock 候选 38",
+            "supplier": "Mock 供应商 38",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-38/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/55fe2d8baca9.html",
+            "offerId": "55fe2d8baca9",
+            "title": "超链接对象主图测试商品 - Mock 候选 39",
+            "supplier": "Mock 供应商 39",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-39/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/698a33ff71eb.html",
+            "offerId": "698a33ff71eb",
+            "title": "超链接对象主图测试商品 - Mock 候选 40",
+            "supplier": "Mock 供应商 40",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-40/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/32f56f3ebe34.html",
+            "offerId": "32f56f3ebe34",
+            "title": "超链接对象主图测试商品 - Mock 候选 41",
+            "supplier": "Mock 供应商 41",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-41/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/ef10a7458b8c.html",
+            "offerId": "ef10a7458b8c",
+            "title": "超链接对象主图测试商品 - Mock 候选 42",
+            "supplier": "Mock 供应商 42",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-42/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/1a5a4143e614.html",
+            "offerId": "1a5a4143e614",
+            "title": "超链接对象主图测试商品 - Mock 候选 43",
+            "supplier": "Mock 供应商 43",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-43/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/ca4d46bcc0a1.html",
+            "offerId": "ca4d46bcc0a1",
+            "title": "超链接对象主图测试商品 - Mock 候选 44",
+            "supplier": "Mock 供应商 44",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-44/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/62b57cdb1a55.html",
+            "offerId": "62b57cdb1a55",
+            "title": "超链接对象主图测试商品 - Mock 候选 45",
+            "supplier": "Mock 供应商 45",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-45/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/26bf91ea2316.html",
+            "offerId": "26bf91ea2316",
+            "title": "超链接对象主图测试商品 - Mock 候选 46",
+            "supplier": "Mock 供应商 46",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-46/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/e8842f49402a.html",
+            "offerId": "e8842f49402a",
+            "title": "超链接对象主图测试商品 - Mock 候选 47",
+            "supplier": "Mock 供应商 47",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-47/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/32b87d94a9c4.html",
+            "offerId": "32b87d94a9c4",
+            "title": "超链接对象主图测试商品 - Mock 候选 48",
+            "supplier": "Mock 供应商 48",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-48/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/7c25dc959b87.html",
+            "offerId": "7c25dc959b87",
+            "title": "超链接对象主图测试商品 - Mock 候选 49",
+            "supplier": "Mock 供应商 49",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-49/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerUrl": "https://detail.1688.com/offer/5ecfba69da93.html",
+            "offerId": "5ecfba69da93",
+            "title": "超链接对象主图测试商品 - Mock 候选 50",
+            "supplier": "Mock 供应商 50",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-50/5-MOCK-HYPERLINK-004.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          }
+        ],
+        "skuMatches": [
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerId": "bb2609a899ab",
+            "offerUrl": "https://detail.1688.com/offer/bb2609a899ab.html",
+            "skuId": "mock-sku-aa4cf3e8",
+            "skuName": "超链接对象主图测试商品 - Mock 候选 1 / Mock 匹配 SKU",
+            "skuImageUrl": "local://mock-rank-1/5-MOCK-HYPERLINK-004.png",
+            "skuImageSimilarity": 0.92,
+            "isSameProduct": true,
+            "itemPrice": 21.13,
+            "shippingFee": 9.04,
+            "purchaseCost": 30.17,
+            "currency": "CNY",
+            "quantity": 1,
+            "dimensions": "20×15×8cm",
+            "weightGram": 180,
+            "weightSource": "详情页",
+            "weightConfidence": "中",
+            "extractionSource": "mock",
+            "riskFlags": [
+              "mock 详情页数据，待真实 SKU 切换与加购流程替换",
+              "相似度来源：mock，mock 相似度结果，待中转站视觉模型替换"
+            ]
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerId": "66b0cac6196b",
+            "offerUrl": "https://detail.1688.com/offer/66b0cac6196b.html",
+            "skuId": "mock-sku-ca573a45",
+            "skuName": "超链接对象主图测试商品 - Mock 候选 2 / Mock 匹配 SKU",
+            "skuImageUrl": "local://mock-rank-2/5-MOCK-HYPERLINK-004.png",
+            "skuImageSimilarity": 0.821,
+            "isSameProduct": false,
+            "itemPrice": 21.5,
+            "shippingFee": 6.72,
+            "purchaseCost": 28.22,
+            "currency": "CNY",
+            "quantity": 1,
+            "dimensions": "20×15×8cm",
+            "weightGram": 180,
+            "weightSource": "详情页",
+            "weightConfidence": "中",
+            "extractionSource": "mock",
+            "riskFlags": [
+              "mock 详情页数据，待真实 SKU 切换与加购流程替换",
+              "相似度来源：mock，mock 相似度结果，待中转站视觉模型替换"
+            ]
+          },
+          {
+            "productId": "MOCK-HYPERLINK-004",
+            "offerId": "70a04574387b",
+            "offerUrl": "https://detail.1688.com/offer/70a04574387b.html",
+            "skuId": "mock-sku-79225f37",
+            "skuName": "超链接对象主图测试商品 - Mock 候选 3 / Mock 匹配 SKU",
+            "skuImageUrl": "local://mock-rank-3/5-MOCK-HYPERLINK-004.png",
+            "skuImageSimilarity": 0.853,
+            "isSameProduct": false,
+            "itemPrice": 19.73,
+            "shippingFee": 7.19,
+            "purchaseCost": 26.92,
+            "currency": "CNY",
+            "quantity": 1,
+            "dimensions": "20×15×8cm",
+            "weightGram": 180,
+            "weightSource": "详情页",
+            "weightConfidence": "中",
+            "extractionSource": "mock",
+            "riskFlags": [
+              "mock 详情页数据，待真实 SKU 切换与加购流程替换",
+              "相似度来源：mock，mock 相似度结果，待中转站视觉模型替换"
+            ]
+          }
+        ]
+      },
+      {
+        "rowIndex": 6,
+        "productId": "MOCK-IMAGE-CELL-005",
+        "sourceUrl": "",
+        "imageUrl": "/Users/qzhi/Documents/demo/2026/work/tiktok-tools/tiktok-ai-flow/mock-data/task-assets/images/6-MOCK-IMAGE-CELL-005.png",
+        "title": "主图列图片测试商品",
+        "country": "PH",
+        "category": "Tools",
+        "status": "success",
+        "localImagePath": "/Users/qzhi/Documents/demo/2026/work/tiktok-tools/tiktok-ai-flow/mock-data/task-assets/images/6-MOCK-IMAGE-CELL-005.png",
+        "candidates": [
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/805786b64eb8.html",
+            "offerId": "805786b64eb8",
+            "title": "主图列图片测试商品 - Mock 候选 1",
+            "supplier": "Mock 供应商 1",
+            "supplierType": "工厂",
+            "member": true,
+            "coverImageUrl": "local://mock-rank-1/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0.94,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.94，使用列表候选分数作为相似度占位"
+            ],
+            "score": 92,
+            "suggestion": "待详情验证"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/85df570a6e27.html",
+            "offerId": "85df570a6e27",
+            "title": "主图列图片测试商品 - Mock 候选 2",
+            "supplier": "Mock 供应商 2",
+            "supplierType": "供应商",
+            "member": true,
+            "coverImageUrl": "local://mock-rank-2/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0.9,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.9，使用列表候选分数作为相似度占位"
+            ],
+            "score": 83,
+            "suggestion": "待详情验证"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/ecb51b9cb243.html",
+            "offerId": "ecb51b9cb243",
+            "title": "主图列图片测试商品 - Mock 候选 3",
+            "supplier": "Mock 供应商 3",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-3/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0.88,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.88，使用列表候选分数作为相似度占位"
+            ],
+            "score": 74,
+            "suggestion": "待详情验证"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/9270cdffa38f.html",
+            "offerId": "9270cdffa38f",
+            "title": "主图列图片测试商品 - Mock 候选 4",
+            "supplier": "Mock 供应商 4",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-4/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0.82,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.82，使用列表候选分数作为相似度占位"
+            ],
+            "score": 65,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/6d5838a85039.html",
+            "offerId": "6d5838a85039",
+            "title": "主图列图片测试商品 - Mock 候选 5",
+            "supplier": "Mock 供应商 5",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-5/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0.77,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.77，使用列表候选分数作为相似度占位"
+            ],
+            "score": 56,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/a70f0c4c0431.html",
+            "offerId": "a70f0c4c0431",
+            "title": "主图列图片测试商品 - Mock 候选 6",
+            "supplier": "Mock 供应商 6",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-6/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0.72,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.72，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/c7fcb742ea97.html",
+            "offerId": "c7fcb742ea97",
+            "title": "主图列图片测试商品 - Mock 候选 7",
+            "supplier": "Mock 供应商 7",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-7/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0.67,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.67，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/8c12b850ff1f.html",
+            "offerId": "8c12b850ff1f",
+            "title": "主图列图片测试商品 - Mock 候选 8",
+            "supplier": "Mock 供应商 8",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-8/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0.62,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.62，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/b29d4a7dac9a.html",
+            "offerId": "b29d4a7dac9a",
+            "title": "主图列图片测试商品 - Mock 候选 9",
+            "supplier": "Mock 供应商 9",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-9/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0.57,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.57，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/7d7913c8c170.html",
+            "offerId": "7d7913c8c170",
+            "title": "主图列图片测试商品 - Mock 候选 10",
+            "supplier": "Mock 供应商 10",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-10/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0.52,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.52，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/816940ad082b.html",
+            "offerId": "816940ad082b",
+            "title": "主图列图片测试商品 - Mock 候选 11",
+            "supplier": "Mock 供应商 11",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-11/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0.47,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.47，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/fc4974a7e9a3.html",
+            "offerId": "fc4974a7e9a3",
+            "title": "主图列图片测试商品 - Mock 候选 12",
+            "supplier": "Mock 供应商 12",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-12/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0.42,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.42，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/9fa7f20debb8.html",
+            "offerId": "9fa7f20debb8",
+            "title": "主图列图片测试商品 - Mock 候选 13",
+            "supplier": "Mock 供应商 13",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-13/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0.37,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.37，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/69d0a8b27349.html",
+            "offerId": "69d0a8b27349",
+            "title": "主图列图片测试商品 - Mock 候选 14",
+            "supplier": "Mock 供应商 14",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-14/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0.32,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.32，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/5d90219f3e46.html",
+            "offerId": "5d90219f3e46",
+            "title": "主图列图片测试商品 - Mock 候选 15",
+            "supplier": "Mock 供应商 15",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-15/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0.27,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.27，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/4a20ba9bacf8.html",
+            "offerId": "4a20ba9bacf8",
+            "title": "主图列图片测试商品 - Mock 候选 16",
+            "supplier": "Mock 供应商 16",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-16/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0.22,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.22，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/26e64aec8e5f.html",
+            "offerId": "26e64aec8e5f",
+            "title": "主图列图片测试商品 - Mock 候选 17",
+            "supplier": "Mock 供应商 17",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-17/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0.17,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.17，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/e3a4740a4401.html",
+            "offerId": "e3a4740a4401",
+            "title": "主图列图片测试商品 - Mock 候选 18",
+            "supplier": "Mock 供应商 18",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-18/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0.12,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.12，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/37353084846a.html",
+            "offerId": "37353084846a",
+            "title": "主图列图片测试商品 - Mock 候选 19",
+            "supplier": "Mock 供应商 19",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-19/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0.07,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.07，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/2bd73d1d4d02.html",
+            "offerId": "2bd73d1d4d02",
+            "title": "主图列图片测试商品 - Mock 候选 20",
+            "supplier": "Mock 供应商 20",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-20/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0.02,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0.02，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/c217e9d16780.html",
+            "offerId": "c217e9d16780",
+            "title": "主图列图片测试商品 - Mock 候选 21",
+            "supplier": "Mock 供应商 21",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-21/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/81849e3f2255.html",
+            "offerId": "81849e3f2255",
+            "title": "主图列图片测试商品 - Mock 候选 22",
+            "supplier": "Mock 供应商 22",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-22/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/6c4c3cebdf7c.html",
+            "offerId": "6c4c3cebdf7c",
+            "title": "主图列图片测试商品 - Mock 候选 23",
+            "supplier": "Mock 供应商 23",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-23/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/a93a92b35040.html",
+            "offerId": "a93a92b35040",
+            "title": "主图列图片测试商品 - Mock 候选 24",
+            "supplier": "Mock 供应商 24",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-24/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/5f7bd14b350f.html",
+            "offerId": "5f7bd14b350f",
+            "title": "主图列图片测试商品 - Mock 候选 25",
+            "supplier": "Mock 供应商 25",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-25/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/6f2ba749b3c5.html",
+            "offerId": "6f2ba749b3c5",
+            "title": "主图列图片测试商品 - Mock 候选 26",
+            "supplier": "Mock 供应商 26",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-26/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/a5a674165bac.html",
+            "offerId": "a5a674165bac",
+            "title": "主图列图片测试商品 - Mock 候选 27",
+            "supplier": "Mock 供应商 27",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-27/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/849725d57230.html",
+            "offerId": "849725d57230",
+            "title": "主图列图片测试商品 - Mock 候选 28",
+            "supplier": "Mock 供应商 28",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-28/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/661d4b9cdba3.html",
+            "offerId": "661d4b9cdba3",
+            "title": "主图列图片测试商品 - Mock 候选 29",
+            "supplier": "Mock 供应商 29",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-29/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/0534c39c909a.html",
+            "offerId": "0534c39c909a",
+            "title": "主图列图片测试商品 - Mock 候选 30",
+            "supplier": "Mock 供应商 30",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-30/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/1cc9f9446e36.html",
+            "offerId": "1cc9f9446e36",
+            "title": "主图列图片测试商品 - Mock 候选 31",
+            "supplier": "Mock 供应商 31",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-31/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/b78fcfcd37d8.html",
+            "offerId": "b78fcfcd37d8",
+            "title": "主图列图片测试商品 - Mock 候选 32",
+            "supplier": "Mock 供应商 32",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-32/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/80f9c5f94fcb.html",
+            "offerId": "80f9c5f94fcb",
+            "title": "主图列图片测试商品 - Mock 候选 33",
+            "supplier": "Mock 供应商 33",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-33/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/939295935f75.html",
+            "offerId": "939295935f75",
+            "title": "主图列图片测试商品 - Mock 候选 34",
+            "supplier": "Mock 供应商 34",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-34/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/1ae4fc3a5c3a.html",
+            "offerId": "1ae4fc3a5c3a",
+            "title": "主图列图片测试商品 - Mock 候选 35",
+            "supplier": "Mock 供应商 35",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-35/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/f7f3a02f1183.html",
+            "offerId": "f7f3a02f1183",
+            "title": "主图列图片测试商品 - Mock 候选 36",
+            "supplier": "Mock 供应商 36",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-36/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/f30e24a0ac88.html",
+            "offerId": "f30e24a0ac88",
+            "title": "主图列图片测试商品 - Mock 候选 37",
+            "supplier": "Mock 供应商 37",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-37/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/6fec80f00ec8.html",
+            "offerId": "6fec80f00ec8",
+            "title": "主图列图片测试商品 - Mock 候选 38",
+            "supplier": "Mock 供应商 38",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-38/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/3e6fa0dbad9a.html",
+            "offerId": "3e6fa0dbad9a",
+            "title": "主图列图片测试商品 - Mock 候选 39",
+            "supplier": "Mock 供应商 39",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-39/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/29ce662e35a0.html",
+            "offerId": "29ce662e35a0",
+            "title": "主图列图片测试商品 - Mock 候选 40",
+            "supplier": "Mock 供应商 40",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-40/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/b55a6d681f27.html",
+            "offerId": "b55a6d681f27",
+            "title": "主图列图片测试商品 - Mock 候选 41",
+            "supplier": "Mock 供应商 41",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-41/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/119693b55107.html",
+            "offerId": "119693b55107",
+            "title": "主图列图片测试商品 - Mock 候选 42",
+            "supplier": "Mock 供应商 42",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-42/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/2a06f5575f87.html",
+            "offerId": "2a06f5575f87",
+            "title": "主图列图片测试商品 - Mock 候选 43",
+            "supplier": "Mock 供应商 43",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-43/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/be07df6159a5.html",
+            "offerId": "be07df6159a5",
+            "title": "主图列图片测试商品 - Mock 候选 44",
+            "supplier": "Mock 供应商 44",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-44/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/089296ed842f.html",
+            "offerId": "089296ed842f",
+            "title": "主图列图片测试商品 - Mock 候选 45",
+            "supplier": "Mock 供应商 45",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-45/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/edbeebefbd66.html",
+            "offerId": "edbeebefbd66",
+            "title": "主图列图片测试商品 - Mock 候选 46",
+            "supplier": "Mock 供应商 46",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-46/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/229f82519169.html",
+            "offerId": "229f82519169",
+            "title": "主图列图片测试商品 - Mock 候选 47",
+            "supplier": "Mock 供应商 47",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-47/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/b134a1d47ea4.html",
+            "offerId": "b134a1d47ea4",
+            "title": "主图列图片测试商品 - Mock 候选 48",
+            "supplier": "Mock 供应商 48",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-48/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/ecbf2950b1a7.html",
+            "offerId": "ecbf2950b1a7",
+            "title": "主图列图片测试商品 - Mock 候选 49",
+            "supplier": "Mock 供应商 49",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-49/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerUrl": "https://detail.1688.com/offer/188ae69f782f.html",
+            "offerId": "188ae69f782f",
+            "title": "主图列图片测试商品 - Mock 候选 50",
+            "supplier": "Mock 供应商 50",
+            "supplierType": "供应商",
+            "member": false,
+            "coverImageUrl": "local://mock-rank-50/6-MOCK-IMAGE-CELL-005.png",
+            "listImageSimilarity": 0,
+            "riskFlags": [
+              "mock 列表候选，待进入详情页匹配 SKU",
+              "列表相似度：0，使用列表候选分数作为相似度占位"
+            ],
+            "score": 55,
+            "suggestion": "不建议"
+          }
+        ],
+        "skuMatches": [
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerId": "805786b64eb8",
+            "offerUrl": "https://detail.1688.com/offer/805786b64eb8.html",
+            "skuId": "mock-sku-66555ef2",
+            "skuName": "主图列图片测试商品 - Mock 候选 1 / Mock 匹配 SKU",
+            "skuImageUrl": "local://mock-rank-1/6-MOCK-IMAGE-CELL-005.png",
+            "skuImageSimilarity": 0.92,
+            "isSameProduct": true,
+            "itemPrice": 21.43,
+            "shippingFee": 7.17,
+            "purchaseCost": 28.6,
+            "currency": "CNY",
+            "quantity": 1,
+            "dimensions": "20×15×8cm",
+            "weightGram": 180,
+            "weightSource": "详情页",
+            "weightConfidence": "中",
+            "extractionSource": "mock",
+            "riskFlags": [
+              "mock 详情页数据，待真实 SKU 切换与加购流程替换",
+              "相似度来源：mock，mock 相似度结果，待中转站视觉模型替换"
+            ]
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerId": "85df570a6e27",
+            "offerUrl": "https://detail.1688.com/offer/85df570a6e27.html",
+            "skuId": "mock-sku-0b665664",
+            "skuName": "主图列图片测试商品 - Mock 候选 2 / Mock 匹配 SKU",
+            "skuImageUrl": "local://mock-rank-2/6-MOCK-IMAGE-CELL-005.png",
+            "skuImageSimilarity": 0.896,
+            "isSameProduct": true,
+            "itemPrice": 22,
+            "shippingFee": 7.08,
+            "purchaseCost": 29.08,
+            "currency": "CNY",
+            "quantity": 1,
+            "dimensions": "20×15×8cm",
+            "weightGram": 180,
+            "weightSource": "详情页",
+            "weightConfidence": "中",
+            "extractionSource": "mock",
+            "riskFlags": [
+              "mock 详情页数据，待真实 SKU 切换与加购流程替换",
+              "相似度来源：mock，mock 相似度结果，待中转站视觉模型替换"
+            ]
+          },
+          {
+            "productId": "MOCK-IMAGE-CELL-005",
+            "offerId": "ecb51b9cb243",
+            "offerUrl": "https://detail.1688.com/offer/ecb51b9cb243.html",
+            "skuId": "mock-sku-cba519b3",
+            "skuName": "主图列图片测试商品 - Mock 候选 3 / Mock 匹配 SKU",
+            "skuImageUrl": "local://mock-rank-3/6-MOCK-IMAGE-CELL-005.png",
+            "skuImageSimilarity": 0.82,
+            "isSameProduct": false,
+            "itemPrice": 24.1,
+            "shippingFee": 6.31,
+            "purchaseCost": 30.41,
+            "currency": "CNY",
+            "quantity": 1,
+            "dimensions": "20×15×8cm",
+            "weightGram": 180,
+            "weightSource": "详情页",
+            "weightConfidence": "中",
+            "extractionSource": "mock",
+            "riskFlags": [
+              "mock 详情页数据，待真实 SKU 切换与加购流程替换",
+              "相似度来源：mock，mock 相似度结果，待中转站视觉模型替换"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "logs": [
+    {
+      "level": "info",
+      "message": "第 7 行为空，停止继续读取。"
+    },
+    {
+      "level": "info",
+      "message": "Excel 有效数据 5 行，行并发 3，详情页并发 3。"
+    },
+    {
+      "level": "info",
+      "message": "开始处理第 2 行：MOCK-URL-001"
+    },
+    {
+      "level": "info",
+      "message": "第 2 行开始搜图：/Users/qzhi/Documents/demo/2026/work/tiktok-tools/tiktok-ai-flow/mock-data/task-assets/images/2-MOCK-URL-001.png"
+    },
+    {
+      "level": "info",
+      "message": "第 2 行搜图完成：50 个候选"
+    },
+    {
+      "level": "info",
+      "message": "MOCK-URL-001 列表相似度达标：3/50 个候选，采纳下钻：3 个"
+    },
+    {
+      "level": "info",
+      "message": "第 2 行进入详情页验证 SKU：https://detail.1688.com/offer/79723fc5b070.html（offerId=79723fc5b070）"
+    },
+    {
+      "level": "info",
+      "message": "第 2 行 SKU 验证完成：URL 主图测试商品 - Mock 候选 1 / Mock 匹配 SKU，相似度 0.92"
+    },
+    {
+      "level": "info",
+      "message": "开始处理第 3 行：MOCK-EMBED-002"
+    },
+    {
+      "level": "info",
+      "message": "第 3 行开始搜图：/Users/qzhi/Documents/demo/2026/work/tiktok-tools/tiktok-ai-flow/mock-data/task-assets/images/3-MOCK-EMBED-002.png"
+    },
+    {
+      "level": "info",
+      "message": "第 3 行搜图完成：50 个候选"
+    },
+    {
+      "level": "info",
+      "message": "MOCK-EMBED-002 列表相似度达标：3/50 个候选，采纳下钻：3 个"
+    },
+    {
+      "level": "info",
+      "message": "第 3 行进入详情页验证 SKU：https://detail.1688.com/offer/721c66e15a40.html（offerId=721c66e15a40）"
+    },
+    {
+      "level": "info",
+      "message": "第 3 行 SKU 验证完成：内嵌图片测试商品 - Mock 候选 1 / Mock 匹配 SKU，相似度 0.92"
+    },
+    {
+      "level": "info",
+      "message": "第 2 行进入详情页验证 SKU：https://detail.1688.com/offer/367576dfb08f.html（offerId=367576dfb08f）"
+    },
+    {
+      "level": "info",
+      "message": "第 2 行 SKU 验证完成：URL 主图测试商品 - Mock 候选 2 / Mock 匹配 SKU，相似度 0.821"
+    },
+    {
+      "level": "info",
+      "message": "第 3 行进入详情页验证 SKU：https://detail.1688.com/offer/d16c33f23789.html（offerId=d16c33f23789）"
+    },
+    {
+      "level": "info",
+      "message": "第 3 行 SKU 验证完成：内嵌图片测试商品 - Mock 候选 2 / Mock 匹配 SKU，相似度 0.836"
+    },
+    {
+      "level": "info",
+      "message": "开始处理第 4 行：MOCK-MISSING-003"
+    },
+    {
+      "level": "info",
+      "message": "第 4 行开始搜图：/Users/qzhi/Documents/demo/2026/work/tiktok-tools/tiktok-ai-flow/mock-data/task-assets/images/4-MOCK-MISSING-003.png"
+    },
+    {
+      "level": "info",
+      "message": "第 4 行搜图完成：50 个候选"
+    },
+    {
+      "level": "info",
+      "message": "MOCK-MISSING-003 列表相似度达标：3/50 个候选，采纳下钻：3 个"
+    },
+    {
+      "level": "info",
+      "message": "第 4 行进入详情页验证 SKU：https://detail.1688.com/offer/1c5c33603936.html（offerId=1c5c33603936）"
+    },
+    {
+      "level": "info",
+      "message": "第 4 行 SKU 验证完成：缺少图片测试商品 - Mock 候选 1 / Mock 匹配 SKU，相似度 0.92"
+    },
+    {
+      "level": "info",
+      "message": "第 2 行进入详情页验证 SKU：https://detail.1688.com/offer/e426b0cf7331.html（offerId=e426b0cf7331）"
+    },
+    {
+      "level": "info",
+      "message": "第 2 行 SKU 验证完成：URL 主图测试商品 - Mock 候选 3 / Mock 匹配 SKU，相似度 0.876"
+    },
+    {
+      "level": "info",
+      "message": "第 3 行进入详情页验证 SKU：https://detail.1688.com/offer/f9aff0cf3e8e.html（offerId=f9aff0cf3e8e）"
+    },
+    {
+      "level": "info",
+      "message": "第 3 行 SKU 验证完成：内嵌图片测试商品 - Mock 候选 3 / Mock 匹配 SKU，相似度 0.841"
+    },
+    {
+      "level": "info",
+      "message": "第 4 行进入详情页验证 SKU：https://detail.1688.com/offer/b45a53a0756f.html（offerId=b45a53a0756f）"
+    },
+    {
+      "level": "info",
+      "message": "第 4 行 SKU 验证完成：缺少图片测试商品 - Mock 候选 2 / Mock 匹配 SKU，相似度 0.83"
+    },
+    {
+      "level": "info",
+      "message": "第 4 行进入详情页验证 SKU：https://detail.1688.com/offer/6ae0b9455d40.html（offerId=6ae0b9455d40）"
+    },
+    {
+      "level": "info",
+      "message": "第 4 行 SKU 验证完成：缺少图片测试商品 - Mock 候选 3 / Mock 匹配 SKU，相似度 0.882"
+    },
+    {
+      "level": "info",
+      "message": "开始处理第 6 行：MOCK-IMAGE-CELL-005"
+    },
+    {
+      "level": "info",
+      "message": "第 6 行开始搜图：/Users/qzhi/Documents/demo/2026/work/tiktok-tools/tiktok-ai-flow/mock-data/task-assets/images/6-MOCK-IMAGE-CELL-005.png"
+    },
+    {
+      "level": "info",
+      "message": "第 6 行搜图完成：50 个候选"
+    },
+    {
+      "level": "info",
+      "message": "MOCK-IMAGE-CELL-005 列表相似度达标：3/50 个候选，采纳下钻：3 个"
+    },
+    {
+      "level": "info",
+      "message": "第 6 行进入详情页验证 SKU：https://detail.1688.com/offer/805786b64eb8.html（offerId=805786b64eb8）"
+    },
+    {
+      "level": "info",
+      "message": "第 6 行 SKU 验证完成：主图列图片测试商品 - Mock 候选 1 / Mock 匹配 SKU，相似度 0.92"
+    },
+    {
+      "level": "info",
+      "message": "第 6 行进入详情页验证 SKU：https://detail.1688.com/offer/85df570a6e27.html（offerId=85df570a6e27）"
+    },
+    {
+      "level": "info",
+      "message": "第 6 行 SKU 验证完成：主图列图片测试商品 - Mock 候选 2 / Mock 匹配 SKU，相似度 0.896"
+    },
+    {
+      "level": "info",
+      "message": "开始处理第 5 行：MOCK-HYPERLINK-004"
+    },
+    {
+      "level": "info",
+      "message": "第 5 行开始搜图：/Users/qzhi/Documents/demo/2026/work/tiktok-tools/tiktok-ai-flow/mock-data/task-assets/images/5-MOCK-HYPERLINK-004.png"
+    },
+    {
+      "level": "info",
+      "message": "第 5 行搜图完成：50 个候选"
+    },
+    {
+      "level": "info",
+      "message": "MOCK-HYPERLINK-004 列表相似度达标：3/50 个候选，采纳下钻：3 个"
+    },
+    {
+      "level": "info",
+      "message": "第 5 行进入详情页验证 SKU：https://detail.1688.com/offer/bb2609a899ab.html（offerId=bb2609a899ab）"
+    },
+    {
+      "level": "info",
+      "message": "第 5 行 SKU 验证完成：超链接对象主图测试商品 - Mock 候选 1 / Mock 匹配 SKU，相似度 0.92"
+    },
+    {
+      "level": "info",
+      "message": "第 6 行进入详情页验证 SKU：https://detail.1688.com/offer/ecb51b9cb243.html（offerId=ecb51b9cb243）"
+    },
+    {
+      "level": "info",
+      "message": "第 6 行 SKU 验证完成：主图列图片测试商品 - Mock 候选 3 / Mock 匹配 SKU，相似度 0.82"
+    },
+    {
+      "level": "info",
+      "message": "第 5 行进入详情页验证 SKU：https://detail.1688.com/offer/66b0cac6196b.html（offerId=66b0cac6196b）"
+    },
+    {
+      "level": "info",
+      "message": "第 5 行 SKU 验证完成：超链接对象主图测试商品 - Mock 候选 2 / Mock 匹配 SKU，相似度 0.821"
+    },
+    {
+      "level": "info",
+      "message": "第 5 行进入详情页验证 SKU：https://detail.1688.com/offer/70a04574387b.html（offerId=70a04574387b）"
+    },
+    {
+      "level": "info",
+      "message": "第 5 行 SKU 验证完成：超链接对象主图测试商品 - Mock 候选 3 / Mock 匹配 SKU，相似度 0.853"
+    },
+    {
+      "level": "info",
+      "message": "第 2 行图片缓存完成：/Users/qzhi/Documents/demo/2026/work/tiktok-tools/tiktok-ai-flow/mock-data/task-assets/images/2-MOCK-URL-001.png"
+    },
+    {
+      "level": "info",
+      "message": "第 3 行图片缓存完成：/Users/qzhi/Documents/demo/2026/work/tiktok-tools/tiktok-ai-flow/mock-data/task-assets/images/3-MOCK-EMBED-002.png"
+    },
+    {
+      "level": "info",
+      "message": "第 4 行图片缓存完成：/Users/qzhi/Documents/demo/2026/work/tiktok-tools/tiktok-ai-flow/mock-data/task-assets/images/4-MOCK-MISSING-003.png"
+    },
+    {
+      "level": "info",
+      "message": "第 5 行图片缓存完成：/Users/qzhi/Documents/demo/2026/work/tiktok-tools/tiktok-ai-flow/mock-data/task-assets/images/5-MOCK-HYPERLINK-004.png"
+    },
+    {
+      "level": "info",
+      "message": "第 6 行图片缓存完成：/Users/qzhi/Documents/demo/2026/work/tiktok-tools/tiktok-ai-flow/mock-data/task-assets/images/6-MOCK-IMAGE-CELL-005.png"
+    }
+  ]
+}
