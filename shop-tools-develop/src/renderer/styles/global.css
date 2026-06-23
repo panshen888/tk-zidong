@@ -1481,7 +1481,7 @@ select:focus {
 }
 
 .modal-card {
-  width: min(1180px, calc(100vw - 32px));
+  width: min(1120px, calc(100vw - 32px));
   min-width: 500px;
   padding: 16px;
   border: 1px solid var(--line);
@@ -1492,11 +1492,16 @@ select:focus {
   overflow: auto;
 }
 
+.create-task-modal {
+  width: min(1120px, calc(100vw - 32px));
+}
+
 .create-task-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   align-items: start;
   gap: 14px;
+  width: 100%;
 }
 
 .create-task-main,
@@ -1504,6 +1509,7 @@ select:focus {
   display: grid;
   gap: 12px;
   min-width: 0;
+  width: 100%;
 }
 
 .create-task-side {
@@ -1520,6 +1526,8 @@ select:focus {
 }
 
 .create-section-card {
+  width: 100%;
+  box-sizing: border-box;
   padding: 12px;
   border: 1px solid rgba(31, 26, 20, 0.1);
   border-radius: 14px;
@@ -1532,6 +1540,10 @@ select:focus {
   justify-content: space-between;
   gap: 14px;
   margin-bottom: 10px;
+}
+
+.create-section-title:has(p:empty) {
+  display: block;
 }
 
 .create-section-title h4 {
@@ -1549,8 +1561,9 @@ select:focus {
 
 .bitable-pair-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: 10px;
+  width: 100%;
 }
 
 .create-table-toolbar {
@@ -2033,11 +2046,7 @@ select:focus {
   }
 
   .feishu-task-grid {
-    grid-template-columns: minmax(580px, 1fr) 300px;
-  }
-
-  .bitable-pair-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .listing-step-grid {

@@ -596,7 +596,7 @@ export function TasksPage() {
 
       {isCreateModalOpen ? (
         <div className="modal-backdrop" role="presentation" onMouseDown={() => setIsCreateModalOpen(false)}>
-          <section className="modal-card" role="dialog" aria-modal="true" aria-labelledby="create-task-title" onMouseDown={(event) => event.stopPropagation()}>
+          <section className="modal-card create-task-modal" role="dialog" aria-modal="true" aria-labelledby="create-task-title" onMouseDown={(event) => event.stopPropagation()}>
             <div className="modal-header">
               <div>
                 <span className="eyebrow">Create</span>
@@ -639,7 +639,7 @@ export function TasksPage() {
                         </label>
                       </div>
                     </SectionCard>
-                    <SectionCard title="输入 / 输出 / 待人工核实多维表格" description="粘贴链接即可自动拆出 app_token、table_id、view_id。">
+                    <SectionCard title="输入 / 输出 / 待人工核实多维表格">
                       <div className="create-table-toolbar">
                         <div>
                           <strong>第一次接入新飞书表格时使用</strong>
@@ -679,7 +679,6 @@ export function TasksPage() {
                           onChange={setReviewBitable}
                         />
                       </div>
-                      <p className="helper-text">table_id 和 view_id 可空，系统会自动创建/补齐「输入表」「输出货源表」「待人工核实上架表」字段。</p>
                     </SectionCard>
                   </>
                 )}
