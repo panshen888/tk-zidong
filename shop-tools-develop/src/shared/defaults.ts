@@ -12,6 +12,9 @@ export const defaultSettings: AppSettings = {
   miaoshouPricingTemplatesJson: '[]',
   miaoshouPricingTemplateMappings: '',
   miaoshouTargetCategoryId: '',
+  miaoshouCategoryTreeCacheJson: '{}',
+  miaoshouCategoryTreeCacheUpdatedAt: '',
+  miaoshouRequiredAttributeDefaults: '',
   miaoshouPricingTemplateName: '',
   miaoshouSizeChartImageUrl: '',
   miaoshouWarehouseName: '',
@@ -21,6 +24,7 @@ export const defaultSettings: AppSettings = {
   miaoshouOpenApiAppSecret: '',
   miaoshouOpenApiAccountId: '',
   enableMiaoshouListingApi: false,
+  listingAutoRunLimit: 1,
   miaoshouDefaultStock: 100,
   listingCollectSource: 'sourceUrl',
   listingExchangeRates: [

@@ -294,6 +294,38 @@ export function installDevMockApi() {
         },
       ],
     }),
+    refreshMiaoshouCategoryTree: async () => ({
+      site: 'MY',
+      updatedAt: new Date().toISOString(),
+      categories: [
+        {
+          cid: '600403',
+          aid: '',
+          fid: '',
+          name: 'Womenswear',
+          nameChinese: '女装',
+          isLastLevel: true,
+          disabled: false,
+          path: 'Womenswear',
+          pathChinese: '女装',
+        },
+      ],
+    }),
+    refreshMiaoshouCategoryAttributes: async () => ({
+      site: 'VN',
+      cid: '846088',
+      shopId: '16281849',
+      requiredAttributes: [
+        {
+          attrId: 'material',
+          attrName: '材质',
+          options: [
+            { valueId: 'polyester', valueName: '涤纶（聚酯纤维）' },
+            { valueId: 'cotton', valueName: '棉' },
+          ],
+        },
+      ],
+    }),
     syncListingPricingConfigToReviewTable: async () => ({
       reviewBitable: { appToken: 'preview', tableId: 'tbl_price_review', viewId: '' },
       scannedCount: 0,

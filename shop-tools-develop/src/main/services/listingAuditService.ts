@@ -313,6 +313,7 @@ export async function readSourcingRowsFromExcel(inputExcelPath: string): Promise
       riskNote: getCell(row, headerMap, ['风险标记', '风险备注', '备注']),
       title: context.title ?? getCell(row, headerMap, ['商品标题', '1688商品标题']),
       country: context.country ?? '',
+      targetSiteCategory: context.targetSiteCategory ?? context.category ?? '',
       category: context.category ?? '',
       status: '成功',
       rank: numberOrBlank(getCell(row, headerMap, ['推荐排名', '排名'])) || rowNumber - 1,

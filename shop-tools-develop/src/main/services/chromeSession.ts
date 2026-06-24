@@ -240,7 +240,7 @@ function getChromeArgs(headless: boolean, lowDisturbance: boolean, extensionDirs
   }
 
   if (!headless && lowDisturbance) {
-    args.push('--start-minimized', '--window-position=-32000,-32000', '--window-size=1280,900');
+    args.push('--start-minimized', '--window-size=1280,900');
   }
 
   if (!headless && !lowDisturbance) {

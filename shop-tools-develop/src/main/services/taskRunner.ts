@@ -25,6 +25,8 @@ export async function startTaskRun(runId: string, taskStore: TaskStore, signal?:
     return run;
   }
 
+  const runStartedAtMs = Date.now();
+  const comparisonStartedAtMs = runStartedAtMs;
   taskStore.updateRun(runId, {
     status: 'running',
     startedAt: new Date().toISOString(),
@@ -123,7 +125,7 @@ export async function startTaskRun(runId: string, taskStore: TaskStore, signal?:
       runId,
       'info',
       searchAdapterMode === 'real1688'
-        ? `搜图适配器：真实 1688 / Chrome（${chromeMode === 'connect' ? '连接现有调试端口' : headless ? '无头后台' : '有头低打扰'}模式）。${chromeMode === 'connect' ? `连接 ${chromeCdpUrl} 中已登录的项目浏览器。` : headless ? '若已打开可见登录浏览器，会先关闭应用独立 Chrome 再无头复用登录态。' : '会尝试最小化/屏幕外启动，降低新窗口打扰。'}`
+        ? `搜图适配器：真实 1688 / Chrome（${chromeMode === 'connect' ? '连接现有调试端口' : headless ? '无头后台' : '有头低打扰'}模式）。${chromeMode === 'connect' ? `连接 ${chromeCdpUrl} 中已登录的项目浏览器。` : headless ? '若已打开可见登录浏览器，会先关闭应用独立 Chrome 再无头复用登录态。' : '会尝试最小化启动，降低新窗口打扰；需要人工查看时可从任务栏点开。'}`
         : '搜图适配器：Mock 测试模式。',
     );
     aiUsageStats.model = settings.aiModel;
@@ -220,8 +222,12 @@ export async function startTaskRun(runId: string, taskStore: TaskStore, signal?:
     await writeJsonFile(path.join(run.assetDir, 'logs', 'items.json'), result.items);
     throwIfAborted(signal);
 
+    const productIdLabel = formatProductIdsForLog(result.items.map((item) => item.productId));
+    taskStore.appendLog(runId, 'info', `本轮处理商品：${productIdLabel}。`);
+
     let feishuBatchId = '';
     let postComparisonFailed = false;
+    let autoListingExecuted = false;
     if ((run.inputSource ?? 'excel') === 'feishuBitable' && run.outputBitable) {
       taskStore.appendLog(runId, 'info', '开始写入飞书输出货源表。');
       const feishuClient = new FeishuBitableClient({
@@ -258,9 +264,19 @@ export async function startTaskRun(runId: string, taskStore: TaskStore, signal?:
             'info',
             `表三已由本次比价批次自动生成：批次号 ${reviewResult.batchId}，已核实表二 ${reviewResult.verifiedOutputCount} 条，表三成功 ${reviewResult.generatedCount} 条，失败 ${reviewResult.failedCount} 条。`,
           );
+          taskStore.appendLog(
+            runId,
+            reviewResult.failedCount > 0 ? 'warn' : 'info',
+            settings.enableMiaoshouListingApi
+              ? `比价阶段完成：${productIdLabel}；表三已生成，准备默认审核并进入采集上架环节；比价阶段耗时 ${formatDuration(Date.now() - comparisonStartedAtMs)}。`
+              : `比价阶段完成：${productIdLabel}；表三已生成，等待人工审核/手动上架；比价阶段耗时 ${formatDuration(Date.now() - comparisonStartedAtMs)}。`,
+          );
 
           if (settings.enableMiaoshouListingApi && result.successCount > 0) {
-            taskStore.appendLog(runId, 'info', '已启用妙手自动上架：继续从表三进入采集、认领和浏览器保存发布，当前版本每次只推进 1 条。');
+            const listingAutoRunLimit = Math.min(20, Math.max(1, Number(settings.listingAutoRunLimit) || defaultSettings.listingAutoRunLimit));
+            const listingStageStartedAtMs = Date.now();
+            autoListingExecuted = true;
+            taskStore.appendLog(runId, 'info', `采集上架阶段开始：${productIdLabel}；本轮最多推进 ${listingAutoRunLimit} 条。单条失败会写回原因，后续轮次继续领取输入表空状态/待处理记录。`);
             const listingResult = await runAutomaticMiaoshouListingFlow({
               settings,
               run: {
@@ -268,6 +284,7 @@ export async function startTaskRun(runId: string, taskStore: TaskStore, signal?:
                 feishuReviewBatchId: reviewResult.batchId,
               },
               batchId: reviewResult.batchId,
+              productIdLabel,
               appendLog: (level, message) => taskStore.appendLog(runId, level, message),
             });
             taskStore.updateRun(runId, {
@@ -280,7 +297,7 @@ export async function startTaskRun(runId: string, taskStore: TaskStore, signal?:
             taskStore.appendLog(
               runId,
               listingResult.listingFailedCount > 0 || listingResult.browserFailedCount > 0 ? 'warn' : 'info',
-              `妙手自动上架完成：表三确认 ${listingResult.approvedReviewCount} 条，采集认领推进 ${listingResult.listingUpdatedCount} 条，采集认领失败 ${listingResult.listingFailedCount} 条，浏览器发布 ${listingResult.browserExecutedCount} 条，浏览器失败 ${listingResult.browserFailedCount} 条。`,
+              `采集上架阶段完成：${productIdLabel}；表三确认 ${listingResult.approvedReviewCount} 条，采集认领推进 ${listingResult.listingUpdatedCount} 条，采集认领失败 ${listingResult.listingFailedCount} 条，浏览器发布 ${listingResult.browserExecutedCount} 条，浏览器失败 ${listingResult.browserFailedCount} 条；阶段耗时 ${formatDuration(Date.now() - listingStageStartedAtMs)}。`,
             );
           }
         } catch (error) {
@@ -291,6 +308,13 @@ export async function startTaskRun(runId: string, taskStore: TaskStore, signal?:
             `比价后续流程失败：${error instanceof Error ? error.message : String(error)}`,
           );
         }
+      }
+      if (!shouldGenerateReviewTable) {
+        taskStore.appendLog(
+          runId,
+          'info',
+          `比价阶段完成：${productIdLabel}；表二已写入，本次未自动生成表三；比价阶段耗时 ${formatDuration(Date.now() - comparisonStartedAtMs)}。`,
+        );
       }
     }
     if ((run.inputSource ?? 'excel') === 'feishuBitable' && run.inputBitable && run.feishuInputRecordId) {
@@ -342,7 +366,7 @@ export async function startTaskRun(runId: string, taskStore: TaskStore, signal?:
     taskStore.appendLog(
       runId,
       nextStatus === 'failed' ? 'error' : 'info',
-      `任务完成：${result.successCount}/${result.totalCount} 行图片缓存成功，总耗时 ${formatDuration(Date.now() - Date.parse(updatedRun.startedAt ?? updatedRun.createdAt))}。`,
+      `整条链路完成：${productIdLabel}；比价成功 ${result.successCount}/${result.totalCount} 条${autoListingExecuted ? '，已执行采集上架阶段' : settings.enableMiaoshouListingApi ? '，未进入采集上架阶段' : ''}${postComparisonFailed ? '，后续流程存在失败，请查看上方归因' : ''}；总耗时 ${formatDuration(Date.now() - runStartedAtMs)}。`,
     );
     taskStore.appendLog(runId, 'info', formatAiUsageSummary(aiUsageStats));
 
@@ -481,6 +505,16 @@ function formatDuration(milliseconds: number) {
   const minutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds % 60;
   return minutes > 0 ? `${minutes}分${seconds}秒` : `${seconds}秒`;
+}
+
+function formatProductIdsForLog(values: Array<string | undefined>) {
+  const ids = [...new Set(values.map((value) => String(value ?? '').trim()).filter(Boolean))];
+  if (ids.length === 0) {
+    return '商品ID：未识别';
+  }
+
+  const visibleIds = ids.slice(0, 20).join('、');
+  return ids.length > 20 ? `商品ID：${visibleIds} 等${ids.length}个` : `商品ID：${visibleIds}`;
 }
 
 function formatAiUsageSummary(stats: AiUsageStats) {

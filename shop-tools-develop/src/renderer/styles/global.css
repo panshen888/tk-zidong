@@ -1838,31 +1838,6 @@ select:focus {
   padding: 16px;
 }
 
-.listing-settings-api {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.listing-settings-shop {
-  grid-column: 2;
-  grid-row: 1 / span 2;
-}
-
-.listing-settings-flow {
-  grid-column: 1;
-  grid-row: 2;
-}
-
-.listing-settings-result {
-  grid-column: 1;
-  grid-row: 3;
-}
-
-.listing-settings-pricing-template {
-  grid-column: 2;
-  grid-row: 3;
-}
-
 .listing-settings-profit {
   grid-area: auto;
 }

@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { CheckCircle2, ClipboardList, PackageCheck, Settings2, ShieldCheck, Table2 } from 'lucide-react';
 
-const guideVersion = 'v0.1.2';
-const guideUpdatedAt = '2026-06-23';
+const guideVersion = 'v0.1.6';
+const guideUpdatedAt = '2026-06-24';
 const stableFlowText = ['AI智能比价', '待人工核实上架表', 'AI智能上架', '妙手采集认领'].join(' -> ');
 
 const priceTables = [
@@ -17,6 +17,7 @@ const priceSteps = [
   '在 AI比价配置中确认飞书三表、候选数量、AI 模型、1688 销量参考、Chrome 登录浏览器和 1688 搜图入口。',
   '在输入表新增待处理商品；可只填郑和数据链接，或填原商品链接和主图 URL。',
   '运行 AI智能比价；系统会搜图、读取列表销量文本、下钻 1688 详情页、匹配 SKU、读取价格、运费、克重和尺寸。',
+  '任务日志会按商品ID分段显示：比价阶段、表三生成、默认审核进入采集上架、采集上架阶段和整条链路总耗时。',
   '表二候选全部成功时，系统自动把商品组状态写为“已核实”；人工改“已核实/待更新表三”只是兜底触发。',
   '可点击“确认最新批次并生成表三”；系统按人工指定优先、克重多数决策、组内采购总成本最低生成唯一推荐。',
   '也可以直接在 AI智能上架里点击“开始AI上架”；软件会先从最新表二批次生成表三，再确认最新表三批次为“已审核”并进入采集认领。',
@@ -37,6 +38,17 @@ const localCommands = [
   ['npm run smoke:price:rerun-failed', '只重跑失败记录。'],
   ['npm run smoke:miaoshou:listing-edit', '从表三已审核记录生成或推进 AI上架编辑表。'],
   ['软件按钮：开始保存并发布', '通过浏览器模拟执行妙手编辑、应用定价模板、保存并发布。'],
+];
+
+const categoryTreeFields = [
+  ['cid', '类目 ID，用于定位具体 TikTok 类目。'],
+  ['aid', '类目辅助 ID，妙手/TK 类目体系的辅助标识。'],
+  ['fid', '父级类目 ID，用来还原类目层级。'],
+  ['name', '站点侧类目名，通常是英文或当地展示名。'],
+  ['nameChinese', '中文类目名，方便人工核对。'],
+  ['isLastLevel', '是否末级类目；发布通常需要末级类目。'],
+  ['disabled', '该类目是否不可用；不可用类目不能作为自动发布目标。'],
+  ['children', '子类目列表，用来继续向下展开类目树。'],
 ];
 
 export function UserGuidePage() {
@@ -84,6 +96,18 @@ export function UserGuidePage() {
       </section>
 
       <section className="guide-section">
+        <h2><ClipboardList size={20} /> 妙手官方类目树字段</h2>
+        <div className="guide-table-list">
+          {categoryTreeFields.map(([name, description]) => (
+            <article key={name}>
+              <strong>{name}</strong>
+              <p>{description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="guide-section">
         <h2><Settings2 size={20} /> 必填配置</h2>
         <div className="guide-two-column">
           <GuideChecklist
@@ -104,6 +128,7 @@ export function UserGuidePage() {
               '目标站点、目标店铺 ID、目标店铺名称',
               '多站点店铺映射：MY/SG/PH/VN/TH',
               'AI上架结果表 appToken/tableId/viewId',
+              '自动上架每轮处理数量：默认 1，最大 20；批量时单条失败写回原因并继续后续记录',
               '定价模板和物流公式暂不接入上架编辑表；当前以上游表三字段为准',
             ]}
           />

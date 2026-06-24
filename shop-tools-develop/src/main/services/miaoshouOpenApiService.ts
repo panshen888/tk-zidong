@@ -1,6 +1,6 @@
 import crypto from 'node:crypto';
 import type { ListingProductRecord } from './feishuBitableService';
-import type { MiaoshouShop } from '../../shared/types';
+import type { MiaoshouCategoryNode, MiaoshouShop } from '../../shared/types';
 
 export type MiaoshouOpenApiClientOptions = {
   baseUrl: string;
@@ -39,6 +39,7 @@ const saveShopCollectItemInfoPath = '/open/v1/product/collect_box/tiktok/collect
 const getSiteCollectItemInfoPath = '/open/v1/product/collect_box/tiktok/collect_box/get_site_collect_item_info';
 const saveSiteCollectItemInfoPath = '/open/v1/product/collect_box/tiktok/collect_box/save_site_collect_item_info';
 const publishCollectTaskPath = '/open/v1/product/collect_box/tiktok/collect_box/save_move_collect_task';
+const getCategoryTreePath = '/open/v1/product/collect_box/tiktok/collect_box/get_category_tree_by_site';
 const getCategoryMetadataPath = '/open/v1/product/collect_box/tiktok/collect_box/get_category_metadata';
 const getShopWarehousePath = '/open/v1/product/collect_box/tiktok/collect_box/get_shop_warehouse_list';
 const getResponsiblePersonPath = '/open/v1/product/collect_box/tiktok/collect_box/get_responsible_person_list';
@@ -166,6 +167,13 @@ export class MiaoshouOpenApiClient {
       detailIds: input.detailIds.map(Number).filter((value) => Number.isFinite(value)),
       shopIds: input.shopIds.map(Number).filter((value) => Number.isFinite(value)),
     });
+  }
+
+  async getCategoryTreeBySite(site: string): Promise<MiaoshouCategoryNode[]> {
+    const data = await this.request<unknown>(getCategoryTreePath, {
+      site: site.trim().toUpperCase(),
+    });
+    return flattenCategoryTree(data);
   }
 
   async getCategoryMetadata(input: { site: string; cid: string; shopIds: Array<string | number> }) {
@@ -368,6 +376,100 @@ function dedupeShops(shops: MiaoshouShop[]) {
     seen.add(key);
     return true;
   });
+}
+
+function flattenCategoryTree(value: unknown): MiaoshouCategoryNode[] {
+  const root = findNestedCategoryTree(value) ?? value;
+  const output: MiaoshouCategoryNode[] = [];
+  const walk = (
+    nodeValue: unknown,
+    parentPath: string[],
+    parentPathChinese: string[],
+  ) => {
+    if (!nodeValue || typeof nodeValue !== 'object') {
+      return;
+    }
+
+    const node = nodeValue as Record<string, unknown>;
+    const cid = toCategoryText(node.cid ?? node.categoryId ?? node.id);
+    const name = toCategoryText(node.name);
+    const nameChinese = toCategoryText(node.nameChinese ?? node.chineseName ?? node.cnName);
+    const children = node.children;
+
+    if (cid || name || nameChinese) {
+      const nextPath = [...parentPath, name || nameChinese || cid].filter(Boolean);
+      const nextPathChinese = [...parentPathChinese, nameChinese || name || cid].filter(Boolean);
+      output.push({
+        cid,
+        aid: toCategoryText(node.aid),
+        fid: toCategoryText(node.fid ?? node.parentId),
+        name,
+        nameChinese,
+        isLastLevel: toCategoryBoolean(node.isLastLevel),
+        disabled: toCategoryBoolean(node.disabled),
+        path: nextPath.join(' > '),
+        pathChinese: nextPathChinese.join(' > '),
+      });
+      walkChildren(children, nextPath, nextPathChinese, walk);
+      return;
+    }
+
+    walkChildren(nodeValue, parentPath, parentPathChinese, walk);
+  };
+
+  walkChildren(root, [], [], walk);
+  return output.filter((item) => item.cid);
+}
+
+function walkChildren(
+  value: unknown,
+  parentPath: string[],
+  parentPathChinese: string[],
+  walk: (nodeValue: unknown, parentPath: string[], parentPathChinese: string[]) => void,
+) {
+  if (Array.isArray(value)) {
+    for (const item of value) {
+      walk(item, parentPath, parentPathChinese);
+    }
+    return;
+  }
+  if (!value || typeof value !== 'object') {
+    return;
+  }
+  for (const child of Object.values(value as Record<string, unknown>)) {
+    walk(child, parentPath, parentPathChinese);
+  }
+}
+
+function findNestedCategoryTree(value: unknown): unknown {
+  if (!value || typeof value !== 'object') {
+    return undefined;
+  }
+  const record = value as Record<string, unknown>;
+  for (const key of ['cateTree', 'categoryTree', 'categories', 'list']) {
+    if (record[key]) {
+      return record[key];
+    }
+  }
+  for (const nested of Object.values(record)) {
+    const found = findNestedCategoryTree(nested);
+    if (found) {
+      return found;
+    }
+  }
+  return undefined;
+}
+
+function toCategoryText(value: unknown) {
+  return typeof value === 'string' || typeof value === 'number' ? String(value).trim() : '';
+}
+
+function toCategoryBoolean(value: unknown) {
+  if (typeof value === 'boolean') {
+    return value;
+  }
+  const text = String(value ?? '').trim().toLowerCase();
+  return ['1', 'true', 'yes', 'y'].includes(text);
 }
 
 function extractDraftId(value: unknown): string | undefined {

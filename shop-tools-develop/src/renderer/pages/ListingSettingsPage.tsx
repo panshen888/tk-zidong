@@ -1,7 +1,7 @@
 import { useEffect, useState, type ReactNode } from 'react';
 import { Download, KeyRound, Link2, RefreshCw, Save, Store, Tags } from 'lucide-react';
 import { PageHeader } from '../components/PageHeader';
-import type { AppSettings, MiaoshouPricingTemplate, MiaoshouShop } from '../../shared/types';
+import type { AppSettings, MiaoshouPricingTemplate, MiaoshouRequiredAttribute, MiaoshouShop } from '../../shared/types';
 
 export function ListingSettingsPage() {
   const [settings, setSettings] = useState<AppSettings | null>(null);
@@ -9,11 +9,16 @@ export function ListingSettingsPage() {
   const [shopConfigMessage, setShopConfigMessage] = useState('');
   const [listingResultTableMessage, setListingResultTableMessage] = useState('');
   const [pricingTemplateMessage, setPricingTemplateMessage] = useState('');
+  const [categoryTreeMessage, setCategoryTreeMessage] = useState('');
+  const [categoryAttributeMessage, setCategoryAttributeMessage] = useState('');
   const [isExportingShopConfig, setIsExportingShopConfig] = useState(false);
   const [isRefreshingShops, setIsRefreshingShops] = useState(false);
   const [isRefreshingPricingTemplates, setIsRefreshingPricingTemplates] = useState(false);
+  const [isRefreshingCategoryTree, setIsRefreshingCategoryTree] = useState(false);
+  const [isRefreshingCategoryAttributes, setIsRefreshingCategoryAttributes] = useState(false);
   const [isEnsuringListingResultTable, setIsEnsuringListingResultTable] = useState(false);
   const [refreshedShops, setRefreshedShops] = useState<MiaoshouShop[]>([]);
+  const [requiredAttributes, setRequiredAttributes] = useState<MiaoshouRequiredAttribute[]>([]);
 
   useEffect(() => {
     void window.appApi.getSettings().then(setSettings);
@@ -25,6 +30,8 @@ export function ListingSettingsPage() {
     setShopConfigMessage('');
     setListingResultTableMessage('');
     setPricingTemplateMessage('');
+    setCategoryTreeMessage('');
+    setCategoryAttributeMessage('');
   }
 
   async function saveSettings() {
@@ -133,6 +140,53 @@ export function ListingSettingsPage() {
     }
   }
 
+  async function refreshCategoryTree() {
+    if (!settings) {
+      return;
+    }
+    setIsRefreshingCategoryTree(true);
+    try {
+      const nextSettings = await window.appApi.saveSettings(settings);
+      setSettings(nextSettings);
+      const result = await window.appApi.refreshMiaoshouCategoryTree({
+        site: nextSettings.targetSite,
+      });
+      const refreshedSettings = await window.appApi.getSettings();
+      setSettings(refreshedSettings);
+      setCategoryTreeMessage(`已刷新 ${result.site} 类目树：${result.categories.length} 个类目节点`);
+    } catch (error) {
+      setCategoryTreeMessage(error instanceof Error ? error.message : '刷新目标站点类目失败');
+    } finally {
+      setIsRefreshingCategoryTree(false);
+    }
+  }
+
+  async function refreshCategoryAttributes() {
+    if (!settings) {
+      return;
+    }
+    setIsRefreshingCategoryAttributes(true);
+    try {
+      const nextSettings = await window.appApi.saveSettings(settings);
+      setSettings(nextSettings);
+      const result = await window.appApi.refreshMiaoshouCategoryAttributes({
+        site: nextSettings.targetSite,
+        cid: nextSettings.miaoshouTargetCategoryId,
+        shopId: nextSettings.targetShopId,
+      });
+      setRequiredAttributes(result.requiredAttributes);
+      const materialAttr = findMaterialAttribute(result.requiredAttributes);
+      setCategoryAttributeMessage(materialAttr
+        ? `已读取 ${result.site} / ${result.cid} 必填属性，材质可选 ${materialAttr.options.length} 项`
+        : `已读取 ${result.site} / ${result.cid} 必填属性，当前类目未返回材质必填项`);
+    } catch (error) {
+      setRequiredAttributes([]);
+      setCategoryAttributeMessage(error instanceof Error ? error.message : '刷新类目属性失败');
+    } finally {
+      setIsRefreshingCategoryAttributes(false);
+    }
+  }
+
   function handlePricingTemplateChange(templateKey: string) {
     if (!settings) {
       return;
@@ -186,6 +240,22 @@ export function ListingSettingsPage() {
     });
   }
 
+  function handleMaterialDefaultChange(valueName: string) {
+    if (!settings) {
+      return;
+    }
+    const materialAttr = findMaterialAttribute(requiredAttributes);
+    const attrName = materialAttr?.attrName || '材质';
+    updateSettings({
+      miaoshouRequiredAttributeDefaults: upsertRequiredAttributeDefault(settings.miaoshouRequiredAttributeDefaults, {
+        site: selectedSite,
+        cid: settings.miaoshouTargetCategoryId,
+        attrName,
+        valueName,
+      }),
+    });
+  }
+
   if (!settings) {
     return <p className="muted">正在读取配置...</p>;
   }
@@ -202,6 +272,13 @@ export function ListingSettingsPage() {
     settings.miaoshouPricingTemplateMappings,
     selectedSite,
   );
+  const categoryCacheSummary = getCategoryCacheSummary(settings.miaoshouCategoryTreeCacheJson, selectedSite);
+  const materialAttribute = findMaterialAttribute(requiredAttributes);
+  const selectedMaterialDefault = getRequiredAttributeDefaultValue(settings.miaoshouRequiredAttributeDefaults, {
+    site: selectedSite,
+    cid: settings.miaoshouTargetCategoryId,
+    attrName: materialAttribute?.attrName || '材质',
+  });
   return (
     <section className="page-section settings-page listing-settings-page">
       <PageHeader
@@ -218,13 +295,14 @@ export function ListingSettingsPage() {
 
       {savedMessage ? <p className="success-message settings-save-message">{savedMessage}</p> : null}
 
-      <div className="listing-settings-grid">
-        <SettingsPanel
-          className="listing-settings-api"
-          icon={<KeyRound size={18} />}
-          title="妙手开放平台"
-          note="服务店铺查询、货源采集导入、公共采集箱、认领 TikTok 采集箱和发布前检查。"
-        >
+      <div className="listing-settings-grid compact-settings-grid">
+        <div className="settings-column settings-column-left">
+          <SettingsPanel
+            className="listing-settings-api"
+            icon={<KeyRound size={18} />}
+            title="妙手开放平台"
+            note="服务店铺查询、货源采集导入、公共采集箱、认领 TikTok 采集箱和发布前检查。"
+          >
           <label className="toggle-row span-2 listing-api-enable-toggle">
             <input
               type="checkbox"
@@ -276,14 +354,28 @@ export function ListingSettingsPage() {
               onChange={(event) => updateSettings({ miaoshouOpenApiAccountId: event.target.value })}
             />
           </label>
-        </SettingsPanel>
 
-        <SettingsPanel
-          className="listing-settings-flow"
-          icon={<Link2 size={18} />}
-          title="采集与刊登路径"
-          note="默认采集原商品链接进入妙手公共采集箱；1688 链接保留给货源绑定和成本字段。"
-        >
+          <label className="field">
+            <span>自动上架每轮处理数量</span>
+            <input
+              min={1}
+              max={20}
+              type="number"
+              value={settings.listingAutoRunLimit}
+              onChange={(event) => updateSettings({ listingAutoRunLimit: Number(event.target.value) })}
+            />
+          </label>
+          <p className="helper-text span-2">
+            默认 1 条用于稳定调试，最大 20 条；调大后单条类目或发布失败会写回原因，同轮继续处理后续待上架记录。输入表还有空状态/待处理时，持续执行会在下一轮继续领取。
+          </p>
+          </SettingsPanel>
+
+          <SettingsPanel
+            className="listing-settings-flow"
+            icon={<Link2 size={18} />}
+            title="采集与刊登路径"
+            note="默认采集原商品链接进入妙手公共采集箱；1688 链接保留给货源绑定和成本字段。"
+          >
           <label className="field span-2">
             <span>妙手采集链接来源</span>
             <select
@@ -310,25 +402,25 @@ export function ListingSettingsPage() {
           <p className="helper-text span-2">
             定价模板和物流公式暂时隐藏，不写入 AI上架编辑表；如果目标类目要求尺码图，需配置可公网访问的 JPG/JPEG/PNG 图片 URL。
           </p>
-        </SettingsPanel>
+          </SettingsPanel>
 
-        <SettingsPanel
-          className="listing-settings-result"
-          icon={<Link2 size={18} />}
-          title="AI上架结果表"
-          note="浏览器模拟编辑和保存并发布的执行结果单独写入此表，不再写入 AI上架编辑表。"
-          action={
-            <button
-              className="small-button"
-              type="button"
-              disabled={isEnsuringListingResultTable}
-              onClick={() => void ensureListingResultTable()}
-            >
-              <Save size={15} />
-              {isEnsuringListingResultTable ? '创建中' : '创建结果表字段'}
-            </button>
-          }
-        >
+          <SettingsPanel
+            className="listing-settings-result"
+            icon={<Link2 size={18} />}
+            title="AI上架结果表"
+            note="浏览器模拟编辑和保存并发布的执行结果单独写入此表，不再写入 AI上架编辑表。"
+            action={
+              <button
+                className="small-button"
+                type="button"
+                disabled={isEnsuringListingResultTable}
+                onClick={() => void ensureListingResultTable()}
+              >
+                <Save size={15} />
+                {isEnsuringListingResultTable ? '创建中' : '创建结果表字段'}
+              </button>
+            }
+          >
           {listingResultTableMessage ? <p className="inline-notice span-2">{listingResultTableMessage}</p> : null}
           <label className="field">
             <span>结果表 appToken</span>
@@ -369,25 +461,164 @@ export function ListingSettingsPage() {
               })}
             />
           </label>
-        </SettingsPanel>
+          </SettingsPanel>
+        </div>
 
-        <SettingsPanel
-          className="listing-settings-pricing-template"
-          icon={<Tags size={18} />}
-          title="妙手定价模板"
-          note="浏览器模拟编辑本地展示价时使用。采集认领仍走开放 API，编辑发布走已登录浏览器页面。"
-          action={
-            <button
-              className="small-button"
-              type="button"
-              disabled={isRefreshingPricingTemplates}
-              onClick={() => void refreshPricingTemplates()}
-            >
-              <RefreshCw size={15} />
-              {isRefreshingPricingTemplates ? '刷新中' : '刷新模板'}
-            </button>
-          }
-        >
+        <div className="settings-column settings-column-right">
+          <SettingsPanel
+            className="listing-settings-shop"
+            icon={<Store size={18} />}
+            title="店铺与站点"
+            note="店铺和站点用于认领 TikTok 采集箱、选择预发布店铺和发布前检查；类目由妙手编辑页自动匹配或人工处理。"
+            action={
+              <>
+                <button className="small-button" type="button" disabled={isExportingShopConfig} onClick={() => void exportShopConfig()}>
+                  <Download size={15} />
+                  {isExportingShopConfig ? '生成中' : '导出店铺配置'}
+                </button>
+                <button className="small-button" type="button" disabled={isRefreshingShops} onClick={() => void refreshShops()}>
+                  <RefreshCw size={15} />
+                  {isRefreshingShops ? '刷新中' : '在线刷新'}
+                </button>
+                <button className="small-button" type="button" disabled={isRefreshingCategoryTree} onClick={() => void refreshCategoryTree()}>
+                  <RefreshCw size={15} />
+                  {isRefreshingCategoryTree ? '类目刷新中' : '刷新类目'}
+                </button>
+              </>
+            }
+          >
+            {shopConfigMessage ? <p className="inline-notice span-2">{shopConfigMessage}</p> : null}
+            {categoryTreeMessage ? <p className="inline-notice span-2">{categoryTreeMessage}</p> : null}
+            <label className="field">
+              <span>目标站点</span>
+              <select
+                value={settings.targetSite}
+                onChange={(event) => handleTargetSiteChange(event.target.value)}
+              >
+                <option value="">请选择站点</option>
+                {listingSiteOptions.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <label className="field">
+              <span>目标店铺名称</span>
+              {refreshedShops.length > 0 ? (
+                <select
+                  value={selectedShopId}
+                  disabled={!selectedSite || shopsForSelectedSite.length === 0}
+                  onChange={(event) => handleTargetShopChange(event.target.value)}
+                >
+                  <option value="">{shopsForSelectedSite.length > 0 ? '请选择店铺' : '当前站点没有店铺'}</option>
+                  {shopsForSelectedSite.map((shop) => (
+                    <option key={`${normalizeSite(shop.site)}-${shop.shopId}-${shop.shopNick ?? ''}`} value={String(shop.shopId)}>
+                      {formatShopOptionLabel(shop)}
+                    </option>
+                  ))}
+                </select>
+              ) : (
+                <input
+                  value={settings.targetShopName}
+                  placeholder="妙手/TikTok 店铺名称"
+                  onChange={(event) => updateSettings({ targetShopName: event.target.value })}
+                />
+              )}
+            </label>
+
+            <label className="field">
+              <span>目标店铺 ID</span>
+              <input
+                value={settings.targetShopId}
+                placeholder="查询店铺后填写 shopId"
+                onChange={(event) => updateSettings({ targetShopId: event.target.value })}
+              />
+            </label>
+
+            <label className="field">
+              <span>类目缓存</span>
+              <input value={categoryCacheSummary} disabled />
+            </label>
+
+            <label className="field">
+              <span>目标类目ID</span>
+              <input
+                value={settings.miaoshouTargetCategoryId}
+                placeholder="例如 846088"
+                onChange={(event) => updateSettings({ miaoshouTargetCategoryId: event.target.value })}
+              />
+            </label>
+
+            <div className="field">
+              <span>必填属性</span>
+              <button
+                className="small-button"
+                type="button"
+                disabled={isRefreshingCategoryAttributes || !settings.targetSite || !settings.targetShopId || !settings.miaoshouTargetCategoryId}
+                onClick={() => void refreshCategoryAttributes()}
+              >
+                <RefreshCw size={15} />
+                {isRefreshingCategoryAttributes ? '刷新中' : '刷新类目属性'}
+              </button>
+            </div>
+
+            {categoryAttributeMessage ? <p className="inline-notice span-2">{categoryAttributeMessage}</p> : null}
+
+            <label className="field span-2">
+              <span>材质默认值</span>
+              <select
+                value={selectedMaterialDefault}
+                disabled={!materialAttribute || materialAttribute.options.length === 0}
+                onChange={(event) => handleMaterialDefaultChange(event.target.value)}
+              >
+                <option value="">{materialAttribute ? '请选择材质默认值' : '请先刷新带材质的类目属性'}</option>
+                {materialAttribute?.options.map((option) => (
+                  <option key={`${option.valueId}-${option.valueName}`} value={option.valueName}>
+                    {option.valueName}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <label className="field">
+              <span>仓库名称</span>
+              <input
+                value={settings.miaoshouWarehouseName}
+                placeholder="妙手仓库名称"
+                onChange={(event) => updateSettings({ miaoshouWarehouseName: event.target.value })}
+              />
+            </label>
+
+            <label className="field span-2">
+              <span>多站点店铺映射</span>
+              <textarea
+                rows={5}
+                value={settings.listingShopMappings}
+                placeholder={'MY=15013562|小郭马来\nSG=店铺ID|店铺名称\nPH=店铺ID|店铺名称'}
+                onChange={(event) => updateSettings({ listingShopMappings: event.target.value })}
+              />
+            </label>
+          </SettingsPanel>
+
+          <SettingsPanel
+            className="listing-settings-pricing-template"
+            icon={<Tags size={18} />}
+            title="妙手定价模板"
+            note="浏览器模拟编辑本地展示价时使用。采集认领仍走开放 API，编辑发布走已登录浏览器页面。"
+            action={
+              <button
+                className="small-button"
+                type="button"
+                disabled={isRefreshingPricingTemplates}
+                onClick={() => void refreshPricingTemplates()}
+              >
+                <RefreshCw size={15} />
+                {isRefreshingPricingTemplates ? '刷新中' : '刷新模板'}
+              </button>
+            }
+          >
           {pricingTemplateMessage ? <p className="inline-notice span-2">{pricingTemplateMessage}</p> : null}
           <label className="field span-2">
             <span>当前站点模板</span>
@@ -413,94 +644,8 @@ export function ListingSettingsPage() {
               onChange={(event) => updateSettings({ miaoshouPricingTemplateMappings: event.target.value })}
             />
           </label>
-        </SettingsPanel>
-
-        <SettingsPanel
-          className="listing-settings-shop"
-          icon={<Store size={18} />}
-          title="店铺与站点"
-          note="店铺和站点用于认领 TikTok 采集箱、选择预发布店铺和发布前检查；类目由妙手编辑页自动匹配或人工处理。"
-          action={
-            <>
-              <button className="small-button" type="button" disabled={isExportingShopConfig} onClick={() => void exportShopConfig()}>
-                <Download size={15} />
-                {isExportingShopConfig ? '生成中' : '导出店铺配置'}
-              </button>
-              <button className="small-button" type="button" disabled={isRefreshingShops} onClick={() => void refreshShops()}>
-                <RefreshCw size={15} />
-                {isRefreshingShops ? '刷新中' : '在线刷新'}
-              </button>
-            </>
-          }
-        >
-          {shopConfigMessage ? <p className="inline-notice span-2">{shopConfigMessage}</p> : null}
-          <label className="field">
-            <span>目标站点</span>
-            <select
-              value={settings.targetSite}
-              onChange={(event) => handleTargetSiteChange(event.target.value)}
-            >
-              <option value="">请选择站点</option>
-              {listingSiteOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-          </label>
-
-          <label className="field">
-            <span>目标店铺名称</span>
-            {refreshedShops.length > 0 ? (
-              <select
-                value={selectedShopId}
-                disabled={!selectedSite || shopsForSelectedSite.length === 0}
-                onChange={(event) => handleTargetShopChange(event.target.value)}
-              >
-                <option value="">{shopsForSelectedSite.length > 0 ? '请选择店铺' : '当前站点没有店铺'}</option>
-                {shopsForSelectedSite.map((shop) => (
-                  <option key={`${normalizeSite(shop.site)}-${shop.shopId}-${shop.shopNick ?? ''}`} value={String(shop.shopId)}>
-                    {formatShopOptionLabel(shop)}
-                  </option>
-                ))}
-              </select>
-            ) : (
-              <input
-                value={settings.targetShopName}
-                placeholder="妙手/TikTok 店铺名称"
-                onChange={(event) => updateSettings({ targetShopName: event.target.value })}
-              />
-            )}
-          </label>
-
-          <label className="field">
-            <span>目标店铺 ID</span>
-            <input
-              value={settings.targetShopId}
-              placeholder="查询店铺后填写 shopId"
-              onChange={(event) => updateSettings({ targetShopId: event.target.value })}
-            />
-          </label>
-
-          <label className="field">
-            <span>仓库名称</span>
-            <input
-              value={settings.miaoshouWarehouseName}
-              placeholder="妙手仓库名称"
-              onChange={(event) => updateSettings({ miaoshouWarehouseName: event.target.value })}
-            />
-          </label>
-
-          <label className="field span-2">
-            <span>多站点店铺映射</span>
-            <textarea
-              rows={5}
-              value={settings.listingShopMappings}
-              placeholder={'MY=15013562|小郭马来\nSG=店铺ID|店铺名称\nPH=店铺ID|店铺名称'}
-              onChange={(event) => updateSettings({ listingShopMappings: event.target.value })}
-            />
-          </label>
-        </SettingsPanel>
+          </SettingsPanel>
+        </div>
       </div>
     </section>
   );
@@ -616,10 +761,95 @@ function removePricingTemplateMapping(current: string | undefined, site: string)
     .join('\n');
 }
 
+type RequiredAttributeDefaultMapping = {
+  site: string;
+  cid: string;
+  attrName: string;
+  valueName: string;
+};
+
+function findMaterialAttribute(attributes: MiaoshouRequiredAttribute[]) {
+  return attributes.find((attribute) => normalizeText(attribute.attrName) === normalizeText('材质'));
+}
+
+function parseRequiredAttributeDefaults(value: string | undefined): RequiredAttributeDefaultMapping[] {
+  return String(value ?? '')
+    .split(/\r?\n|;/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const normalizedLine = line.replace(/｜/g, '|').replace(/＝/g, '=');
+      const match = normalizedLine.match(/^([^|]+)\|([^|]+)\|([^=]+)=(.+)$/);
+      if (!match) {
+        return null;
+      }
+      return {
+        site: normalizeSite(match[1]),
+        cid: match[2].trim(),
+        attrName: match[3].trim(),
+        valueName: match[4].trim(),
+      };
+    })
+    .filter((item): item is RequiredAttributeDefaultMapping => Boolean(item?.site && item.cid && item.attrName && item.valueName));
+}
+
+function upsertRequiredAttributeDefault(current: string | undefined, mapping: RequiredAttributeDefaultMapping) {
+  const site = normalizeSite(mapping.site);
+  const cid = mapping.cid.trim();
+  const attrName = mapping.attrName.trim();
+  const valueName = mapping.valueName.trim();
+  const rows = parseRequiredAttributeDefaults(current)
+    .filter((item) => !(
+      normalizeSite(item.site) === site &&
+      item.cid === cid &&
+      normalizeText(item.attrName) === normalizeText(attrName)
+    ));
+  if (site && cid && attrName && valueName) {
+    rows.push({ site, cid, attrName, valueName });
+  }
+  return rows.map((item) => `${item.site}|${item.cid}|${item.attrName}=${item.valueName}`).join('\n');
+}
+
+function getRequiredAttributeDefaultValue(
+  current: string | undefined,
+  input: { site: string; cid: string; attrName: string },
+) {
+  const match = parseRequiredAttributeDefaults(current).find((item) => (
+    normalizeSite(item.site) === normalizeSite(input.site) &&
+    item.cid === input.cid.trim() &&
+    normalizeText(item.attrName) === normalizeText(input.attrName)
+  ));
+  return match?.valueName ?? '';
+}
+
+function normalizeText(value: string) {
+  return value
+    .normalize('NFKC')
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, '');
+}
+
 function formatPricingTemplateLabel(template: MiaoshouPricingTemplate) {
   const id = template.priceTemplateId ? ` / ${template.priceTemplateId}` : '';
   const profit = template.profitPercent != null ? ` / 利润 ${template.profitPercent}` : '';
   return `${template.name}${id}${profit}`;
+}
+
+function getCategoryCacheSummary(cacheJson: string, site: string) {
+  if (!site) {
+    return '请选择目标站点';
+  }
+  try {
+    const parsed = JSON.parse(cacheJson || '{}') as Record<string, unknown>;
+    const categories = parsed[normalizeSite(site)];
+    if (!Array.isArray(categories)) {
+      return `${site} 未刷新`;
+    }
+    return `${site} 已缓存 ${categories.length} 个类目`;
+  } catch {
+    return `${site} 类目缓存无效`;
+  }
 }
 
 function SettingsPanel({ children, className, icon, note, title, action }: SettingsPanelProps) {

@@ -3,7 +3,7 @@ import path from 'node:path';
 import { chromium, type Browser, type BrowserContext, type Locator, type Page, type Response } from 'playwright-core';
 import type { AppSettings, MiaoshouPricingTemplate } from '../../shared/types';
 import { defaultSettings } from '../../shared/defaults';
-import { assertAppChromeCdpOwnership, getOrCreateAppChromeContext } from './chromeSession';
+import { assertAppChromeCdpOwnership, getOrCreateAppChromeContext, waitForChromeCdp } from './chromeSession';
 
 export type MiaoshouBrowserListingRow = {
   recordId: string;
@@ -36,30 +36,50 @@ const dialogHandlerContexts = new WeakSet<BrowserContext>();
 const dialogHandlerPages = new WeakSet<Page>();
 
 export async function refreshMiaoshouPricingTemplatesFromBrowser(settings: AppSettings, input: { site?: string } = {}) {
-  const context = await getMiaoshouBrowserContext(settings);
-  const page = await getOrCreateMiaoshouPage(context, settings);
+  const browserTarget = await getExistingLoginBrowserContext(settings);
+  const page = await getOrCreateMiaoshouPage(browserTarget, settings);
   const templatesFromResponses = new Map<string, MiaoshouPricingTemplate>();
 
-  page.on('response', async (response) => {
-    const templates = await extractPricingTemplatesFromResponse(response, input.site).catch(() => []);
-    for (const template of templates) {
+  try {
+    page.on('response', async (response) => {
+      const templates = await extractPricingTemplatesFromResponse(response, input.site).catch(() => []);
+      for (const template of templates) {
+        templatesFromResponses.set(buildTemplateKey(template), template);
+      }
+    });
+
+    await page.goto(collectBoxUrl, { waitUntil: 'domcontentloaded', timeout: settings.pageTimeoutMs });
+    await page.waitForLoadState('networkidle', { timeout: 10_000 }).catch(() => undefined);
+    await openAnyPriceTemplateDropdown(page).catch(() => undefined);
+    await page.waitForTimeout(2500);
+
+    const domTemplates = await extractVisiblePricingTemplates(page, input.site).catch(() => []);
+    for (const template of domTemplates) {
       templatesFromResponses.set(buildTemplateKey(template), template);
     }
-  });
 
-  await page.goto(collectBoxUrl, { waitUntil: 'domcontentloaded', timeout: settings.pageTimeoutMs });
-  await page.waitForLoadState('networkidle', { timeout: 10_000 }).catch(() => undefined);
-  await openAnyPriceTemplateDropdown(page).catch(() => undefined);
-  await page.waitForTimeout(2500);
-
-  const domTemplates = await extractVisiblePricingTemplates(page, input.site).catch(() => []);
-  for (const template of domTemplates) {
-    templatesFromResponses.set(buildTemplateKey(template), template);
+    return [...templatesFromResponses.values()]
+      .filter((template) => !input.site || normalizeSite(template.site) === normalizeSite(input.site))
+      .sort((left, right) => normalizeSite(left.site).localeCompare(normalizeSite(right.site)) || left.name.localeCompare(right.name, 'zh-Hans-CN'));
+  } finally {
+    await closeConnectedBrowser(browserTarget);
   }
+}
 
-  return [...templatesFromResponses.values()]
-    .filter((template) => !input.site || normalizeSite(template.site) === normalizeSite(input.site))
-    .sort((left, right) => normalizeSite(left.site).localeCompare(normalizeSite(right.site)) || left.name.localeCompare(right.name, 'zh-Hans-CN'));
+async function getExistingLoginBrowserContext(settings: AppSettings) {
+  const chromeCdpUrl = settings.chromeCdpUrl || defaultSettings.chromeCdpUrl;
+  await waitForChromeCdp(chromeCdpUrl, 5000).catch((error) => {
+    const message = error instanceof Error ? error.message : String(error);
+    throw new Error(`请先点击“打开登录浏览器”并完成妙手登录后再刷新模板。\n${message}`);
+  });
+  await assertAppChromeCdpOwnership({
+    chromeCdpUrl,
+    chromeUserDataDir: settings.chromeUserDataDir,
+  });
+  const browser = await chromium.connectOverCDP(chromeCdpUrl);
+  const context = browser.contexts()[0] ?? await browser.newContext();
+  installSafeDialogHandlers(context);
+  return { context, browser };
 }
 
 export async function publishMiaoshouListingRowByBrowser(input: {

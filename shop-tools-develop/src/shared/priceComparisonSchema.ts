@@ -9,6 +9,7 @@ export const priceInputHeaders = [
   '郑和数据链接',
   '原商品链接',
   '原商品主图URL',
+  '目标站点类目',
   '当前比价批次号',
   '失败归因',
   '重复位置',
@@ -48,6 +49,7 @@ export const priceOutputHeaders = [
   '郑和数据链接',
   '原商品链接',
   '原商品主图URL',
+  '目标站点类目',
   '最后更新时间',
 ] as const;
 
@@ -79,6 +81,7 @@ export const priceReviewHeaders = [
   '郑和数据链接',
   '原商品链接',
   '原商品主图URL',
+  '目标站点类目',
   '重复位置',
   '重复记录ID',
   '目标利润率',

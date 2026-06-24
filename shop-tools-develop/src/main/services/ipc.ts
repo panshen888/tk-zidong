@@ -24,6 +24,9 @@ import type {
   CreateTaskInput,
   FeishuBitableConfig,
   ListingShopMapping,
+  MiaoshouCategoryAttributeRefreshInput,
+  MiaoshouCategoryTreeRefreshInput,
+  MiaoshouRequiredAttribute,
   PriceComparisonReviewGenerationInput,
   Task,
   TaskLogEntry,
@@ -171,6 +174,98 @@ function normalizeShopConfigSites(sites: unknown) {
   )];
 }
 
+function parseCategoryTreeCache(value: unknown) {
+  try {
+    const parsed = JSON.parse(String(value || '{}')) as Record<string, unknown>;
+    return parsed && typeof parsed === 'object' ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+
+function normalizeRequiredAttributeDefaults(value: unknown) {
+  return String(value ?? '')
+    .split(/\r?\n|;/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .join('\n');
+}
+
+function extractRequiredAttributesFromMetadata(metadata: unknown): MiaoshouRequiredAttribute[] {
+  const productAttrs = findNestedValue(metadata, 'categoryProductAttrList');
+  if (!Array.isArray(productAttrs)) {
+    return [];
+  }
+  return productAttrs
+    .map(asRecord)
+    .filter((attr): attr is Record<string, unknown> => Boolean(attr && isTruthyMiaoshouFlag(attr.isMandatory)))
+    .map((attr) => ({
+      attrId: String(attr.attrId ?? attr.attributeId ?? attr.id ?? '').trim(),
+      attrName: String(attr.attributeNameAlias ?? attr.name ?? attr.attrName ?? attr.attrId ?? '').trim(),
+      options: extractAttributeOptions(attr),
+    }))
+    .filter((attr) => attr.attrName);
+}
+
+function extractAttributeOptions(attr: Record<string, unknown>) {
+  const candidateLists = [
+    attr.values,
+    attr.valueList,
+    attr.attrValueList,
+    attr.optionList,
+    attr.options,
+    attr.attributeValueList,
+  ];
+  const output: Array<{ valueId: string; valueName: string }> = [];
+  for (const list of candidateLists) {
+    if (!Array.isArray(list)) {
+      continue;
+    }
+    for (const value of list) {
+      const record = asRecord(value);
+      if (!record) {
+        continue;
+      }
+      const valueId = String(record.valueId ?? record.id ?? record.attrValueId ?? record.optionId ?? '').trim();
+      const valueName = String(record.valueName ?? record.name ?? record.attrValue ?? record.optionName ?? record.label ?? '').trim();
+      if (valueName) {
+        output.push({ valueId, valueName });
+      }
+    }
+  }
+  return output.filter((item, index, list) => (
+    list.findIndex((candidate) => candidate.valueId === item.valueId && candidate.valueName === item.valueName) === index
+  ));
+}
+
+function isTruthyMiaoshouFlag(value: unknown) {
+  if (typeof value === 'boolean') {
+    return value;
+  }
+  return ['1', 'true', 'yes', 'y'].includes(String(value ?? '').trim().toLowerCase());
+}
+
+function asRecord(value: unknown): Record<string, unknown> | null {
+  return value && typeof value === 'object' ? value as Record<string, unknown> : null;
+}
+
+function findNestedValue(value: unknown, key: string): unknown {
+  if (!value || typeof value !== 'object') {
+    return undefined;
+  }
+  const record = value as Record<string, unknown>;
+  if (key in record) {
+    return record[key];
+  }
+  for (const nested of Object.values(record)) {
+    const found = findNestedValue(nested, key);
+    if (found != null) {
+      return found;
+    }
+  }
+  return undefined;
+}
+
 function normalizeAutoGenerateListingReviewTable(value: unknown) {
   return typeof value === 'boolean' ? value : defaultSettings.autoGenerateListingReviewTable;
 }
@@ -201,6 +296,10 @@ function normalize1688EnhancedFilterSettings(settings: Partial<AppSettings>) {
 
 function normalizeEnableMiaoshouListingApi(value: unknown) {
   return typeof value === 'boolean' ? value : defaultSettings.enableMiaoshouListingApi;
+}
+
+function normalizeListingAutoRunLimit(value: unknown) {
+  return Math.min(20, Math.max(1, Number(value) || defaultSettings.listingAutoRunLimit));
 }
 
 function assertMiaoshouListingApiEnabled(settings: AppSettings) {
@@ -556,6 +655,9 @@ async function getNormalizedSettings() {
       listingShopMappings: normalizeListingShopMappings(settings.listingShopMappings),
       miaoshouPricingTemplatesJson: settings.miaoshouPricingTemplatesJson || defaultSettings.miaoshouPricingTemplatesJson,
       miaoshouPricingTemplateMappings: settings.miaoshouPricingTemplateMappings || '',
+      miaoshouCategoryTreeCacheJson: settings.miaoshouCategoryTreeCacheJson || defaultSettings.miaoshouCategoryTreeCacheJson,
+      miaoshouCategoryTreeCacheUpdatedAt: settings.miaoshouCategoryTreeCacheUpdatedAt || '',
+      miaoshouRequiredAttributeDefaults: normalizeRequiredAttributeDefaults(settings.miaoshouRequiredAttributeDefaults),
       miaoshouSizeChartImageUrl: settings.miaoshouSizeChartImageUrl || '',
       listingExchangeRates: settings.listingExchangeRates || defaultSettings.listingExchangeRates,
       listingTargetProfitRate: Number(settings.listingTargetProfitRate) || defaultSettings.listingTargetProfitRate,
@@ -574,6 +676,7 @@ async function getNormalizedSettings() {
       weightGroupToleranceGram: Math.max(0, Number(settings.weightGroupToleranceGram) || defaultSettings.weightGroupToleranceGram),
       autoGenerateListingReviewTable: normalizeAutoGenerateListingReviewTable(settings.autoGenerateListingReviewTable),
       enableMiaoshouListingApi: normalizeEnableMiaoshouListingApi(settings.enableMiaoshouListingApi),
+      listingAutoRunLimit: normalizeListingAutoRunLimit(settings.listingAutoRunLimit),
       ...normalize1688EnhancedFilterSettings(settings),
     };
     store.set('settings', nextSettings);
@@ -591,6 +694,9 @@ async function getNormalizedSettings() {
     listingShopMappings: normalizeListingShopMappings(settings.listingShopMappings),
     miaoshouPricingTemplatesJson: settings.miaoshouPricingTemplatesJson || defaultSettings.miaoshouPricingTemplatesJson,
     miaoshouPricingTemplateMappings: settings.miaoshouPricingTemplateMappings || '',
+    miaoshouCategoryTreeCacheJson: settings.miaoshouCategoryTreeCacheJson || defaultSettings.miaoshouCategoryTreeCacheJson,
+    miaoshouCategoryTreeCacheUpdatedAt: settings.miaoshouCategoryTreeCacheUpdatedAt || '',
+    miaoshouRequiredAttributeDefaults: normalizeRequiredAttributeDefaults(settings.miaoshouRequiredAttributeDefaults),
     miaoshouSizeChartImageUrl: settings.miaoshouSizeChartImageUrl || '',
     listingExchangeRates: settings.listingExchangeRates || defaultSettings.listingExchangeRates,
     listingTargetProfitRate: Number(settings.listingTargetProfitRate) || defaultSettings.listingTargetProfitRate,
@@ -610,6 +716,7 @@ async function getNormalizedSettings() {
     weightGroupToleranceGram: Math.max(0, Number(settings.weightGroupToleranceGram) || defaultSettings.weightGroupToleranceGram),
     autoGenerateListingReviewTable: normalizeAutoGenerateListingReviewTable(settings.autoGenerateListingReviewTable),
     enableMiaoshouListingApi: normalizeEnableMiaoshouListingApi(settings.enableMiaoshouListingApi),
+    listingAutoRunLimit: normalizeListingAutoRunLimit(settings.listingAutoRunLimit),
     ...normalize1688EnhancedFilterSettings(settings),
   };
   store.set('settings', nextSettings);
@@ -1122,6 +1229,9 @@ export function registerIpcHandlers() {
       miaoshouPricingTemplatesJson: settings.miaoshouPricingTemplatesJson || defaultSettings.miaoshouPricingTemplatesJson,
       miaoshouPricingTemplateMappings: settings.miaoshouPricingTemplateMappings?.trim() ?? '',
       miaoshouTargetCategoryId: settings.miaoshouTargetCategoryId.trim(),
+      miaoshouCategoryTreeCacheJson: settings.miaoshouCategoryTreeCacheJson || defaultSettings.miaoshouCategoryTreeCacheJson,
+      miaoshouCategoryTreeCacheUpdatedAt: settings.miaoshouCategoryTreeCacheUpdatedAt || '',
+      miaoshouRequiredAttributeDefaults: normalizeRequiredAttributeDefaults(settings.miaoshouRequiredAttributeDefaults),
       miaoshouPricingTemplateName: settings.miaoshouPricingTemplateName.trim(),
       miaoshouSizeChartImageUrl: String(settings.miaoshouSizeChartImageUrl ?? '').trim(),
       miaoshouWarehouseName: settings.miaoshouWarehouseName.trim(),
@@ -1131,6 +1241,7 @@ export function registerIpcHandlers() {
       miaoshouOpenApiAppSecret: settings.miaoshouOpenApiAppSecret.trim(),
       miaoshouOpenApiAccountId: settings.miaoshouOpenApiAccountId.trim(),
       enableMiaoshouListingApi: normalizeEnableMiaoshouListingApi(settings.enableMiaoshouListingApi),
+      listingAutoRunLimit: normalizeListingAutoRunLimit(settings.listingAutoRunLimit),
       miaoshouDefaultStock: Math.max(1, Number(settings.miaoshouDefaultStock) || defaultSettings.miaoshouDefaultStock),
       listingCollectSource: normalizeListingCollectSource(settings.listingCollectSource),
       listingShopMappings: normalizeListingShopMappings(settings.listingShopMappings),
@@ -1314,7 +1425,7 @@ export function registerIpcHandlers() {
           currentRunId: undefined,
           finishedAt: new Date().toISOString(),
         });
-        throw new Error('没有空状态/「待处理」/「待核实」记录，本次未执行；已完成记录会自动跳过。');
+        throw new Error('没有空状态/「待处理」记录，本次未执行；已完成记录会自动跳过。');
       }
 
       run = await createRunForTask(task, settings, {
@@ -1790,6 +1901,75 @@ export function registerIpcHandlers() {
     return { templates };
   });
 
+  ipcMain.handle('commerce:refreshMiaoshouCategoryTree', async (_event, input: MiaoshouCategoryTreeRefreshInput = {}) => {
+    await authService.assertFeature('aiListing');
+    const settings = await getNormalizedSettings();
+    assertMiaoshouListingApiEnabled(settings);
+    assertMiaoshouCredentials({
+      appKey: settings.miaoshouOpenApiAppKey,
+      appSecret: settings.miaoshouOpenApiAppSecret,
+    });
+    const site = (input.site || settings.targetSite || '').trim().toUpperCase();
+    if (!site) {
+      throw new Error('请先选择目标站点，再刷新妙手类目树');
+    }
+    const miaoshouClient = new MiaoshouOpenApiClient({
+      baseUrl: settings.miaoshouOpenApiBaseUrl,
+      appKey: settings.miaoshouOpenApiAppKey,
+      appSecret: settings.miaoshouOpenApiAppSecret,
+      accountId: settings.miaoshouOpenApiAccountId,
+    });
+    const categories = await miaoshouClient.getCategoryTreeBySite(site);
+    const updatedAt = new Date().toISOString();
+    const cache = parseCategoryTreeCache(settings.miaoshouCategoryTreeCacheJson);
+    cache[site] = categories;
+    store.set('settings', {
+      ...settings,
+      miaoshouCategoryTreeCacheJson: JSON.stringify(cache),
+      miaoshouCategoryTreeCacheUpdatedAt: updatedAt,
+    });
+    return { site, categories, updatedAt };
+  });
+
+  ipcMain.handle('commerce:refreshMiaoshouCategoryAttributes', async (_event, input: MiaoshouCategoryAttributeRefreshInput = {}) => {
+    await authService.assertFeature('aiListing');
+    const settings = await getNormalizedSettings();
+    assertMiaoshouListingApiEnabled(settings);
+    assertMiaoshouCredentials({
+      appKey: settings.miaoshouOpenApiAppKey,
+      appSecret: settings.miaoshouOpenApiAppSecret,
+    });
+    const site = (input.site || settings.targetSite || '').trim().toUpperCase();
+    const cid = String(input.cid || settings.miaoshouTargetCategoryId || '').trim();
+    const shopId = String(input.shopId || settings.targetShopId || '').trim();
+    if (!site) {
+      throw new Error('请先选择目标站点，再刷新类目属性');
+    }
+    if (!cid) {
+      throw new Error('请先填写目标类目ID，再刷新类目属性');
+    }
+    if (!shopId) {
+      throw new Error('请先选择目标店铺，再刷新类目属性');
+    }
+    const miaoshouClient = new MiaoshouOpenApiClient({
+      baseUrl: settings.miaoshouOpenApiBaseUrl,
+      appKey: settings.miaoshouOpenApiAppKey,
+      appSecret: settings.miaoshouOpenApiAppSecret,
+      accountId: settings.miaoshouOpenApiAccountId,
+    });
+    const metadata = await miaoshouClient.getCategoryMetadata({
+      site,
+      cid,
+      shopIds: [shopId],
+    });
+    return {
+      site,
+      cid,
+      shopId,
+      requiredAttributes: extractRequiredAttributesFromMetadata(metadata),
+    };
+  });
+
   ipcMain.handle('commerce:syncListingPricingConfigToReviewTable', async (_event, input: CommerceListingPricingSyncInput) => {
     await authService.assertFeature('aiListing');
     const settings = await getNormalizedSettings();
@@ -1922,6 +2102,9 @@ export function registerIpcHandlers() {
       targetShopId: input.shopId || settings.targetShopId,
       targetShopName: input.shopName || settings.targetShopName,
       targetSite: input.site || settings.targetSite,
+      categoryTreeCacheJson: settings.miaoshouCategoryTreeCacheJson,
+      sizeChartImageUrl: settings.miaoshouSizeChartImageUrl,
+      requiredAttributeDefaults: settings.miaoshouRequiredAttributeDefaults,
       shopMappings: parseListingShopMappings(settings.listingShopMappings),
       importLinks: async (links) => {
         const data = await miaoshouClient.importSourceLinks(links);
@@ -1936,6 +2119,9 @@ export function registerIpcHandlers() {
       claimToShop: async (claimInput) => miaoshouClient.claimTiktokCollectBoxToShop(claimInput),
       getShopCollectItemInfo: async (detailInput) => miaoshouClient.getShopCollectItemInfo(detailInput),
       getSiteCollectItemInfo: async (detailInput) => miaoshouClient.getSiteCollectItemInfo(detailInput),
+      getCategoryTreeBySite: async (site) => miaoshouClient.getCategoryTreeBySite(site),
+      getCategoryMetadata: async (metadataInput) => miaoshouClient.getCategoryMetadata(metadataInput),
+      saveShopCollectItemInfo: async (saveInput) => miaoshouClient.saveShopCollectItemInfo(saveInput),
     });
     return {
       ...result,

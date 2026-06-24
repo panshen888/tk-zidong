@@ -28,6 +28,7 @@ import type {
   CommerceTablesResult,
   FeishuBitableConfig,
   ListingShopMapping,
+  MiaoshouCategoryNode,
   MiaoshouPricingTemplate,
   PriceComparisonReviewGenerationInput,
   PriceComparisonReviewGenerationResult,
@@ -247,6 +248,9 @@ export type GenerateMiaoshouListingEditTableInput = EnsureCommerceTablesInput &
     targetShopName: string;
     targetSite: string;
     targetCategoryId?: string;
+    categoryTreeCacheJson?: string;
+    sizeChartImageUrl?: string;
+    requiredAttributeDefaults?: string;
     shopMappings?: ListingShopMapping[];
     importLinks: (links: string[]) => Promise<Record<string, string | number>>;
     getCommonCollectBoxDetail: (detailId: string | number) => Promise<unknown>;
@@ -255,6 +259,14 @@ export type GenerateMiaoshouListingEditTableInput = EnsureCommerceTablesInput &
     claimToShop: (input: { detailIds: Array<string | number>; shopIds: Array<string | number> }) => Promise<unknown>;
     getShopCollectItemInfo: (input: { detailId: string | number; shopId: string | number }) => Promise<unknown>;
     getSiteCollectItemInfo: (input: { detailId: string | number; site: string }) => Promise<unknown>;
+    getCategoryTreeBySite?: (site: string) => Promise<MiaoshouCategoryNode[]>;
+    getCategoryMetadata?: (input: { site: string; cid: string; shopIds: Array<string | number> }) => Promise<unknown>;
+    saveShopCollectItemInfo?: (input: {
+      detailId: string | number;
+      shopId: string | number;
+      ossMd5: string;
+      shopCollectItemInfo: unknown;
+    }) => Promise<unknown>;
   };
 
 export type PrepareMiaoshouListingDraftRetryInput = EnsureCommerceTablesInput &
@@ -270,6 +282,9 @@ export type SaveMiaoshouListingDraftsInput = EnsureCommerceTablesInput &
     targetShopName: string;
     targetSite: string;
     targetCategoryId?: string;
+    sizeChartImageUrl?: string;
+    requiredAttributeDefaults?: string;
+    getCategoryMetadata?: (input: { site: string; cid: string; shopIds: Array<string | number> }) => Promise<unknown>;
     getShopCollectItemInfo: (input: { detailId: string | number; shopId: string | number }) => Promise<unknown>;
     getSiteCollectItemInfo: (input: { detailId: string | number; site: string }) => Promise<unknown>;
     saveShopCollectItemInfo: (input: {
@@ -328,6 +343,7 @@ const inputColumns = [
   { targetHeader: '商品标题', candidates: ['商品标题', '标题', '品名', 'title'] },
   { targetHeader: '国家', candidates: ['国家/站点', '国家', '站点', '市场', 'country'] },
   { targetHeader: '类目', candidates: ['类目', '分类', 'category'] },
+  { targetHeader: '目标站点类目', candidates: ['目标站点类目', '目标类目', '上架类目', 'targetSiteCategory'] },
 ];
 const statusFieldCandidates = ['状态', '核实状态', '处理状态'];
 const sourceUrlFieldCandidates = ['原商品链接', '商品链接', '商品URL', '链接', 'sourceUrl'];
@@ -336,6 +352,7 @@ const productIdFieldCandidates = ['商品ID', '原商品ID', '产品ID', 'Produc
 const countryFieldCandidates = ['国家/站点', '国家', '站点', '市场', 'country'];
 const titleFieldCandidates = ['商品标题', '标题', '品名', 'title'];
 const categoryFieldCandidates = ['类目', '分类', 'category'];
+const targetSiteCategoryFieldCandidates = ['目标站点类目', '目标类目', '上架类目', 'targetSiteCategory'];
 
 const inputTableName = '输入表';
 const outputTableName = '输出货源表';
@@ -355,6 +372,7 @@ const inputTableFields: FeishuCreateField[] = [
   { field_name: '商品标题', type: 1 },
   { field_name: '国家', type: 1 },
   { field_name: '类目', type: 1 },
+  { field_name: '目标站点类目', type: 1 },
   { field_name: '状态', type: 1 },
 ];
 const outputTableFields: FeishuCreateField[] = [
@@ -516,7 +534,9 @@ const listingEditTableFields: FeishuCreateField[] = [
   { field_name: '目标店铺ID', type: 1 },
   { field_name: '目标店铺名称', type: 1 },
   { field_name: '目标店铺站点', type: 1 },
+  { field_name: '目标站点类目', type: 1 },
   { field_name: '目标类目ID', type: 1 },
+  { field_name: '尺码表状态', type: 1 },
   { field_name: '编辑模式', type: 1 },
   { field_name: '公共采集箱ID', type: 1 },
   { field_name: 'TikTok采集箱ID', type: 1 },
@@ -741,6 +761,7 @@ export type SourcingOutputRecord = {
   title: string;
   country: string;
   category: string;
+  targetSiteCategory: string;
   status: string;
   rank: number;
 };
@@ -765,6 +786,7 @@ type PriceReviewRecord = {
   displayPrice: number | '';
   weightGram: number | '';
   dimensions: string;
+  targetSiteCategory: string;
 };
 
 export type ListingEditRecord = {
@@ -789,7 +811,9 @@ export type ListingEditRecord = {
   targetShopId: string;
   targetShopName: string;
   targetShopSite: string;
+  targetSiteCategory: string;
   targetCategoryId: string;
+  sizeChartStatus: string;
   editModel: string;
   commonCollectBoxId: string;
   tiktokCollectBoxId: string;
@@ -854,6 +878,7 @@ type PriceOutputRow = {
   zhengheDataUrl: string;
   sourceUrl: string;
   sourceImageUrl: string;
+  targetSiteCategory: string;
 };
 
 type PriceOutputGroup = {
@@ -894,6 +919,7 @@ const baseOutputColumns: OutputColumn[] = [
   { names: ['原商品标题', '商品标题', '标题', '品名'], getter: ({ item }) => item.title ?? '' },
   { names: ['国家/站点', '国家', '站点', '市场'], getter: ({ item }) => item.country ?? '' },
   { names: ['类目', '分类'], getter: ({ item }) => item.category ?? '' },
+  { names: ['目标站点类目', '目标类目', '上架类目'], getter: ({ item }) => item.targetSiteCategory ?? item.category ?? '' },
   { names: ['原商品主图URL', '主图URL', '商品主图', '图片URL'], getter: ({ item }) => item.sourceImageUrl ?? item.imageUrl ?? '' },
   { names: ['原商品主图本地路径', '主图本地路径'], getter: ({ item }) => item.localImagePath ?? '' },
   { names: ['搜图状态', '处理状态'], getter: ({ item }) => getSelectionRowStatus(item) },
@@ -1269,7 +1295,6 @@ export class FeishuBitableClient {
     const listingEditBitable = await this.ensureListingEditTable(input.appToken);
     const defaultShopId = input.shopId?.trim() || input.targetShopId.trim();
     const defaultShopName = input.shopName?.trim() || input.targetShopName.trim();
-    const targetCategoryId = '';
     const defaultShopSite = normalizeSite(input.site || input.targetSite);
     if (!defaultShopId && !(input.shopMappings ?? []).some((mapping) => mapping.shopId.trim())) {
       throw new Error('请先在AI上架配置里填写目标店铺ID');
@@ -1311,6 +1336,7 @@ export class FeishuBitableClient {
         defaultShopSite,
         mappings: input.shopMappings,
       });
+      const targetCategoryId = input.targetCategoryId?.trim() || '';
       const key = buildListingEditKey(reviewRow.productId, targetShop.site || site || sourceSite, targetShop.shopId);
       if (!key) {
         failedCount += 1;
@@ -1406,6 +1432,12 @@ export class FeishuBitableClient {
           claimToShop: input.claimToShop,
           getShopCollectItemInfo: input.getShopCollectItemInfo,
           getSiteCollectItemInfo: input.getSiteCollectItemInfo,
+          getCategoryTreeBySite: input.getCategoryTreeBySite,
+          getCategoryMetadata: input.getCategoryMetadata,
+          saveShopCollectItemInfo: input.saveShopCollectItemInfo,
+          categoryTreeCacheJson: input.categoryTreeCacheJson,
+          sizeChartImageUrl: input.sizeChartImageUrl,
+          requiredAttributeDefaults: input.requiredAttributeDefaults,
         });
         updatedCount += progressed ? 1 : 0;
       } catch (error) {
@@ -1580,6 +1612,18 @@ export class FeishuBitableClient {
         if (!hasMiaoshouCategory(nextInfo)) {
           throw new Error('妙手未自动匹配类目，可能是目标店铺未开通该类目或TikTok类目限制；请人工处理该商品');
         }
+        const categoryMetadataResult = await resolveMiaoshouCategoryMetadata({
+          site: shopSite,
+          cid: String(nextInfo.cid ?? row.targetCategoryId ?? '').trim(),
+          shopId,
+          shopInfo: nextInfo,
+          sizeChartImageUrl: input.sizeChartImageUrl,
+          requiredAttributeDefaults: input.requiredAttributeDefaults,
+          getCategoryMetadata: input.getCategoryMetadata,
+        });
+        if (!categoryMetadataResult.ok) {
+          throw new Error(categoryMetadataResult.failureReason || '类目元数据校验失败');
+        }
         if (detailPayload.mode === 'site') {
           await input.saveSiteCollectItemInfo({
             detailId: row.tiktokCollectBoxId,
@@ -1615,6 +1659,7 @@ export class FeishuBitableClient {
           buildFieldsByNamesAllowEmpty(editFields, {
             编辑状态: '草稿已保存',
             发布准备状态: getListingPublishReadyStatus(row),
+            尺码表状态: categoryMetadataResult.sizeChartStatus,
             失败原因: getListingPublishReadyFailureReason(),
             最后更新时间: Date.now(),
           }, ['失败原因']),
@@ -2560,6 +2605,7 @@ export class FeishuBitableClient {
         商品标题: item.title ?? '',
         国家: item.country ?? '',
         类目: item.category ?? '',
+        目标站点类目: item.targetSiteCategory ?? item.category ?? '',
       };
       worksheet.addRow(row);
     }
@@ -2594,6 +2640,7 @@ export class FeishuBitableClient {
     let imageUrl = String(row['原商品主图URL'] ?? '').trim();
     let title = String(row['商品标题'] ?? '').trim();
     let category = String(row['类目'] ?? '').trim();
+    let targetSiteCategory = String(row['目标站点类目'] ?? '').trim();
     if (zhengheIdentityConflict) {
       imageUrl = '';
     }
@@ -2637,6 +2684,7 @@ export class FeishuBitableClient {
     if ((!sourceUrl || sourceRegionConflicts || zhengheIdentityConflict) && productId && country) {
       sourceUrl = buildTikTokProductUrl(productId, country);
     }
+    targetSiteCategory ||= category;
 
     const patch: Record<string, unknown> = {};
     setDerivedRowValue(fields, row, patch, productIdFieldCandidates, '原商品ID', productId, shouldOverwriteZhengheFields);
@@ -2645,6 +2693,7 @@ export class FeishuBitableClient {
     setDerivedRowValue(fields, row, patch, titleFieldCandidates, '商品标题', title, shouldOverwriteZhengheFields);
     setDerivedRowValue(fields, row, patch, countryFieldCandidates, '国家', country, shouldOverwriteZhengheFields);
     setDerivedRowValue(fields, row, patch, categoryFieldCandidates, '类目', category, shouldOverwriteZhengheFields);
+    setDerivedRowValue(fields, row, patch, targetSiteCategoryFieldCandidates, '目标站点类目', targetSiteCategory, shouldOverwriteZhengheFields);
 
     if (Object.keys(patch).length > 0) {
       await this.updateRecordFields(bitable, record.record_id, patch);
@@ -2854,6 +2903,7 @@ export class FeishuBitableClient {
       title: String(row['商品标题'] ?? '').trim(),
       country,
       category: String(row['类目'] ?? '').trim(),
+      targetSiteCategory: String(row['目标站点类目'] ?? row['类目'] ?? '').trim(),
       status: 'pending',
     };
   }
@@ -3116,6 +3166,17 @@ export class FeishuBitableClient {
     claimToShop: (input: { detailIds: Array<string | number>; shopIds: Array<string | number> }) => Promise<unknown>;
     getShopCollectItemInfo: (input: { detailId: string | number; shopId: string | number }) => Promise<unknown>;
     getSiteCollectItemInfo: (input: { detailId: string | number; site: string }) => Promise<unknown>;
+    getCategoryTreeBySite?: (site: string) => Promise<MiaoshouCategoryNode[]>;
+    getCategoryMetadata?: (input: { site: string; cid: string; shopIds: Array<string | number> }) => Promise<unknown>;
+    saveShopCollectItemInfo?: (input: {
+      detailId: string | number;
+      shopId: string | number;
+      ossMd5: string;
+      shopCollectItemInfo: unknown;
+    }) => Promise<unknown>;
+    categoryTreeCacheJson?: string;
+    sizeChartImageUrl?: string;
+    requiredAttributeDefaults?: string;
   }) {
     const existingRow = readListingEditRecord(input.editFields, input.record);
     const shouldRecollect = isStaleListingEditRecord(existingRow);
@@ -3301,7 +3362,41 @@ export class FeishuBitableClient {
     }
     const title = extractShopTitle(shopCollectItemInfo);
     if (!hasMiaoshouCategory(shopCollectItemInfo)) {
-      const reason = '妙手未自动匹配类目，可能是目标店铺未开通该类目或TikTok类目限制；请人工处理该商品';
+      const categoryResolution = await resolveAndPersistMiaoshouCategory({
+        detailId: tiktokCollectBoxId,
+        shopId: input.targetShopId,
+        site: targetShopSite,
+        shopInfo: shopCollectItemInfo,
+        ossMd5: detailPayload.ossMd5,
+        targetCategoryId: input.targetCategoryId,
+        targetSiteCategory: existingRow.targetSiteCategory || input.reviewRow.targetSiteCategory,
+        categoryTreeCacheJson: input.categoryTreeCacheJson,
+        sizeChartImageUrl: input.sizeChartImageUrl,
+        requiredAttributeDefaults: input.requiredAttributeDefaults,
+        getCategoryTreeBySite: input.getCategoryTreeBySite,
+        getCategoryMetadata: input.getCategoryMetadata,
+        saveShopCollectItemInfo: input.saveShopCollectItemInfo,
+      });
+      if (categoryResolution.ok) {
+        await this.writeListingEditStatus(input.listingEditBitable, input.editFields, input.record, {
+          ...baseValues,
+          编辑标题: existingRow.editTitle || title,
+          公共采集箱ID: commonCollectBoxId,
+          TikTok采集箱ID: tiktokCollectBoxId,
+          编辑模式: detailPayload.mode,
+          SKU数量: skuCount,
+          采集状态: '已采集公共采集箱',
+          认领状态: '已认领TikTok采集箱',
+          店铺认领状态: '已认领目标店铺',
+          目标类目ID: categoryResolution.categoryId,
+          尺码表状态: categoryResolution.sizeChartStatus,
+          编辑状态: '待人工编辑',
+          发布准备状态: '待人工编辑后保存',
+          失败原因: '',
+        });
+        return true;
+      }
+      const reason = categoryResolution.failureReason || '妙手未自动匹配类目，可能是目标店铺未开通该类目或TikTok类目限制；请人工处理该商品';
       await this.writeListingEditStatus(input.listingEditBitable, input.editFields, input.record, {
         ...baseValues,
         编辑标题: existingRow.editTitle || title,
@@ -3312,9 +3407,46 @@ export class FeishuBitableClient {
         采集状态: '已采集公共采集箱',
         认领状态: '已认领TikTok采集箱',
         店铺认领状态: '已认领目标店铺',
+        目标类目ID: categoryResolution.categoryId || input.targetCategoryId,
+        尺码表状态: categoryResolution.sizeChartStatus,
         编辑状态: '需人工处理',
-        发布准备状态: '类目未自动匹配',
+        发布准备状态: categoryResolution.matchStatus || '类目未自动匹配',
         失败原因: reason,
+      });
+      return false;
+    }
+
+    const categoryResolution = await resolveAndPersistMiaoshouCategory({
+      detailId: tiktokCollectBoxId,
+      shopId: input.targetShopId,
+      site: targetShopSite,
+      shopInfo: shopCollectItemInfo,
+      ossMd5: detailPayload.ossMd5,
+      targetCategoryId: input.targetCategoryId,
+      targetSiteCategory: existingRow.targetSiteCategory || input.reviewRow.targetSiteCategory,
+      categoryTreeCacheJson: input.categoryTreeCacheJson,
+      sizeChartImageUrl: input.sizeChartImageUrl,
+      requiredAttributeDefaults: input.requiredAttributeDefaults,
+      getCategoryTreeBySite: input.getCategoryTreeBySite,
+      getCategoryMetadata: input.getCategoryMetadata,
+      saveShopCollectItemInfo: input.saveShopCollectItemInfo,
+    });
+    if (!categoryResolution.ok) {
+      await this.writeListingEditStatus(input.listingEditBitable, input.editFields, input.record, {
+        ...baseValues,
+        编辑标题: existingRow.editTitle || title,
+        公共采集箱ID: commonCollectBoxId,
+        TikTok采集箱ID: tiktokCollectBoxId,
+        编辑模式: detailPayload.mode,
+        SKU数量: skuCount,
+        采集状态: '已采集公共采集箱',
+        认领状态: '已认领TikTok采集箱',
+        店铺认领状态: '已认领目标店铺',
+        目标类目ID: categoryResolution.categoryId || input.targetCategoryId,
+        尺码表状态: categoryResolution.sizeChartStatus,
+        编辑状态: '需人工处理',
+        发布准备状态: categoryResolution.matchStatus || '类目元数据未通过',
+        失败原因: categoryResolution.failureReason,
       });
       return false;
     }
@@ -3329,6 +3461,8 @@ export class FeishuBitableClient {
       采集状态: '已采集公共采集箱',
       认领状态: '已认领TikTok采集箱',
       店铺认领状态: '已认领目标店铺',
+      目标类目ID: categoryResolution.categoryId || input.targetCategoryId,
+      尺码表状态: categoryResolution.sizeChartStatus,
       编辑状态: '待人工编辑',
       发布准备状态: '待人工编辑后保存',
       失败原因: '',
@@ -4239,6 +4373,7 @@ function readOutputRecord(fields: FeishuField[], record: FeishuRecord, rank: num
     sourceUrl: readTextByCandidates(fields, record, ['原商品链接', '商品链接', '商品URL', '原链接'], true),
     zhengheDataUrl: readTextByCandidates(fields, record, ['郑和数据链接', '郑和链接', '郑和商品链接'], true),
     sourceImageUrl: readTextByCandidates(fields, record, ['原商品主图URL', '主图URL', '商品主图', '图片URL'], true),
+    targetSiteCategory: readTextByCandidates(fields, record, ['目标站点类目', '目标类目', '上架类目']),
     offerUrl: readTextByCandidates(fields, record, ['1688链接', '货源链接', '1688货源链接', '推荐1688链接'], true),
     offerId,
     skuName,
@@ -4298,6 +4433,7 @@ function readPriceOutputRow(fields: FeishuField[], record: FeishuRecord): PriceO
     zhengheDataUrl: readTextByCandidates(fields, record, ['郑和数据链接', '郑和链接', '郑和商品链接'], true),
     sourceUrl: readTextByCandidates(fields, record, ['原商品链接', '商品链接', '商品URL', '原链接'], true),
     sourceImageUrl: readTextByCandidates(fields, record, ['原商品主图URL', '主图URL', '商品主图', '图片URL'], true),
+    targetSiteCategory: readTextByCandidates(fields, record, ['目标站点类目', '目标类目', '上架类目']),
   };
 }
 
@@ -4352,6 +4488,7 @@ function buildReviewRecommendation(rows: PriceOutputRow[], weightToleranceGram: 
     郑和数据链接: firstRow?.zhengheDataUrl ?? '',
     原商品链接: firstRow?.sourceUrl ?? '',
     原商品主图URL: firstRow?.sourceImageUrl ?? '',
+    目标站点类目: firstRow?.targetSiteCategory ?? '',
   };
 
   if (rows.length === 0 || !firstRow) {
@@ -4506,6 +4643,7 @@ function buildReviewValuesFromOutputRow(
     郑和数据链接: row.zhengheDataUrl,
     原商品链接: row.sourceUrl,
     原商品主图URL: row.sourceImageUrl,
+    目标站点类目: row.targetSiteCategory,
   };
 }
 
@@ -4586,6 +4724,7 @@ function readPriceReviewRecord(fields: FeishuField[], record: FeishuRecord): Pri
     ]),
     weightGram: readNumberByCandidates(fields, record, ['克重（g）', '克重', '重量g', '包裹重量g']),
     dimensions: readTextByCandidates(fields, record, ['尺寸', '规格尺寸']),
+    targetSiteCategory: readTextByCandidates(fields, record, ['目标站点类目', '目标类目', '上架类目']),
   };
 }
 
@@ -4618,7 +4757,9 @@ function readListingEditRecord(fields: FeishuField[], record: FeishuRecord): Lis
     targetShopId: readTextByCandidates(fields, record, ['目标店铺ID']),
     targetShopName: readTextByCandidates(fields, record, ['目标店铺名称']),
     targetShopSite: normalizeSite(readTextByCandidates(fields, record, ['目标店铺站点', '店铺站点', '目标站点'])),
+    targetSiteCategory: readTextByCandidates(fields, record, ['目标站点类目', '目标类目', '上架类目']),
     targetCategoryId: readTextByCandidates(fields, record, ['目标类目ID', '目标类目id', '类目ID', 'cid']),
+    sizeChartStatus: readTextByCandidates(fields, record, ['尺码表状态']),
     editModel: readTextByCandidates(fields, record, ['编辑模式', 'editModel']),
     commonCollectBoxId: readTextByCandidates(fields, record, ['公共采集箱ID', '妙手公共采集箱ID']),
     tiktokCollectBoxId: readTextByCandidates(fields, record, ['TikTok采集箱ID', '妙手TikTok采集箱ID']),
@@ -4733,7 +4874,9 @@ function buildListingEditBaseValues(
     目标店铺ID: input.targetShopId,
     目标店铺名称: input.targetShopName,
     目标店铺站点: input.existingRow?.targetShopSite || normalizeSite(input.targetShopSite),
+    目标站点类目: input.existingRow?.targetSiteCategory || row.targetSiteCategory,
     目标类目ID: input.existingRow?.targetCategoryId || input.targetCategoryId || '',
+    尺码表状态: input.existingRow?.sizeChartStatus || '',
     编辑模式: input.existingRow?.editModel || '',
     采集状态: input.existingRow?.collectStatus || '待采集',
     认领状态: input.existingRow?.claimStatus || '待采集',
@@ -5531,6 +5674,530 @@ function ensureMiaoshouDeliveryDefaults(shopInfo: Record<string, unknown>) {
 
 function hasMiaoshouCategory(shopInfo: Record<string, unknown>) {
   return String(shopInfo.cid ?? '').trim().length > 0;
+}
+
+async function resolveAndPersistMiaoshouCategory(input: {
+  detailId: string | number;
+  shopId: string | number;
+  site: string;
+  shopInfo: Record<string, unknown>;
+  ossMd5: string;
+  targetCategoryId?: string;
+  targetSiteCategory?: string;
+  categoryTreeCacheJson?: string;
+  sizeChartImageUrl?: string;
+  requiredAttributeDefaults?: string;
+  getCategoryTreeBySite?: (site: string) => Promise<MiaoshouCategoryNode[]>;
+  getCategoryMetadata?: (input: { site: string; cid: string; shopIds: Array<string | number> }) => Promise<unknown>;
+  saveShopCollectItemInfo?: (input: {
+    detailId: string | number;
+    shopId: string | number;
+    ossMd5: string;
+    shopCollectItemInfo: unknown;
+  }) => Promise<unknown>;
+}) {
+  const site = normalizeSite(input.site);
+  let categoryId = String(input.shopInfo.cid ?? input.targetCategoryId ?? '').trim();
+  let categoryPath = String(input.shopInfo.categoryName ?? input.shopInfo.categoryPath ?? input.targetSiteCategory ?? '').trim();
+  let matchStatus = hasMiaoshouCategory(input.shopInfo) ? '妙手已匹配类目' : '';
+  let categoryChanged = false;
+  if (!hasMiaoshouCategory(input.shopInfo) && categoryId) {
+    input.shopInfo.cid = categoryId;
+    categoryChanged = true;
+    matchStatus = '已按配置类目ID匹配';
+  }
+
+  if (!categoryId) {
+    const match = await matchMiaoshouCategory({
+      site,
+      targetCategoryId: input.targetCategoryId,
+      targetSiteCategory: input.targetSiteCategory,
+      categoryTreeCacheJson: input.categoryTreeCacheJson,
+      getCategoryTreeBySite: input.getCategoryTreeBySite,
+    });
+    if (!match.ok) {
+      return buildCategoryResolutionResult(false, categoryId, categoryPath, match.matchStatus, '', match.failureReason);
+    }
+    categoryId = match.category.cid;
+    categoryPath = match.category.pathChinese || match.category.path || match.category.nameChinese || match.category.name;
+    matchStatus = '已按目标站点类目匹配';
+    input.shopInfo.cid = categoryId;
+    categoryChanged = true;
+  }
+
+  const metadataResult = await resolveMiaoshouCategoryMetadata({
+    site,
+    cid: categoryId,
+    shopId: input.shopId,
+    shopInfo: input.shopInfo,
+    sizeChartImageUrl: input.sizeChartImageUrl,
+    requiredAttributeDefaults: input.requiredAttributeDefaults,
+    getCategoryMetadata: input.getCategoryMetadata,
+  });
+  if (!metadataResult.ok) {
+    return buildCategoryResolutionResult(false, categoryId, categoryPath, matchStatus, metadataResult.sizeChartStatus, metadataResult.failureReason);
+  }
+
+  if (metadataResult.changed || categoryChanged) {
+    if (!input.saveShopCollectItemInfo || !input.ossMd5) {
+      return buildCategoryResolutionResult(false, categoryId, categoryPath, matchStatus, metadataResult.sizeChartStatus, '类目已匹配但缺少保存接口或ossMd5');
+    }
+    await input.saveShopCollectItemInfo({
+      detailId: input.detailId,
+      shopId: input.shopId,
+      ossMd5: input.ossMd5,
+      shopCollectItemInfo: input.shopInfo,
+    });
+  }
+
+  return buildCategoryResolutionResult(true, categoryId, categoryPath, matchStatus, metadataResult.sizeChartStatus, '');
+}
+
+function buildCategoryResolutionResult(
+  ok: boolean,
+  categoryId: string,
+  categoryPath: string,
+  matchStatus: string,
+  sizeChartStatus: string,
+  failureReason: string,
+) {
+  return {
+    ok,
+    categoryId,
+    categoryPath,
+    matchStatus,
+    sizeChartStatus,
+    failureReason,
+  };
+}
+
+async function matchMiaoshouCategory(input: {
+  site: string;
+  targetCategoryId?: string;
+  targetSiteCategory?: string;
+  categoryTreeCacheJson?: string;
+  getCategoryTreeBySite?: (site: string) => Promise<MiaoshouCategoryNode[]>;
+}) {
+  const targetCategoryId = String(input.targetCategoryId ?? '').trim();
+  const targetPath = String(input.targetSiteCategory ?? '').trim();
+  if (!targetCategoryId && !targetPath) {
+    return { ok: false as const, matchStatus: '类目未自动匹配', failureReason: '未命中目标站点类目：请在输入表填写目标站点类目或在配置中填写目标类目ID' };
+  }
+
+  const categories = await loadMiaoshouCategoryTree(input);
+  if (categories.length === 0) {
+    return { ok: false as const, matchStatus: '类目树为空', failureReason: '妙手类目树为空，请先刷新目标站点类目缓存' };
+  }
+
+  if (targetCategoryId) {
+    const direct = categories.find((category) => String(category.cid) === targetCategoryId);
+    if (!direct) {
+      return { ok: false as const, matchStatus: '目标类目ID未命中', failureReason: `未命中目标类目ID：${targetCategoryId}` };
+    }
+    return validateMiaoshouCategoryMatch(direct);
+  }
+
+  const targetTokens = normalizeCategoryPathTokens(targetPath);
+  const candidates = categories
+    .map((category) => ({ category, score: scoreMiaoshouCategory(category, targetTokens) }))
+    .filter((item) => item.score > 0)
+    .sort((left, right) => right.score - left.score);
+  if (candidates.length === 0) {
+    return { ok: false as const, matchStatus: '未命中目标站点类目', failureReason: `未命中目标站点类目：${targetPath}` };
+  }
+  const topScore = candidates[0].score;
+  const topCandidates = candidates.filter((item) => item.score === topScore);
+  if (topCandidates.length > 1) {
+    return { ok: false as const, matchStatus: '命中多个类目', failureReason: `命中多个类目：${targetPath}` };
+  }
+  return validateMiaoshouCategoryMatch(topCandidates[0].category);
+}
+
+async function loadMiaoshouCategoryTree(input: {
+  site: string;
+  categoryTreeCacheJson?: string;
+  getCategoryTreeBySite?: (site: string) => Promise<MiaoshouCategoryNode[]>;
+}) {
+  const cache = parseMiaoshouCategoryTreeCache(input.categoryTreeCacheJson);
+  const cached = cache[normalizeSite(input.site)];
+  if (cached?.length) {
+    return cached;
+  }
+  if (!input.getCategoryTreeBySite) {
+    return [];
+  }
+  return input.getCategoryTreeBySite(normalizeSite(input.site));
+}
+
+function parseMiaoshouCategoryTreeCache(value: unknown): Record<string, MiaoshouCategoryNode[]> {
+  try {
+    const parsed = JSON.parse(String(value || '{}')) as Record<string, unknown>;
+    const output: Record<string, MiaoshouCategoryNode[]> = {};
+    for (const [site, categories] of Object.entries(parsed)) {
+      output[normalizeSite(site)] = Array.isArray(categories) ? categories as MiaoshouCategoryNode[] : [];
+    }
+    return output;
+  } catch {
+    return {};
+  }
+}
+
+function validateMiaoshouCategoryMatch(category: MiaoshouCategoryNode) {
+  if (!category.isLastLevel) {
+    return { ok: false as const, category, matchStatus: '命中类目不是末级', failureReason: `命中类目不是末级：${category.pathChinese || category.nameChinese || category.name}` };
+  }
+  if (category.disabled) {
+    return { ok: false as const, category, matchStatus: '命中类目已禁用', failureReason: `命中类目已禁用：${category.pathChinese || category.nameChinese || category.name}` };
+  }
+  return { ok: true as const, category };
+}
+
+function normalizeCategoryPathTokens(value: string) {
+  return value
+    .split(/>|＞|\/|\\|\||,|，|;|；/)
+    .map(normalizeAttributeText)
+    .filter(Boolean);
+}
+
+function scoreMiaoshouCategory(category: MiaoshouCategoryNode, targetTokens: string[]) {
+  if (targetTokens.length === 0) {
+    return 0;
+  }
+  const pathTokens = normalizeCategoryPathTokens(category.pathChinese || category.path || category.nameChinese || category.name);
+  const leaf = normalizeAttributeText(category.nameChinese || category.name);
+  const targetLeaf = targetTokens[targetTokens.length - 1];
+  let score = 0;
+  if (leaf === targetLeaf) {
+    score += 100;
+  }
+  for (const token of targetTokens) {
+    if (pathTokens.includes(token)) {
+      score += 10;
+    }
+  }
+  if (targetTokens.join('>') === pathTokens.slice(-targetTokens.length).join('>')) {
+    score += 50;
+  }
+  return score;
+}
+
+async function resolveMiaoshouCategoryMetadata(input: {
+  site: string;
+  cid: string;
+  shopId: string | number;
+  shopInfo: Record<string, unknown>;
+  sizeChartImageUrl?: string;
+  requiredAttributeDefaults?: string;
+  getCategoryMetadata?: (input: { site: string; cid: string; shopIds: Array<string | number> }) => Promise<unknown>;
+}) {
+  if (!input.getCategoryMetadata || !input.cid) {
+    return { ok: true, changed: false, sizeChartStatus: '未读取类目元数据', failureReason: '' };
+  }
+
+  let metadata: unknown;
+  try {
+    metadata = await input.getCategoryMetadata({
+      site: normalizeSite(input.site),
+      cid: input.cid,
+      shopIds: [input.shopId],
+    });
+  } catch (error) {
+    return {
+      ok: false,
+      changed: false,
+      sizeChartStatus: '',
+      failureReason: error instanceof Error ? `类目元数据读取失败：${error.message}` : '类目元数据读取失败',
+    };
+  }
+
+  if (!isCategoryAvailableForShop(metadata, input.shopId)) {
+    return { ok: false, changed: false, sizeChartStatus: '', failureReason: '目标店铺未开通该类目' };
+  }
+
+  const defaultAttributesResult = applyConfiguredRequiredAttributeDefaults({
+    site: input.site,
+    cid: input.cid,
+    metadata,
+    shopInfo: input.shopInfo,
+    requiredAttributeDefaults: input.requiredAttributeDefaults,
+  });
+  if (!defaultAttributesResult.ok) {
+    return {
+      ok: false,
+      changed: false,
+      sizeChartStatus: '',
+      failureReason: defaultAttributesResult.failureReason,
+    };
+  }
+
+  const missingMandatoryAttrs = getMissingMandatoryProductAttributes(metadata, input.shopInfo);
+  if (missingMandatoryAttrs.length > 0) {
+    return {
+      ok: false,
+      changed: defaultAttributesResult.changed,
+      sizeChartStatus: '',
+      failureReason: `妙手类目必填属性缺失：${missingMandatoryAttrs.join('、')}，需人工在妙手补充后重试`,
+    };
+  }
+
+  if (!isSizeChartRequired(metadata)) {
+    return {
+      ok: true,
+      changed: defaultAttributesResult.changed,
+      sizeChartStatus: '尺码表非必填',
+      failureReason: '',
+    };
+  }
+
+  const imageUrl = String(input.sizeChartImageUrl ?? '').trim();
+  if (!imageUrl) {
+    return {
+      ok: false,
+      changed: false,
+      sizeChartStatus: '尺码表必填但未配置URL',
+      failureReason: '尺码表必填但未配置URL',
+    };
+  }
+  if (!/\.(jpe?g|png)(?:$|[?#])/i.test(imageUrl)) {
+    return {
+      ok: false,
+      changed: false,
+      sizeChartStatus: '尺码表URL格式不支持',
+      failureReason: '尺码表URL格式不支持，仅支持 JPG/JPEG/PNG',
+    };
+  }
+  input.shopInfo.sizeChartType = 'image';
+  input.shopInfo.sizeChart = imageUrl;
+  return {
+    ok: true,
+    changed: true,
+    sizeChartStatus: '已写入尺码表URL',
+    failureReason: '',
+  };
+}
+
+function applyConfiguredRequiredAttributeDefaults(input: {
+  site: string;
+  cid: string;
+  metadata: unknown;
+  shopInfo: Record<string, unknown>;
+  requiredAttributeDefaults?: string;
+}) {
+  const mappings = parseMiaoshouRequiredAttributeDefaults(input.requiredAttributeDefaults);
+  if (mappings.length === 0) {
+    return { ok: true, changed: false, failureReason: '' };
+  }
+
+  const currentAttrs = Array.isArray(input.shopInfo.productAttributes)
+    ? input.shopInfo.productAttributes.map(asRecord).filter((item): item is Record<string, unknown> => Boolean(item))
+    : [];
+  let changed = false;
+  for (const attr of getMandatoryProductAttributes(input.metadata)) {
+    if (hasFilledProductAttribute(currentAttrs, attr)) {
+      continue;
+    }
+    const configured = findConfiguredDefaultForAttribute({
+      mappings,
+      site: input.site,
+      cid: input.cid,
+      attr,
+    });
+    if (!configured) {
+      continue;
+    }
+    const option = extractMiaoshouAttributeOptions(attr).find((candidate) =>
+      normalizeAttributeText(candidate.valueName) === normalizeAttributeText(configured.valueName),
+    );
+    if (!option) {
+      return {
+        ok: false,
+        changed,
+        failureReason: `${getMiaoshouAttributeName(attr)}默认值未命中妙手选项`,
+      };
+    }
+    currentAttrs.push(buildMiaoshouProductAttributeValue(attr, option));
+    changed = true;
+  }
+
+  if (changed) {
+    input.shopInfo.productAttributes = currentAttrs;
+  }
+  return { ok: true, changed, failureReason: '' };
+}
+
+function parseMiaoshouRequiredAttributeDefaults(value: unknown) {
+  return String(value ?? '')
+    .split(/\r?\n|;/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const [scope = '', valueName = ''] = line.split(/=(.*)/s);
+      const [site = '', cid = '', attrName = ''] = scope.split('|').map((part) => part.trim());
+      return {
+        site: normalizeSite(site),
+        cid,
+        attrName,
+        valueName: valueName.trim(),
+      };
+    })
+    .filter((item) => item.site && item.cid && item.attrName && item.valueName);
+}
+
+function findConfiguredDefaultForAttribute(input: {
+  mappings: Array<{ site: string; cid: string; attrName: string; valueName: string }>;
+  site: string;
+  cid: string;
+  attr: Record<string, unknown>;
+}) {
+  const attrName = normalizeAttributeText(getMiaoshouAttributeName(input.attr));
+  const attrId = normalizeAttributeText(getMiaoshouAttributeId(input.attr));
+  return input.mappings.find((mapping) =>
+    normalizeSite(mapping.site) === normalizeSite(input.site) &&
+    mapping.cid === input.cid &&
+    [attrName, attrId].includes(normalizeAttributeText(mapping.attrName)),
+  );
+}
+
+function getMandatoryProductAttributes(metadata: unknown) {
+  const productAttrs = findNestedValue(metadata, 'categoryProductAttrList');
+  if (!Array.isArray(productAttrs)) {
+    return [];
+  }
+  return productAttrs
+    .map(asRecord)
+    .filter((attr): attr is Record<string, unknown> => Boolean(attr && isTruthyMiaoshouFlag(attr.isMandatory)));
+}
+
+function extractMiaoshouAttributeOptions(attr: Record<string, unknown>) {
+  const candidateLists = [
+    attr.values,
+    attr.valueList,
+    attr.attrValueList,
+    attr.optionList,
+    attr.options,
+    attr.attributeValueList,
+  ];
+  const output: Array<{ valueId: string; valueName: string }> = [];
+  for (const list of candidateLists) {
+    if (!Array.isArray(list)) {
+      continue;
+    }
+    for (const value of list) {
+      const record = asRecord(value);
+      if (!record) {
+        continue;
+      }
+      const valueId = String(record.valueId ?? record.id ?? record.attrValueId ?? record.optionId ?? '').trim();
+      const valueName = String(record.valueName ?? record.name ?? record.attrValue ?? record.optionName ?? record.label ?? '').trim();
+      if (valueName) {
+        output.push({ valueId, valueName });
+      }
+    }
+  }
+  return output.filter((item, index, list) =>
+    list.findIndex((candidate) =>
+      normalizeAttributeText(candidate.valueId) === normalizeAttributeText(item.valueId) &&
+      normalizeAttributeText(candidate.valueName) === normalizeAttributeText(item.valueName),
+    ) === index,
+  );
+}
+
+function buildMiaoshouProductAttributeValue(attr: Record<string, unknown>, option: { valueId: string; valueName: string }) {
+  const attributeId = getMiaoshouAttributeId(attr);
+  const attributeName = getMiaoshouAttributeName(attr);
+  return {
+    attributeId,
+    attributeName,
+    attributeNameAlias: String(attr.attributeNameAlias ?? attr.name ?? attributeName),
+    attributeValues: [
+      {
+        valueId: option.valueId,
+        valueName: option.valueName,
+      },
+    ],
+  };
+}
+
+function getMiaoshouAttributeId(attr: Record<string, unknown>) {
+  return String(attr.attrId ?? attr.attributeId ?? attr.id ?? '').trim();
+}
+
+function getMiaoshouAttributeName(attr: Record<string, unknown>) {
+  return String(attr.attributeNameAlias ?? attr.name ?? attr.attrName ?? attr.attributeName ?? attr.attrId ?? '').trim();
+}
+
+function getMiaoshouProductAttributeName(attr: Record<string, unknown>) {
+  return String(attr.attributeNameAlias ?? attr.attributeName ?? attr.attrName ?? attr.name ?? '').trim();
+}
+
+function hasFilledProductAttribute(currentAttrs: Record<string, unknown>[], mandatoryAttr: Record<string, unknown>) {
+  const mandatoryId = normalizeAttributeText(getMiaoshouAttributeId(mandatoryAttr));
+  const mandatoryName = normalizeAttributeText(getMiaoshouAttributeName(mandatoryAttr));
+  return currentAttrs.some((attr) => {
+    const currentId = normalizeAttributeText(String(attr.attributeId ?? attr.attrId ?? attr.id ?? ''));
+    const currentName = normalizeAttributeText(getMiaoshouProductAttributeName(attr));
+    if (mandatoryId && currentId === mandatoryId) {
+      return hasProductAttributeValue(attr);
+    }
+    if (mandatoryName && currentName === mandatoryName) {
+      return hasProductAttributeValue(attr);
+    }
+    return false;
+  });
+}
+
+function hasProductAttributeValue(attr: Record<string, unknown>) {
+  const values = attr.attributeValues ?? attr.values ?? attr.valueList;
+  if (Array.isArray(values)) {
+    return values.some((value) => {
+      const record = asRecord(value);
+      return record ? Boolean(String(record.valueName ?? record.name ?? record.valueId ?? '').trim()) : Boolean(String(value ?? '').trim());
+    });
+  }
+  return Boolean(String(attr.valueName ?? attr.value ?? '').trim());
+}
+
+function getMissingMandatoryProductAttributes(metadata: unknown, shopInfo: Record<string, unknown>) {
+  const currentAttrs = Array.isArray(shopInfo.productAttributes)
+    ? shopInfo.productAttributes.map(asRecord).filter((item): item is Record<string, unknown> => Boolean(item))
+    : [];
+  return getMandatoryProductAttributes(metadata)
+    .filter((attr) => !hasFilledProductAttribute(currentAttrs, attr))
+    .map(getMiaoshouAttributeName)
+    .filter(Boolean);
+}
+
+function isCategoryAvailableForShop(metadata: unknown, shopId: string | number) {
+  const shopIds = findNestedValue(metadata, 'shopIds') ?? findNestedValue(metadata, 'shopIdList') ?? findNestedValue(metadata, 'availableShopIds');
+  if (!Array.isArray(shopIds) || shopIds.length === 0) {
+    return true;
+  }
+  const target = String(shopId);
+  return shopIds.some((value) => String(value) === target);
+}
+
+function isSizeChartRequired(metadata: unknown) {
+  const requiredFlag = findNestedValue(metadata, 'sizeChartIsRequired');
+  if (isTruthyMiaoshouFlag(requiredFlag)) {
+    return true;
+  }
+  const name = String(findNestedValue(metadata, 'sizeChart') ?? '');
+  return /必填|required/i.test(name);
+}
+
+function isTruthyMiaoshouFlag(value: unknown) {
+  if (typeof value === 'boolean') {
+    return value;
+  }
+  return ['1', 'true', 'yes', 'y'].includes(String(value ?? '').trim().toLowerCase());
+}
+
+function normalizeAttributeText(value: string) {
+  return value
+    .normalize('NFKC')
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, '');
 }
 
 function safeDimension(value: number | '') {

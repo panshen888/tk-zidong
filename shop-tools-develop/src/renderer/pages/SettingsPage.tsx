@@ -518,7 +518,7 @@ export function SettingsPage() {
             </label>
           </div>
           <p className="helper-text">
-            飞书任务直接通过多维表格 API 读写，本地任务直接扫描 Excel；两种持续执行都会每次领取 1 行空状态/「待处理」/「待核实」记录，已完成自动跳过。
+            飞书任务直接通过多维表格 API 读写，本地任务直接扫描 Excel；飞书输入表持续执行只领取空状态/「待处理」记录，已完成自动跳过。
           </p>
         </article>
 

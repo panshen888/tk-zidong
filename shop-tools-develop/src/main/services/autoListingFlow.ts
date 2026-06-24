@@ -23,6 +23,7 @@ export async function runAutomaticMiaoshouListingFlow(input: {
   settings: AppSettings;
   run: TaskRun;
   batchId: string;
+  productIdLabel?: string;
   appendLog?: (level: 'info' | 'warn' | 'error', message: string) => void;
 }): Promise<AutoListingFlowResult> {
   const { settings, run } = input;
@@ -42,13 +43,20 @@ export async function runAutomaticMiaoshouListingFlow(input: {
     appId: settings.feishuAppId,
     appSecret: settings.feishuAppSecret,
   });
+  const listingAutoRunLimit = Math.min(20, Math.max(1, Number(settings.listingAutoRunLimit) || 1));
   const tableInput = getPriceComparisonTableInput(settings, run);
   const approved = await feishuClient.approveLatestReviewBatch({
     ...tableInput,
     batchId,
     weightToleranceGram: settings.weightGroupToleranceGram,
   });
-  input.appendLog?.('info', `自动妙手上架：表三批次 ${batchId} 已确认 ${approved.approvedReviewCount} 条。`);
+  const productPrefix = input.productIdLabel ? `${input.productIdLabel}；` : '';
+  input.appendLog?.(
+    approved.approvedReviewCount > 0 ? 'info' : 'warn',
+    approved.approvedReviewCount > 0
+      ? `自动妙手上架：${productPrefix}表三批次 ${batchId} 已默认审核通过 ${approved.approvedReviewCount} 条，进入采集上架环节。`
+      : `自动妙手上架：${productPrefix}表三批次 ${batchId} 没有可默认审核的记录，采集上架环节未推进。`,
+  );
   if (approved.approvedReviewCount <= 0) {
     return {
       reviewBatchId: batchId,
@@ -71,11 +79,14 @@ export async function runAutomaticMiaoshouListingFlow(input: {
     appToken: getCommerceAppToken(settings, run),
     taskId: run.taskId,
     batchId,
-    limit: 1,
+    limit: listingAutoRunLimit,
     priceReviewBitable: tableInput.reviewBitable,
     targetShopId: settings.targetShopId,
     targetShopName: settings.targetShopName,
     targetSite: settings.targetSite,
+    categoryTreeCacheJson: settings.miaoshouCategoryTreeCacheJson,
+    sizeChartImageUrl: settings.miaoshouSizeChartImageUrl,
+    requiredAttributeDefaults: settings.miaoshouRequiredAttributeDefaults,
     shopMappings: parseListingShopMappings(settings.listingShopMappings),
     importLinks: async (links) => {
       const data = await miaoshouClient.importSourceLinks(links);
@@ -90,10 +101,13 @@ export async function runAutomaticMiaoshouListingFlow(input: {
     claimToShop: async (claimInput) => miaoshouClient.claimTiktokCollectBoxToShop(claimInput),
     getShopCollectItemInfo: async (detailInput) => miaoshouClient.getShopCollectItemInfo(detailInput),
     getSiteCollectItemInfo: async (detailInput) => miaoshouClient.getSiteCollectItemInfo(detailInput),
+    getCategoryTreeBySite: async (site) => miaoshouClient.getCategoryTreeBySite(site),
+    getCategoryMetadata: async (metadataInput) => miaoshouClient.getCategoryMetadata(metadataInput),
+    saveShopCollectItemInfo: async (saveInput) => miaoshouClient.saveShopCollectItemInfo(saveInput),
   });
   input.appendLog?.(
     'info',
-    `自动妙手上架：采集认领扫描 ${listingEditResult.scannedCount} 条，推进 ${listingEditResult.updatedCount} 条，失败 ${listingEditResult.failedCount} 条。`,
+    `自动妙手上架：${productPrefix}采集认领扫描 ${listingEditResult.scannedCount} 条，推进 ${listingEditResult.updatedCount} 条，失败 ${listingEditResult.failedCount} 条。`,
   );
 
   const listingResultTable = await feishuClient.ensureListingResultTable(getListingResultTableInput(settings));
@@ -106,7 +120,7 @@ export async function runAutomaticMiaoshouListingFlow(input: {
     appToken: getCommerceAppToken(settings, run),
     taskId: run.taskId,
     batchId,
-    limit: 1,
+    limit: listingAutoRunLimit,
     listingResultBitable: listingResultTable.listingResultBitable,
     hasPricingTemplate: (row) => Boolean(resolvePricingTemplateForSite(
       templates,
@@ -136,7 +150,7 @@ export async function runAutomaticMiaoshouListingFlow(input: {
   });
   input.appendLog?.(
     browserResult.failedCount > 0 ? 'warn' : 'info',
-    `自动妙手上架：浏览器保存并发布执行 ${browserResult.executedCount} 条，失败 ${browserResult.failedCount} 条。`,
+    `自动妙手上架：${productPrefix}浏览器保存并发布执行 ${browserResult.executedCount} 条，失败 ${browserResult.failedCount} 条。`,
   );
 
   return {

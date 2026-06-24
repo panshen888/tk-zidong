@@ -19,6 +19,9 @@ export type AppSettings = {
   miaoshouPricingTemplatesJson: string;
   miaoshouPricingTemplateMappings: string;
   miaoshouTargetCategoryId: string;
+  miaoshouCategoryTreeCacheJson: string;
+  miaoshouCategoryTreeCacheUpdatedAt: string;
+  miaoshouRequiredAttributeDefaults: string;
   miaoshouPricingTemplateName: string;
   miaoshouSizeChartImageUrl: string;
   miaoshouWarehouseName: string;
@@ -28,6 +31,7 @@ export type AppSettings = {
   miaoshouOpenApiAppSecret: string;
   miaoshouOpenApiAccountId: string;
   enableMiaoshouListingApi: boolean;
+  listingAutoRunLimit: number;
   miaoshouDefaultStock: number;
   listingCollectSource: 'sourceUrl' | 'offerUrl';
   listingExchangeRates: string;
@@ -294,6 +298,52 @@ export type MiaoshouPricingTemplateRefreshInput = {
 
 export type MiaoshouPricingTemplateRefreshResult = {
   templates: MiaoshouPricingTemplate[];
+};
+
+export type MiaoshouCategoryNode = {
+  cid: string;
+  aid: string;
+  fid: string;
+  name: string;
+  nameChinese: string;
+  isLastLevel: boolean;
+  disabled: boolean;
+  path: string;
+  pathChinese: string;
+};
+
+export type MiaoshouCategoryTreeRefreshInput = {
+  site?: string;
+};
+
+export type MiaoshouCategoryTreeRefreshResult = {
+  site: string;
+  categories: MiaoshouCategoryNode[];
+  updatedAt: string;
+};
+
+export type MiaoshouAttributeOption = {
+  valueId: string;
+  valueName: string;
+};
+
+export type MiaoshouRequiredAttribute = {
+  attrId: string;
+  attrName: string;
+  options: MiaoshouAttributeOption[];
+};
+
+export type MiaoshouCategoryAttributeRefreshInput = {
+  site?: string;
+  cid?: string;
+  shopId?: string;
+};
+
+export type MiaoshouCategoryAttributeRefreshResult = {
+  site: string;
+  cid: string;
+  shopId: string;
+  requiredAttributes: MiaoshouRequiredAttribute[];
 };
 
 export type CommerceListingPricingSyncInput = {
@@ -569,6 +619,7 @@ export type ProductItem = {
   title?: string;
   country?: string;
   category?: string;
+  targetSiteCategory?: string;
   status: ProductItemStatus;
   errorMessage?: string;
   candidates?: SupplierCandidate[];
@@ -686,6 +737,12 @@ export type AppApi = {
   refreshMiaoshouPricingTemplates: (
     input?: MiaoshouPricingTemplateRefreshInput,
   ) => Promise<MiaoshouPricingTemplateRefreshResult>;
+  refreshMiaoshouCategoryTree: (
+    input?: MiaoshouCategoryTreeRefreshInput,
+  ) => Promise<MiaoshouCategoryTreeRefreshResult>;
+  refreshMiaoshouCategoryAttributes: (
+    input?: MiaoshouCategoryAttributeRefreshInput,
+  ) => Promise<MiaoshouCategoryAttributeRefreshResult>;
   syncListingPricingConfigToReviewTable: (
     input: CommerceListingPricingSyncInput,
   ) => Promise<CommerceListingPricingSyncResult>;

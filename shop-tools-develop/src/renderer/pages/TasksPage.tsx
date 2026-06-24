@@ -258,7 +258,7 @@ export function TasksPage() {
   async function startRealtimeTask(taskId: string) {
     try {
       await window.appApi.startRealtimeTask(taskId);
-      setLoginBrowserMessage('持续执行已启动：系统会按 AI比价配置间隔，每次领取 1 行空状态/「待处理」/「待核实」记录，并跳过已完成。');
+      setLoginBrowserMessage('持续执行已启动：系统会按 AI比价配置间隔领取空状态/「待处理」记录，并跳过已完成。');
     } catch (error) {
       setLoginBrowserMessage(error instanceof Error ? error.message : '持续执行启动失败，请检查配置。');
     }
@@ -618,7 +618,7 @@ export function TasksPage() {
                         <button type="button" onClick={() => void chooseExcelFile()}>选择</button>
                       </div>
                     </label>
-                    <p className="helper-text">本地任务会自动补第一列「状态」，持续执行处理空状态/「待处理」/「待核实」记录。</p>
+                    <p className="helper-text">本地任务会自动补第一列「状态」，持续执行处理空状态/「待处理」记录。</p>
                   </SectionCard>
                 ) : (
                   <>
