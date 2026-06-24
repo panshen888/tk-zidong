@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { CheckCircle2, ClipboardList, PackageCheck, Settings2, ShieldCheck, Table2 } from 'lucide-react';
 
-const guideVersion = 'v0.1.6';
+const guideVersion = 'v0.1.7';
 const guideUpdatedAt = '2026-06-24';
 const stableFlowText = ['AI智能比价', '待人工核实上架表', 'AI智能上架', '妙手采集认领'].join(' -> ');
 
@@ -126,6 +126,8 @@ export function UserGuidePage() {
             items={[
               '妙手 API 域名、AppKey、AppSecret、账号 ID',
               '目标站点、目标店铺 ID、目标店铺名称',
+              '目标类目ID、类目属性刷新、必填属性默认值；有妙手选项的属性可下拉配置',
+              '尺码表网络图片 URL：当前作为类目尺码表必填时的全局兜底图',
               '多站点店铺映射：MY/SG/PH/VN/TH',
               'AI上架结果表 appToken/tableId/viewId',
               '自动上架每轮处理数量：默认 1，最大 20；批量时单条失败写回原因并继续后续记录',

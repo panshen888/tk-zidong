@@ -1,6 +1,6 @@
 {
   "name": "tiktok-ai-flow",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "private": true,
   "description": "Electron desktop app for 1688 image-search sourcing workflows.",
   "main": "dist/main/main.js",

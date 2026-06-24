@@ -1915,6 +1915,30 @@ select:focus {
   background: rgba(255, 255, 255, 0.36);
 }
 
+.required-attribute-defaults {
+  gap: 8px;
+}
+
+.required-attribute-list {
+  display: grid;
+  gap: 8px;
+}
+
+.required-attribute-row {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.45fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+}
+
+.required-attribute-row > span {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .settings-form-grid .span-2 {
   grid-column: 1 / -1;
 }

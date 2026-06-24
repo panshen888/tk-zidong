@@ -175,10 +175,10 @@ export function ListingSettingsPage() {
         shopId: nextSettings.targetShopId,
       });
       setRequiredAttributes(result.requiredAttributes);
-      const materialAttr = findMaterialAttribute(result.requiredAttributes);
-      setCategoryAttributeMessage(materialAttr
-        ? `已读取 ${result.site} / ${result.cid} 必填属性，材质可选 ${materialAttr.options.length} 项`
-        : `已读取 ${result.site} / ${result.cid} 必填属性，当前类目未返回材质必填项`);
+      const selectableCount = result.requiredAttributes.filter((attribute) => attribute.options.length > 0).length;
+      setCategoryAttributeMessage(result.requiredAttributes.length > 0
+        ? `已读取 ${result.site} / ${result.cid} 必填属性 ${result.requiredAttributes.length} 项，其中 ${selectableCount} 项可下拉配置`
+        : `已读取 ${result.site} / ${result.cid} 类目属性，当前类目没有必填商品属性`);
     } catch (error) {
       setRequiredAttributes([]);
       setCategoryAttributeMessage(error instanceof Error ? error.message : '刷新类目属性失败');
@@ -240,17 +240,16 @@ export function ListingSettingsPage() {
     });
   }
 
-  function handleMaterialDefaultChange(valueName: string) {
+  function handleRequiredAttributeDefaultChange(attribute: MiaoshouRequiredAttribute, valueName: string) {
     if (!settings) {
       return;
     }
-    const materialAttr = findMaterialAttribute(requiredAttributes);
-    const attrName = materialAttr?.attrName || '材质';
+    const attrKey = attribute.attrId || attribute.attrName;
     updateSettings({
       miaoshouRequiredAttributeDefaults: upsertRequiredAttributeDefault(settings.miaoshouRequiredAttributeDefaults, {
         site: selectedSite,
         cid: settings.miaoshouTargetCategoryId,
-        attrName,
+        attrName: attrKey,
         valueName,
       }),
     });
@@ -273,12 +272,7 @@ export function ListingSettingsPage() {
     selectedSite,
   );
   const categoryCacheSummary = getCategoryCacheSummary(settings.miaoshouCategoryTreeCacheJson, selectedSite);
-  const materialAttribute = findMaterialAttribute(requiredAttributes);
-  const selectedMaterialDefault = getRequiredAttributeDefaultValue(settings.miaoshouRequiredAttributeDefaults, {
-    site: selectedSite,
-    cid: settings.miaoshouTargetCategoryId,
-    attrName: materialAttribute?.attrName || '材质',
-  });
+  const requiredAttributeDefaults = parseRequiredAttributeDefaults(settings.miaoshouRequiredAttributeDefaults);
   return (
     <section className="page-section settings-page listing-settings-page">
       <PageHeader
@@ -469,7 +463,7 @@ export function ListingSettingsPage() {
             className="listing-settings-shop"
             icon={<Store size={18} />}
             title="店铺与站点"
-            note="店铺和站点用于认领 TikTok 采集箱、选择预发布店铺和发布前检查；类目由妙手编辑页自动匹配或人工处理。"
+            note="店铺和站点用于认领 TikTok 采集箱、选择预发布店铺和发布前检查；目标类目ID可刷新妙手必填属性并配置默认值。"
             action={
               <>
                 <button className="small-button" type="button" disabled={isExportingShopConfig} onClick={() => void exportShopConfig()}>
@@ -566,21 +560,44 @@ export function ListingSettingsPage() {
 
             {categoryAttributeMessage ? <p className="inline-notice span-2">{categoryAttributeMessage}</p> : null}
 
-            <label className="field span-2">
-              <span>材质默认值</span>
-              <select
-                value={selectedMaterialDefault}
-                disabled={!materialAttribute || materialAttribute.options.length === 0}
-                onChange={(event) => handleMaterialDefaultChange(event.target.value)}
-              >
-                <option value="">{materialAttribute ? '请选择材质默认值' : '请先刷新带材质的类目属性'}</option>
-                {materialAttribute?.options.map((option) => (
-                  <option key={`${option.valueId}-${option.valueName}`} value={option.valueName}>
-                    {option.valueName}
-                  </option>
-                ))}
-              </select>
-            </label>
+            <div className="field span-2 required-attribute-defaults">
+              <span>必填属性默认值</span>
+              {requiredAttributes.length === 0 ? (
+                <p className="helper-text">请先填写目标类目ID并点击“刷新类目属性”。如果类目没有必填属性，这里会保持为空。</p>
+              ) : (
+                <div className="required-attribute-list">
+                  {requiredAttributes.map((attribute) => {
+                    const attrName = attribute.attrName || attribute.attrId;
+                    const attrKey = attribute.attrId || attrName;
+                    const selectedValue = getRequiredAttributeDefaultValueFromMappings(requiredAttributeDefaults, {
+                      site: selectedSite,
+                      cid: settings.miaoshouTargetCategoryId,
+                      attrName: attrKey,
+                    });
+                    return (
+                      <label className="required-attribute-row" key={`${attribute.attrId}-${attrName}`}>
+                        <span>{attrName}</span>
+                        {attribute.options.length > 0 ? (
+                          <select
+                            value={selectedValue}
+                            onChange={(event) => handleRequiredAttributeDefaultChange(attribute, event.target.value)}
+                          >
+                            <option value="">请选择默认值</option>
+                            {attribute.options.map((option) => (
+                              <option key={`${attribute.attrId}-${option.valueId}-${option.valueName}`} value={option.valueName}>
+                                {option.valueName}
+                              </option>
+                            ))}
+                          </select>
+                        ) : (
+                          <input value="无可选项，需人工处理" disabled />
+                        )}
+                      </label>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
 
             <label className="field">
               <span>仓库名称</span>
@@ -768,10 +785,6 @@ type RequiredAttributeDefaultMapping = {
   valueName: string;
 };
 
-function findMaterialAttribute(attributes: MiaoshouRequiredAttribute[]) {
-  return attributes.find((attribute) => normalizeText(attribute.attrName) === normalizeText('材质'));
-}
-
 function parseRequiredAttributeDefaults(value: string | undefined): RequiredAttributeDefaultMapping[] {
   return String(value ?? '')
     .split(/\r?\n|;/)
@@ -810,11 +823,11 @@ function upsertRequiredAttributeDefault(current: string | undefined, mapping: Re
   return rows.map((item) => `${item.site}|${item.cid}|${item.attrName}=${item.valueName}`).join('\n');
 }
 
-function getRequiredAttributeDefaultValue(
-  current: string | undefined,
+function getRequiredAttributeDefaultValueFromMappings(
+  mappings: RequiredAttributeDefaultMapping[],
   input: { site: string; cid: string; attrName: string },
 ) {
-  const match = parseRequiredAttributeDefaults(current).find((item) => (
+  const match = mappings.find((item) => (
     normalizeSite(item.site) === normalizeSite(input.site) &&
     item.cid === input.cid.trim() &&
     normalizeText(item.attrName) === normalizeText(input.attrName)
